@@ -68,8 +68,8 @@ p {
   }
   .colorScreen1 {
     background-color: $dark;
-    mix-blend-mode: multiply;
-    opacity: .7;
+    // mix-blend-mode: multiply;
+    opacity: .2;
   }
   .colorScreen2 {
     // background-color: $dark;
@@ -84,18 +84,14 @@ p {
     color: $light;
     font-size: 21px;
     position: relative;
-    margin-top: 85vh;
+    margin-top: 60vh;
     .text {
       margin: 0 auto;
       padding: 400px 0 100px;
       width: 720px;
       p {
-        margin-bottom: 100px;
+        margin-bottom: 160px;
         opacity: 0;
-        transition-duration: 800ms;
-        &#p1 {
-          opacity: 1
-        }
       }
     }
   }
