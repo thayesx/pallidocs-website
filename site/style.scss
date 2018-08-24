@@ -1,6 +1,6 @@
 $light: #F7EFE4cc;
 $dark: #5F4B38;
-$containerBackground: linear-gradient(to bottom, #f7efe400 0%, $light 40%, $light 100%);
+$containerBackground: linear-gradient(to bottom, #5F4B3800 0%, $dark 40%, $dark 100%);
 $screen1: linear-gradient(to bottom, #F4B44600 0%, #F4B446 100%);
 
 
@@ -36,14 +36,14 @@ p {
     }
   }
   .item {
-    border-top: 1px solid $dark;
+    border-top: 1px solid $light;
     padding: 10px 0;
     margin-bottom: 16px;
     span {
       margin-left: 40px;
       letter-spacing: 1px;
       font-size: 16px;
-      color: $dark;
+      color: $light;
       opacity: 0;
       transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
       transition-duration: 400ms;
@@ -67,21 +67,21 @@ p {
     height: 100vh;
   }
   .colorScreen1 {
-    background-color: #F4B446;
-    mix-blend-mode: screen;
+    background-color: $dark;
+    mix-blend-mode: multiply;
     opacity: .7;
   }
   .colorScreen2 {
-    background-color: #907D5E;
-    mix-blend-mode: color;
+    // background-color: $dark;
+    // mix-blend-mode: color;
   }
   #colorChange {
     opacity: 0;
-    background: $light;
+    background: rgb(17, 15, 12);
   }
   .container {
     z-index: 9;
-    color: $dark;
+    color: $light;
     font-size: 21px;
     position: relative;
     margin-top: 85vh;
