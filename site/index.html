@@ -9,36 +9,40 @@
   <!-- Stylesheets -->
   <link rel='stylesheet' href='css/style.css' type="text/css" />
   <link rel="stylesheet" href="https://use.typekit.net/yoi4njd.css">
+  
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="scripts/index.js"></script>
+  
 </head>
 <body>
+  <div class="sidebar">
+    <div class="item"><span>Films</span></div>
+    <div class="item"><span>Forms</span></div>
+    <div class="item"><span>Contact</span></div>
+  </div>
   <div class="background">
     <video autoplay muted loop>
-      <source src="assets/bgVideo1440-trimmed.mp4" type="video/mp4">
+      <source src="assets/bgVideo1440-trimmed-sm.mp4" type="video/mp4">
     </video>
   </div>
   <div class="overlay">
     <div class="colorScreen1"></div>
     <div class="colorScreen2"></div>
+    <div id="colorChange"></div>
     <div class="container">
-      <p>
-        The emotions that arise following a serious diagnosis are incredibly complex. It is a period of time when a person must define their ultimate goals of living. Each moment shifts the balance between uncertainty and grace. But along with crisis comes the opportunity to find new meaning, to turn old wounds into new openings and to look at the world through the eyes of the heart.
-        <br><br>
-        PalliDocs is a collaborative venture between Los Angeles based production company, Noisy Grain, and Vanderbilt Medical Center in Nashville, Tennessee. The collective vision is to show rather than tell the stories of medicine in the face of a serious illness.
-        <br><br>
-        These films represent a community of strength and fellowship. They are created to be passed forward and to remind each of us that we are not alone. We hope that their viewing will inspire a conversation, evoke an emotion and remind us that joy can be found in suprising ways.
-        <br><br>
-        Sincerely, 
-        <br><br>
-        John Stavas
-        <br><br>
-        Cody Huff
-        <br><br>
-        Sara Martin, MD
-        <br><br>
-        Mohana Karlekar, MD
-        <br><br>
-        Mark Stavas, MD
-      </p>
+      <div class="text">
+        <p id="p1">The emotions that come with a serious diagnosis can be hard to manage. It's an experience that will force anyone to reckon with their goals in life—while each moment can shift the balance between uncertainty and grace. </p>
+        <p id="p2">But with crisis comes an opportunity to find new meaning. Old wounds may become new openings. One can see the world through the eyes of the heart.</p>
+        <p id="p3">These films are meant to honor a community built on strength and fellowship. They're intended to remind each of us that we're never alone.</p>
+        <p id="p4">We hope they can inspire conversation, open doors to new emotions, and remind us that joy can always be found in the unexpected ways.</p>
+        <p id="p5">Sincerely,<br><br>
+            John Stavas<br><br>
+            Cody Huff<br><br>
+            Sara Martin, MD<br><br>
+            Mohana Karlekar, MD<br><br>
+            Mark Stavas, MD</p>
+      </div>
     </div>
   </div>
 </body>

@@ -24,10 +24,43 @@ p {
   }
 }
 
+.sidebar {
+  z-index: 10;
+  position: fixed;
+  height: 100%;
+  width: 100px;
+  padding-top: 80px;
+  &:hover {
+    .item>span {
+      opacity: .6;
+    }
+  }
+  .item {
+    border-top: 1px solid $dark;
+    padding: 10px 0;
+    margin-bottom: 16px;
+    span {
+      margin-left: 40px;
+      letter-spacing: 1px;
+      font-size: 16px;
+      color: $dark;
+      opacity: 0;
+      transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition-duration: 400ms;
+      cursor: pointer;
+      &:hover {
+        transition-duration: 0ms;
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        opacity: 1;
+      }
+    }
+  }
+}
+
 .overlay {
   width: 100%;
   z-index: 1;
-  .colorScreen1,.colorScreen2 {
+  .colorScreen1,.colorScreen2, #colorChange {
     position: fixed;
     top: 0;
     width: 100%;
@@ -35,24 +68,35 @@ p {
   }
   .colorScreen1 {
     background-color: #F4B446;
-    mix-blend-mode: soft-light;
-    opacity: .5;
+    mix-blend-mode: screen;
+    opacity: .7;
   }
   .colorScreen2 {
     background-color: #907D5E;
-    mix-blend-mode: screen;
-    opacity: .5;
+    mix-blend-mode: color;
+  }
+  #colorChange {
+    opacity: 0;
+    background: $light;
   }
   .container {
-    background: $containerBackground;
+    z-index: 9;
     color: $dark;
     font-size: 21px;
     position: relative;
     margin-top: 85vh;
-    p {
+    .text {
       margin: 0 auto;
       padding: 400px 0 100px;
       width: 720px;
+      p {
+        margin-bottom: 100px;
+        opacity: 0;
+        transition-duration: 800ms;
+        &#p1 {
+          opacity: 1
+        }
+      }
     }
   }
 }
