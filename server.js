@@ -1,6 +1,7 @@
 // Initialize requirements
 let express = require("express");
 let sass = require("node-sass-middleware");
+// let scrollSnapPolyfill = require("css-scroll-snap-polyfill");
 
 // Initialize variables
 let path = "site/";
@@ -33,3 +34,8 @@ let runServer = function() {
 
 // Run server
 runServer();
+
+// $( document ).ready(function() {
+//   console.log("yo");
+//   scrollSnapPolyfill();
+// });

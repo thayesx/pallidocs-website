@@ -1,5 +1,6 @@
 $light: #F7EFE4cc;
 $dark: #5F4B38;
+$dark_: rgba(17, 15, 12, 1);
 $containerBackground: linear-gradient(to bottom, #5F4B3800 0%, $dark 40%, $dark 100%);
 $screen1: linear-gradient(to bottom, #F4B44600 0%, #F4B446 100%);
 
@@ -8,11 +9,13 @@ html, body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
-  font-family: "p22-stickley-pro-text";
+  font-family: "ltc-kennerley";
 }
 
 p {
-  line-height: 1.8;
+  line-height: 1.6;
+  // font-weight: 100;
+  font-size: 24px;
 }
 
 .background {
@@ -24,38 +27,73 @@ p {
   }
 }
 
-.sidebar {
+#sidebar {
   z-index: 10;
   position: fixed;
-  left: -20px;
+  width: 300px;
   height: 100%;
-  width: 140px;
-  padding-top: 80px;
+  top: 5vh;
   transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
   transition-duration: 400ms;
   &:hover {
-    left: 0px;
     .item>span {
-      opacity: .6;
+      opacity: .75;
+    }
+  }
+  .logo {
+    // border-bottom: 2px solid $light;
+    span {
+      display: block;
+      width: 180px;
+      height: 60px;
+      margin-left: 40px;
+      margin-bottom: 25px;
+      background-image: url("../assets/logo1.svg");
+      background-size: contain;
+      background-position: bottom;
+      background-repeat: no-repeat;
     }
   }
   .item {
-    border-top: 1px solid $light;
-    padding: 5px 0 40px;
-    span {
-      text-align: right;
-      display: inline-block;
-      width: 100%;
-      letter-spacing: 1px;
-      font-size: 16px;
-      color: $light;
-      opacity: 0;
-      transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-      transition-duration: 400ms;
-      cursor: pointer;
-      &:hover {
+    padding: 15px 0 5px;
+    margin-top: 10px;
+    &:hover {
+      span {
+        cursor: pointer;
         transition-duration: 0ms;
         transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        opacity: 1;
+      }
+    }
+    span {
+      padding-left: 40px;
+      display: inline-block;
+      width: 80px;
+      letter-spacing: 1px;
+      font-size: 18px;
+      color: $light;
+      opacity: 0.35;
+      transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition-duration: 400ms;
+    }
+  }
+  &.shrink {
+    top: 2vh;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    .logo > span {
+      width: 120px;
+      opacity: .5;
+      transition-duration: 400ms;
+      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    &:hover {
+      .item>span {
+        opacity: .5;
+      }
+    }
+    .item > span {
+      &:hover {
         opacity: 1;
       }
     }
@@ -63,9 +101,11 @@ p {
 }
 
 .overlay {
+  overflow-y: hidden;
+  height: auto;
   width: 100%;
   z-index: 1;
-  .colorScreen1,.colorScreen2, #colorChange {
+  .colorScreen1,.colorScreen2, #colorChange, #colorChange2 {
     position: fixed;
     top: 0;
     width: 100%;
@@ -74,7 +114,7 @@ p {
   .colorScreen1 {
     background-color: $dark;
     // mix-blend-mode: multiply;
-    opacity: .3;
+    opacity: .35;
   }
   .colorScreen2 {
     // background-color: $dark;
@@ -82,7 +122,11 @@ p {
   }
   #colorChange {
     opacity: 0;
-    background: rgba(17, 15, 12, .9);
+    background: rgba(17, 15, 12, .8);
+  }
+  #colorChange2 {
+    opacity: 0;
+    background: rgb(12, 11, 8);
   }
   .container {
     z-index: 9;
@@ -93,12 +137,52 @@ p {
     .text {
       margin: 0 auto;
       padding: 400px 0 100px;
-      width: 720px;
+      width: 600px;
       p {
         margin-bottom: 160px;
         opacity: 0;
         &.show {
-          transition-duration: 800ms;
+          transition-duration: 1500ms;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  div#videos {
+    position: relative;
+    z-index: 20;
+    width: 900px;
+    margin: 40px auto;
+    color: $light;
+    h1 {
+      font-size: 72px;
+      font-weight: 800;
+      margin: 0;
+      padding-right: 200px;
+    }
+    p {
+      padding-right: 200px;
+      font-size: 18px; 
+      max-width: 600px;
+    }
+   .video {
+      margin-bottom: 200px;
+      overflow-y: scroll;
+      .subtle {
+        opacity: .6;
+      }
+      .image {
+        opacity: 0;
+        background-position: center;
+        background-size: cover;
+        display: block;
+        width: 100%;
+        height: 505px;
+      }
+      &.show {
+        .image {
+          transition-duration: 600ms;
+          transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
           opacity: 1;
         }
       }
