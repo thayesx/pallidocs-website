@@ -9,7 +9,7 @@ let path = "site/";
 let runServer = function() {
   // Setup server
   let server = express();
-  server.listen(3000, () => console.log('Pallidocs website running on port 3000', __dirname));
+  server.listen(process.env.PORT || 3000, () => console.log('Pallidocs website running on ' + (process.env.PORT? process.env.PORT : "3000")));
 
   // Compile SASS
   server.use(
