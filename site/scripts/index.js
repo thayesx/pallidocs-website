@@ -11,19 +11,34 @@ let didScroll = false;
 let transitionOnScroll = function(target, startFromTop, slowness, cssProperty, reference) {
 
   let scrollReference = (reference? reference : target);
-  let distanceFromTop = scrollReference[0].offsetTop - window.scrollY;
+  let distanceFromTop = scrollReference.offset().top - window.scrollY;
+  let value = (startFromTop - distanceFromTop) / slowness;
+
+  // if (cssProperty == "opacity" && value > 1.1) return;
 
   // Begin transition at startFromTop
   if (distanceFromTop <= startFromTop)
     // Set cssProperty as function of distance from top of screen
-    target.css(cssProperty, (startFromTop - distanceFromTop) / slowness);
+    target.css(cssProperty, value);
+}
+
+// Add class to element based on scroll position
+let addClassOnScroll = function(target, startFromTop, className, reference) {
+
+  let scrollReference = (reference? reference : target);
+  let distanceFromTop = scrollReference.offset().top - window.scrollY;
+
+  // Begin transition at startFromTop
+  if (distanceFromTop <= startFromTop && target[0].className.includes(className))
+    // Set add class to property
+    target.addClass(className);
 }
 
 // Fade in paragraphs
 let fadeInParagraphs = function() {
 
-  let startFromTop = window.innerHeight * .15;
-  let slowness = 150;
+  let startFromTop = window.innerHeight * .8;
+  let slowness = 300;
 
   transitionOnScroll(p1, startFromTop, slowness, "opacity");
   transitionOnScroll(p2, startFromTop, slowness, "opacity");
@@ -32,10 +47,23 @@ let fadeInParagraphs = function() {
   transitionOnScroll(p5, startFromTop, slowness, "opacity");
 }
 
+// Fade in paragraphs
+let fadeInParagraphs2 = function() {
+
+  let startFromTop = window.innerHeight * .8;
+  
+  addClassOnScroll(p1, startFromTop, "show");
+  addClassOnScroll(p2, startFromTop, "show");
+  addClassOnScroll(p3, startFromTop, "show");
+  addClassOnScroll(p4, startFromTop, "show");
+  addClassOnScroll(p5, startFromTop, "show");
+
+}
+
 // Fade in color overlay over video
 let fadeInOverlay = function() {
 
-  let startFromTop = window.innerHeight * .4;
+  let startFromTop = window.innerHeight;
   let slowness = 400;
 
   transitionOnScroll(colorChange, startFromTop, slowness, "opacity", p1);
@@ -44,7 +72,6 @@ let fadeInOverlay = function() {
 // Stagger updates made on scroll to conserve computing
 setInterval(function() {
   if(didScroll) {
-    fadeInOverlay();
     didScroll = false;
   }
 }, 100);
@@ -53,7 +80,7 @@ $( window ).scroll(function() {
   if (!didScroll){
     didScroll = true;
   }
-  // fadeInOverlay();
+  fadeInOverlay();
   fadeInParagraphs();
 });
 
