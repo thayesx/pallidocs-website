@@ -1,8 +1,10 @@
-$light: #F7EFE4cc;
+$light: #F4ECE0;
+$light_: #F4ECE033;
 $dark: #5F4B38;
-$dark_: rgba(17, 15, 12, 1);
-$containerBackground: linear-gradient(to bottom, #5F4B3800 0%, $dark 40%, $dark 100%);
+$dark_: rgb(12, 11, 8);
+$containerBackground: linear-gradient(to bottom, #5F4B3800 0%, $dark 60%, $dark 100%);
 $screen1: linear-gradient(to bottom, #F4B44600 0%, #F4B446 100%);
+$videoOverlay: linear-gradient(to top, $dark_ 0%, rgba(12, 11, 8, 0) 85%, rgba(12, 11, 8, 0) 100%);
 
 
 html, body {
@@ -10,6 +12,7 @@ html, body {
   margin: 0;
   overflow-x: hidden;
   font-family: "ltc-kennerley";
+  font-family: "garamond-premier-pro";
 }
 
 p {
@@ -24,6 +27,31 @@ p {
   video {
     height: 110vh;
     margin-top: -40px;
+  }
+}
+
+#downArrow {
+  z-index: 100;
+  position: fixed;
+  bottom: 2%;
+  height: 30px;
+  width: 30px;
+  background: url("../assets/downArrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 50%;
+  margin-left: -19px;
+  padding: 4px;
+  opacity: .5;
+  cursor: pointer;
+  &:hover {
+    transition-duration: 300ms;
+    opacity: .8;
+  }
+  &.hide {
+    transition-duration: 600ms;
+    opacity: 0;
+    pointer-events: none;
   }
 }
 
@@ -126,25 +154,34 @@ p {
   }
   #colorChange2 {
     opacity: 0;
-    background: rgb(12, 11, 8);
+    background: $dark_;
   }
   .container {
     z-index: 9;
     color: $light;
     font-size: 21px;
     position: relative;
-    margin-top: 60vh;
-    .text {
+    margin-top: 110vh;
+    #text {
+      opacity: 0;
+      border-left: 1px solid $light_;
+      position: relative;
+      pointer-events: none;
       margin: 0 auto;
-      padding: 400px 0 100px;
+      padding: 0 150px;
       width: 600px;
+      margin-bottom: 100px;
       p {
-        margin-bottom: 160px;
+        margin-bottom: 200px;
         opacity: 0;
         &.show {
           transition-duration: 1500ms;
           opacity: 1;
         }
+      }
+      &.show {
+        animation-duration: 1500ms;
+        opacity: 1;
       }
     }
   }
@@ -154,14 +191,17 @@ p {
     width: 900px;
     margin: 40px auto;
     color: $light;
+    h1, p {
+      position: relative;
+      z-index: 10;
+      padding: 0 150px;
+    }
     h1 {
       font-size: 72px;
-      font-weight: 800;
+      font-weight: 500;
       margin: 0;
-      padding-right: 200px;
     }
     p {
-      padding-right: 200px;
       font-size: 18px; 
       max-width: 600px;
     }
@@ -169,21 +209,40 @@ p {
       margin-bottom: 200px;
       overflow-y: scroll;
       .subtle {
-        opacity: .6;
+        color: $light_;
+        font-size: 16px;
       }
       .image {
-        opacity: 0;
+        opacity: .1;
+        margin-bottom: -60px;
+      }
+      .videoOverlay {
+        position: absolute;
+        width: 100%;
+        height: 400px;
+        background: $videoOverlay;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .image {
         background-position: center;
         background-size: cover;
         display: block;
         width: 100%;
-        height: 505px;
+        height: 400px;
+        z-index: 0;
       }
       &.show {
         .image {
-          transition-duration: 600ms;
-          transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
-          opacity: 1;
+          transition-duration: 1000ms;
+          transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+          margin-top: 0px;
+          opacity: .9;
+          &:hover {
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+            transition-duration: 200ms;
+            // opacity: 1;
+          }
         }
       }
     }
