@@ -24,9 +24,12 @@ p {
 .background {
   position: fixed;
   height: 100%;
+  width: 100%;
   video {
-    height: 110vh;
-    margin-top: -40px;
+    overflow: hidden;
+    min-height: 112%;
+    max-width: 120%;
+    margin-top: -4%;
   }
 }
 
