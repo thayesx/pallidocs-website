@@ -1,0 +1,252 @@
+---
+---
+
+$light: rgb(235, 222, 201);
+$light_: rgba(235, 222, 201, .4);
+$dark: rgba(95,75,56,1);
+$dark_: rgb(14, 12, 8);
+$containerBackground: linear-gradient(to bottom, rgba(95,75,56,0) 0%, $dark 60%, $dark 100%);
+$screen1: linear-gradient(to bottom, rgba(244,180,70,0) 0%, #F4B446 100%);
+$videoOverlay: linear-gradient(to top, $dark_ 0%, rgba(12, 11, 8, 0) 85%, rgba(12, 11, 8, 0) 100%);
+
+
+html, body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: "ltc-kennerley";
+  font-family: "garamond-premier-pro";
+}
+
+p {
+  line-height: 1.6;
+  // font-weight: 100;
+  font-size: 24px;
+}
+
+.background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  video {
+    overflow: hidden;
+    min-height: 112%;
+    max-width: 120%;
+    margin-top: -4%;
+  }
+}
+
+#downArrow {
+  z-index: 100;
+  position: fixed;
+  bottom: 2%;
+  height: 30px;
+  width: 30px;
+  background: url("../assets/downArrow.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 50%;
+  margin-left: -19px;
+  padding: 4px;
+  opacity: .5;
+  cursor: pointer;
+  &:hover {
+    transition-duration: 300ms;
+    opacity: .8;
+  }
+  &.hide {
+    transition-duration: 600ms;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+#sidebar {
+  z-index: 10;
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  top: 5vh;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-duration: 400ms;
+  &:hover {
+    .item>span {
+      opacity: .75;
+    }
+  }
+  .logo {
+    // border-bottom: 2px solid $light;
+    span {
+      display: block;
+      width: 180px;
+      height: 60px;
+      margin-left: 40px;
+      margin-bottom: 25px;
+      background-image: url("../assets/logo1.svg");
+      background-size: contain;
+      background-position: bottom;
+      background-repeat: no-repeat;
+    }
+  }
+  .item {
+    padding: 15px 0 5px;
+    margin-top: 10px;
+    &:hover {
+      span {
+        cursor: pointer;
+        transition-duration: 0ms;
+        transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+        opacity: 1;
+      }
+    }
+    span {
+      padding-left: 40px;
+      display: inline-block;
+      width: 80px;
+      letter-spacing: 1px;
+      font-size: 18px;
+      color: $light;
+      opacity: 0.35;
+      transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition-duration: 400ms;
+    }
+  }
+  &.shrink {
+    top: 2vh;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    .logo > span {
+      width: 120px;
+      opacity: .5;
+      transition-duration: 400ms;
+      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    &:hover {
+      .item>span {
+        opacity: .5;
+      }
+    }
+    .item > span {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.overlay {
+  overflow-y: hidden;
+  height: auto;
+  width: 100%;
+  z-index: 1;
+  .colorScreen1,.colorScreen2, #colorChange, #colorChange2 {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  .colorScreen1 {
+    background-color: $dark;
+    // mix-blend-mode: multiply;
+    opacity: .35;
+  }
+  #colorChange {
+    opacity: 0;
+    background: rgba(19, 16, 12, 0.8);
+  }
+  #colorChange2 {
+    opacity: 0;
+    background: $dark_;
+  }
+  .container {
+    z-index: 9;
+    color: $light;
+    font-size: 21px;
+    position: relative;
+    margin-top: 110vh;
+    #text {
+      opacity: 0;
+      border-left: 1px solid $light_;
+      position: relative;
+      pointer-events: none;
+      margin: 0 auto;
+      padding: 0 50px;
+      width: 600px;
+      margin-bottom: 100px;
+      p {
+        margin-bottom: 200px;
+        opacity: 0;
+        &.show {
+          transition-duration: 1500ms;
+          opacity: 1;
+        }
+      }
+      &.show {
+        animation-duration: 1500ms;
+        opacity: 1;
+      }
+    }
+  }
+  div#videos {
+    position: relative;
+    z-index: 20;
+    width: 900px;
+    margin: 40px auto;
+    color: $light;
+    h1, p {
+      position: relative;
+      z-index: 10;
+      padding: 0 150px;
+    }
+    h1 {
+      font-size: 72px;
+      font-weight: 500;
+      margin: 0;
+    }
+    p {
+      font-size: 18px; 
+      max-width: 600px;
+    }
+   .video {
+      margin-bottom: 200px;
+      overflow-y: scroll;
+      .subtle {
+        color: $light_;
+        font-size: 16px;
+      }
+      .image {
+        opacity: .1;
+        margin-bottom: -60px;
+      }
+      .videoOverlay {
+        position: absolute;
+        width: 100%;
+        height: 400px;
+        background: $videoOverlay;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .image {
+        background-position: center;
+        background-size: cover;
+        display: block;
+        width: 100%;
+        height: 400px;
+        z-index: 0;
+      }
+      &.show {
+        .image {
+          transition-duration: 1000ms;
+          transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+          margin-top: 0px;
+          opacity: .9;
+          &:hover {
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+            transition-duration: 200ms;
+            // opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
