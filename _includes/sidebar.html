@@ -1,0 +1,10 @@
+<div id="sidebar">
+  <div class="logo"><span></span></div>
+  {% for item in site.navigation %}
+    <div class="item {{ item.css }}" 
+      {% if item.onClick %} onClick="{{ item.onClick }}" {% endif %}
+      {% if item.href %} onClick="window.location.href = '{{site.url}}/{{item.href}}'" {% endif %}>
+      <span>{{ item.name }}</span>
+    </div>
+  {% endfor %}
+</div>

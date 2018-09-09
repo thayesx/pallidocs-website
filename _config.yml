@@ -3,14 +3,14 @@ title: Pallidocs
 description: >-
   Pallidocs website.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://127.0.0.1:4000/" # the base hostname & protocol for your site, e.g. http://example.com
 navigation:
-- label: Films
-  link: "/roommates/"
-- label: Forms
-  link: "/forms/"
-- label: Contact
-  link: "/contact/"
+- name: Films
+  onClick: moveTo('videos', 20)
+- name: Forms
+  href: forms
+- name: Contact
+  href: contact
 collections:
   assets:
     title: Assets

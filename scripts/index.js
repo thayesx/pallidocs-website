@@ -22,7 +22,6 @@ let transitionOpacityOnScroll = function(target, startFromTop, slowness, referen
   // Prevent function from running when opacity is being overadjusted 
   // .2 buffer to avoid accidental cutoff before value is 1
   if (parseFloat(target.css("opacity")) >= 1 && value >= 1 || value < 0) return;
-  console.log("yo", value);
   // Begin transition at startFromTop
   if (distanceFromTop <= startFromTop)
     // Set cssProperty as function of distance from top of screen
