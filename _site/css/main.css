@@ -155,27 +155,38 @@ p {
       max-width: 600px; }
     .overlay div#videos .film {
       margin-bottom: 200px;
-      overflow-y: scroll; }
+      overflow: hidden; }
+      .overlay div#videos .film .filmHeader {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        margin-bottom: -60px;
+        overflow: hidden; }
       .overlay div#videos .film .subtle {
         color: rgba(235, 222, 201, 0.4);
         font-size: 16px; }
-      .overlay div#videos .film .image {
-        opacity: .1;
-        margin-bottom: -60px; }
-      .overlay div#videos .film .filmOverlay {
+      .overlay div#videos .film .preview, .overlay div#videos .film .filmOverlay {
         position: absolute;
         width: 100%;
-        height: 400px;
-        background: linear-gradient(to top, #0c0b08 0%, rgba(12, 11, 8, 0) 85%, rgba(12, 11, 8, 0) 100%);
+        height: 100%; }
+      .overlay div#videos .film .preview {
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition-duration: 500ms;
+        object-fit: cover;
         z-index: 1;
-        pointer-events: none; }
+        opacity: 0; }
+      .overlay div#videos .film .filmOverlay {
+        pointer-events: none;
+        background: linear-gradient(to top, #0c0b08 0%, rgba(12, 11, 8, 0) 85%, rgba(12, 11, 8, 0) 100%);
+        z-index: 2; }
       .overlay div#videos .film .image {
         background-position: center;
         background-size: cover;
         display: block;
+        height: 100%;
         width: 100%;
-        height: 400px;
-        z-index: 0; }
+        z-index: 0;
+        opacity: .1; }
       .overlay div#videos .film.show .image {
         transition-duration: 1000ms;
         transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
@@ -184,3 +195,7 @@ p {
         .overlay div#videos .film.show .image:hover {
           transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
           transition-duration: 200ms; }
+      .overlay div#videos .film.show .preview:hover {
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transition-duration: 1000ms;
+        opacity: 1; }
