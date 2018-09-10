@@ -1,5 +1,6 @@
 // Declare variables
-let colorChange;
+let colorChange1;
+let colorChange2;
 let p1;
 let p2;
 let p3;
@@ -61,7 +62,7 @@ let fadeInParagraphs = function() {
 let fadeInOverlay1 = function() {
   let startFromTop = window.innerHeight;
   let slowness = 400;
-  transitionOpacityOnScroll(colorChange, startFromTop, slowness, p1);
+  transitionOpacityOnScroll(colorChange1, startFromTop, slowness, p1);
 }
 
 // Fade in color overlay over background video
@@ -117,7 +118,7 @@ $( window ).scroll(function() {
 });
 
 $( document ).ready(function() {
-  colorChange = $("#colorChange");
+  colorChange1 = $("#colorChange1");
   colorChange2 = $("#colorChange2");
   p1 = $("#p1");
   p2 = $("#p2");

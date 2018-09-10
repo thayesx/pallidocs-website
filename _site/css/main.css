@@ -98,20 +98,20 @@ p {
   height: auto;
   width: 100%;
   z-index: 1; }
-  .overlay .colorScreen1, .overlay .colorScreen2, .overlay #colorChange, .overlay #colorChange2 {
+  .overlay .videoGrade, .overlay #colorChange1, .overlay #colorChange2 {
     position: fixed;
     top: 0;
     width: 100%;
     height: 100vh; }
-  .overlay .colorScreen1 {
+  .overlay .videoGrade {
     background-color: #5f4b38;
     opacity: .35; }
-  .overlay #colorChange {
+  .overlay #colorChange1 {
     opacity: 0;
-    background: rgba(19, 16, 12, 0.8); }
+    background: rgba(12, 11, 8, 0.7); }
   .overlay #colorChange2 {
     opacity: 0;
-    background: #0e0c08; }
+    background: #0c0b08; }
   .overlay .container {
     z-index: 9;
     color: #ebdec9;
@@ -153,34 +153,34 @@ p {
     .overlay div#videos p {
       font-size: 18px;
       max-width: 600px; }
-    .overlay div#videos .video {
+    .overlay div#videos .film {
       margin-bottom: 200px;
       overflow-y: scroll; }
-      .overlay div#videos .video .subtle {
+      .overlay div#videos .film .subtle {
         color: rgba(235, 222, 201, 0.4);
         font-size: 16px; }
-      .overlay div#videos .video .image {
+      .overlay div#videos .film .image {
         opacity: .1;
         margin-bottom: -60px; }
-      .overlay div#videos .video .videoOverlay {
+      .overlay div#videos .film .filmOverlay {
         position: absolute;
         width: 100%;
         height: 400px;
-        background: linear-gradient(to top, #0e0c08 0%, rgba(12, 11, 8, 0) 85%, rgba(12, 11, 8, 0) 100%);
+        background: linear-gradient(to top, #0c0b08 0%, rgba(12, 11, 8, 0) 85%, rgba(12, 11, 8, 0) 100%);
         z-index: 1;
         pointer-events: none; }
-      .overlay div#videos .video .image {
+      .overlay div#videos .film .image {
         background-position: center;
         background-size: cover;
         display: block;
         width: 100%;
         height: 400px;
         z-index: 0; }
-      .overlay div#videos .video.show .image {
+      .overlay div#videos .film.show .image {
         transition-duration: 1000ms;
         transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
         margin-top: 0px;
         opacity: .9; }
-        .overlay div#videos .video.show .image:hover {
+        .overlay div#videos .film.show .image:hover {
           transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
           transition-duration: 200ms; }
