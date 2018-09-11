@@ -11,6 +11,7 @@ sections:
   path: assets
   label: Assets
   create: all
+  match: "**/*"
 upload_dir: assets
 public_path: "/assets"
 front_matter_path: ''
