@@ -7,7 +7,7 @@ sections:
 - type: jekyll-pages
   label: Pages
   create: none
-upload_dir: _assets
+upload_dir: assets
 public_path: "/assets"
 front_matter_path: ''
 use_front_matter_path: false
