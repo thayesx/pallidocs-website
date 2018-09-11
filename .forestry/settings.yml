@@ -6,12 +6,7 @@ webhook_url:
 sections:
 - type: jekyll-pages
   label: Pages
-  create: all
-- type: directory
-  path: _assets
-  label: Assets
-  create: all
-  match: "**/*"
+  create: none
 upload_dir: _assets
 public_path: "/assets"
 front_matter_path: ''
