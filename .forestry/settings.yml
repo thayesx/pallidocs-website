@@ -8,11 +8,10 @@ sections:
   label: Pages
   create: all
 - type: directory
-  path: assets
+  path: "/_assets"
   label: Assets
   create: all
-upload_dir: assets
-public_path: "/assets"
+public_path: "/_assets"
 front_matter_path: ''
 use_front_matter_path: false
 file_template: ":filename:"
