@@ -1,0 +1,14 @@
+---
+new_page_extension: md
+auto_deploy: true
+admin_path: ''
+webhook_url: 
+sections:
+- type: jekyll-pages
+  label: Pages
+  create: none
+upload_dir: _assets
+public_path: "/assets"
+front_matter_path: ''
+use_front_matter_path: false
+file_template: ":filename:"
