@@ -4,11 +4,25 @@ auto_deploy: true
 admin_path: ''
 webhook_url: 
 sections:
-- type: jekyll-pages
-  label: Pages
+- label: Home page
+  type: document
   create: none
-upload_dir: _assets
-public_path: "/assets"
+  path: /index.md
+- label: Forms page
+  type: document
+  create: none
+  path: /forms.md
+- label: Contact page
+  type: document
+  create: none
+  path: /contact.md
+- label: Info (private)
+  type: document
+  create: none
+  path: /readme.md
+  read_only: true
+upload_dir: /_assets
+public_path: /assets
 front_matter_path: ''
 use_front_matter_path: false
 file_template: ":filename:"
