@@ -4,9 +4,9 @@ backgroundVideo: bgVideo1440-trimmed-sm.mp4
 backgroundImage: 
 paragraphs:
 - id: p1
-  content: Test content! The emotions that come with a serious diagnosis can be hard
-    to manage. It's an experience that will force anyone to reckon with their goals
-    in life—while each moment can shift the balance between uncertainty and grace.
+  content: The emotions that come with a serious diagnosis can be hard to manage.
+    It's an experience that will force anyone to reckon with their goals in life—while
+    each moment can shift the balance between uncertainty and grace.
 - id: p2
   content: But with crisis comes an opportunity to find new meaning. Old wounds may
     become new openings. One can see the world through the eyes of the heart.
