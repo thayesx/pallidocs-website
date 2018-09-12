@@ -17,3 +17,4 @@ collections:
     output: true
 # Build settings
 markdown: kramdown
+exclude: ["package.json", "package-lock.json", "node_modules", ".sass-cache"]

@@ -12,7 +12,16 @@ let text;
 let videos;
 let video1;
 let video2;
+let videoPreview;
 let didScroll = false;
+
+// Manage pausing and playing film previews
+let playPreview = function() {
+  $(this).get(0).play();
+}
+let pausePreview = function() {
+  $(this).get(0).pause();
+}
 
 // Transition css property on scroll
 let transitionOpacityOnScroll = function(target, startFromTop, slowness, reference) {
@@ -131,6 +140,9 @@ $( document ).ready(function() {
   videos = $("#videos");
   video1 = $("#video1");
   video2 = $("#video2");
+
+  // Assign play and pause behavior to film previews
+  videoPreview = $(".preview").hover(playPreview, pausePreview);
 
   window.scroll(0, 0);
 });
