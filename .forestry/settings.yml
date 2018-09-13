@@ -4,25 +4,21 @@ auto_deploy: true
 admin_path: ''
 webhook_url: 
 sections:
-- label: Home page
-  type: document
-  create: none
-  path: /index.md
-- label: Forms page
-  type: document
-  create: none
-  path: /forms.md
-- label: Contact page
-  type: document
-  create: none
-  path: /contact.md
-- label: Info (private)
-  type: document
-  create: none
-  path: /readme.md
+- type: document
+  path: index.md
+  label: Home page
+- type: document
+  path: forms.md
+  label: Forms page
+- type: document
+  path: contact.md
+  label: Contact page
+- type: document
+  path: readme.md
+  label: Info (private)
   read_only: true
-upload_dir: /_assets
-public_path: /assets
+upload_dir: _assets
+public_path: "/assets"
 front_matter_path: ''
 use_front_matter_path: false
 file_template: ":filename:"
