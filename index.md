@@ -3,8 +3,10 @@
 # Edit theme's home layout instead if you wanna make some changes
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: main
+backgroundVideoLrg:
 backgroundVideo: bgVideo1440-trimmed-sm.mp4
-backgroundImage:
+backgroundImageLrg:
+backgroundImage: backgroundImage1.png
 paragraphs:
 - id: p1
   content: "The emotions that come with a serious diagnosis can be hard to manage. It's an experience that will force anyone to reckon with their goals in life—while each moment can shift the balance between uncertainty and grace."

@@ -7,8 +7,11 @@
     </video>
     <!-- <div class="image" style="background-image: url('assets/{{ film.image }}')"></div> -->
   </div>
-  <h1>{{ film.title }}</h1>
-  <p>{{ film.description }}</p>
-  <p class="subtle">{{ film.extra }}</p>
+  <div class="text">
+    <h1>{{ film.title }}</h1>
+    <p>{{ film.description }}</p>
+    <div class="button" onClick="{{ film.link }}" >Play Film</div>
+    <p class="subtle">{{ film.extra }}</p>
+  </div>
 </div>
 
