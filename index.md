@@ -1,7 +1,9 @@
 ---
 layout: main
+backgroundVideoLrg:
 backgroundVideo: bgVideo1440-trimmed-sm.mp4
-backgroundImage: 
+backgroundImageLrg:
+backgroundImage: backgroundImage1.png
 paragraphs:
 - id: p1
   content: The emotions that come with a serious diagnosis can be hard to manage.

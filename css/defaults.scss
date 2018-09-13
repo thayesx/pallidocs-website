@@ -1,0 +1,193 @@
+// MIXINS
+@mixin box-shadow($shadow) {
+  -moz-box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;
+}
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+@mixin duration($duration) {
+  transition-duration: $duration;
+  -moz-transition-duration: $duration;
+  -o-transition-duration: $duration;
+  -webkit-transition-duration: $duration;
+}
+@mixin transitionTiming($function) {
+  transition-timing-function: $function;
+  -moz-transition-timing-function: $function;
+  -o-transition-timing-function: $function;
+  -webkit-transition-timing-function: $function;
+}
+@mixin box-sizing($type) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  box-sizing: $type;
+}
+@mixin animate($animation, $speed) {
+  -webkit-animation-duration: $speed;
+  animation-duration: $speed;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: $animation;
+  animation-name: $animation;
+}
+@mixin noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+// RESPONSIVE BREAKPOINTS
+@mixin breakpoint($point) {
+  // Large monitor
+  @if $point == l {
+    @media screen and (min-width: 2400px) {@content;}
+  } 
+  // Tablet
+  @else if $point == m {
+    @media screen and (max-width: 1000px) {@content;}
+  } 
+  // Small tablet / phone
+  @else if $point == s {
+    @media screen and (max-width: 700px) {@content;}
+  } 
+  // Tiny phone
+  @else if $point == xs {
+    @media screen and (max-width: 340px) {@content;}
+  }
+}
+
+// Text sizes
+// Sets 1rem = 10px if browser font-size is 16px (standard)
+:root {font-size: 62.5%; }
+@mixin fontSize5 {font-size: 7.0rem;
+  @include breakpoint(s) {
+    font-size: 5.4rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+}
+@mixin fontSize4 {font-size: 3.2rem;}
+@mixin fontSize3 {font-size: 2.4rem;}
+@mixin fontSize2 {font-size: 2.1rem;}
+@mixin fontSize1 {font-size: 1.7rem;}
+
+// RESETS
+html, body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  overflow-x: hidden;
+  background: white;
+}
+img {
+  max-width: 100%;
+  border: 0px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.preload {
+  display: none;
+}
+div {
+  box-sizing: border-box;
+}
+li {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+p {
+  margin: 0;
+}
+input, textarea {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+}
+input:focus, textarea:focus {
+  outline: none;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+// REUSABLE STYLES =============================================================
+
+// Mobile Only
+@mixin mobileOnly {
+display: none !important;
+  @include breakpoint(s) {display: block !important;}
+}
+.mobileOnly {
+  @include mobileOnly();
+}
+
+// Desktop Only
+@mixin desktopOnly {
+  display: block !important;
+  @include breakpoint(s) {display: none !important;}
+}
+.desktopOnly {
+  @include desktopOnly();
+}
+
+// Mobile Only (Inline-Block)
+@mixin mobileOnlyInline {
+  display: none !important;
+  @include breakpoint(s) {display: inline-block !important;}
+}
+.mobileOnlyInline {
+  @include mobileOnlyInline();
+}
+
+// Desktop Only (Inline-Block)
+@mixin desktopOnlyInline {
+  display: inline-block !important;
+  @include breakpoint(s) {display: none !important;}
+}
+.desktopOnlyInline {
+  @include desktopOnlyInline();
+}
+
+// Fonts
+body {
+  @include fontSize2();
+  font-weight: 300;
+}
+h1 {
+  @include fontSize5();
+  font-weight: 700;
+  margin: 0px;
+}
+h2 {
+  @include fontSize4();
+  font-weight: 600;
+  color: inherit;
+  margin: 0px;
+}
+h3 {
+  @include fontSize3();
+  font-weight: 600;
+  color: inherit;
+  margin: 0px;
+}
