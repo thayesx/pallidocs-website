@@ -1,8 +1,18 @@
-var doc = new jsPDF();
+$( document ).ready(function() {
+  let button = document.getElementById("dwn-btn");
 
-doc.text(20, 20, 'Hello world!');
-doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-doc.addPage();
-doc.text(20, 20, 'Do you like that?');
+  let answer1 = document.getElementById("text-val");
 
-doc.save('Test.pdf');
+  button.addEventListener("click", function(){
+
+    let doc = new jsPDF();
+
+    doc.text(20, 20, 'Hello world!');
+    doc.text(20, 30, answer1.value);
+    // doc.addPage();
+    // doc.text(20, 20, 'Do you like that?');
+
+    doc.save('Test.pdf');
+    
+  }, false);
+});

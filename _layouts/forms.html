@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   {% include head.html %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+  <script src="scripts/makePDF.js"></script>
 </head>
 <body>
-  
+  <textarea id="text-val" rows="4">This is the content of my file</textarea><br/>
+  <input type="button" id="dwn-btn" value="Download dinamically generated text file"/>
 </body>
 </html>
