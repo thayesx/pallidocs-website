@@ -13,12 +13,9 @@ $dark0Trans: rgba(12, 11, 8, 0);
 
 $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 100%);
 
-html, body {
-  font-family: "garamond-premier-pro", Georgia, Times, serif;
-}
-
 .background {
   position: fixed;
+  pointer-events: none;
   height: 100%;
   width: 100%;
   video {
@@ -190,6 +187,18 @@ html, body {
   }
 }
 
+.button {
+  display: block;
+  @include fontSize1;
+  width: 160px;
+  background: $light;
+  color: $dark0;
+  text-align: center;
+  padding: 8px;
+  border-radius: 2px;
+  letter-spacing: 2px;
+}
+
 // Main page content scrolling section
 .overlay {
   overflow-y: hidden;
@@ -313,18 +322,10 @@ html, body {
         }
       }
       .button {
-        vertical-align: top;
         display: inline-block;
+        vertical-align: top;
         margin-top: 40px;
         margin-right: 40px;
-        @include fontSize1;
-        width: 160px;
-        background: $light;
-        color: $dark0;
-        text-align: center;
-        padding: 8px;
-        border-radius: 2px;
-        letter-spacing: 2px;
         @include desktopOnlyInline;
       }
       .subtle {
@@ -355,6 +356,68 @@ html, body {
         margin-bottom: -100px;
       }
       .text {padding: 0 15px;}
+    }
+  }
+}
+
+// Forms experience
+.questionsPage {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background: whitesmoke;
+}
+.questionsArea {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  margin: 0 auto;
+  .question {
+    text-align: center;
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+    &.visible {
+      pointer-events: all;
+      opacity: 1;
+      height: auto;
+    }
+    textarea {
+      border-radius: 10px;
+      background: none;
+      color: $dark0;
+      margin: 15px auto;
+      width: 100%;
+      padding: 15px;
+    }
+  }
+  .bottom {
+    padding: 20px 0;
+    display: block;
+    position: relative;
+    width: 100%;
+    .finishText {
+      display: none;
+    }
+    .button {
+      display: block;
+      position: absolute;
+      &.next {
+        right: 0;
+      }
+      &.disabled {
+        pointer-events: none;
+        opacity: .6;
+      }
+    }
+    .finish {
+      margin: 0 auto;
+      position: initial;
+      float: none;
+      display: none;
+      &.visible {
+        display: block;
+      }
     }
   }
 }
