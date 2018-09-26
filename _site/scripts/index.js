@@ -41,13 +41,17 @@ let transitionOpacityOnScroll = function(target, startFromTop, slowness, referen
 // Add class to element based on scroll position
 let addClassOnScroll = function(target, startFromTop, className, config) {
 
+  // Define object used for definition: distance from object to top
+  // If no reference defined, target is used
   let scrollReference = target;
   if (config && config.reference) scrollReference = config.reference;
   let distanceFromTop = scrollReference.offset().top - window.scrollY;
+
+  // Determine if class should be removed on reverse scroll
   let remove = false;
   if (config && config.remove) remove = true;
   
-  // Add class at startFromTop if target doesn't already have class
+  // At distanceFromTop, add class to target if target doesn't already have class
   if (distanceFromTop <= startFromTop && !target[0].className.includes(className))
     target.addClass(className);
   else if (distanceFromTop > startFromTop && target[0].className.includes(className) && remove)
@@ -103,6 +107,12 @@ let moveTo = function(target, offset) {
 let scrollArrow = function() {
   moveTo("p1", -500);
   downArrow.addClass("hide");
+}
+
+// Toggle class for expanded sidebar (for mobile)
+let mobileMenu = function() {
+  if (!sidebar[0].className.includes("expanded")) sidebar.addClass("expanded");
+  else sidebar.removeClass("expanded");
 }
 
 // Stagger updates made on scroll to conserve computing

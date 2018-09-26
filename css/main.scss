@@ -2,25 +2,20 @@
 ---
 @import "defaults";
 
-$light: rgb(235, 222, 201);
+$light: #ebdec9;
 $lightTrans: rgba(235, 222, 201, .4);
 
 $dark1: rgba(95, 75, 56, 1);
-$dark1Trans: rgba(95, 75, 56, 1);
 
 $dark0: rgba(12, 11, 8, 1);
 $dark0_70: rgba(12, 11, 8, .7);
 $dark0Trans: rgba(12, 11, 8, 0);
 
-$containerBackground: linear-gradient(to bottom, $dark1Trans 0%, $dark1 60%, $dark1 100%);
 $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 100%);
-
-html, body {
-  font-family: "garamond-premier-pro", Georgia, Times, serif;
-}
 
 .background {
   position: fixed;
+  pointer-events: none;
   height: 100%;
   width: 100%;
   video {
@@ -96,8 +91,24 @@ html, body {
     margin-bottom: 20px;
     background-image: url("../assets/logo1.svg");
     background-size: contain;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+  }
+  .mobileMenu {
+    display: none;
+    opacity: 0;
+    background-image: url("../assets/hamburger.svg");
+    background-size: contain;
     background-position: bottom;
     background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+    left: 15px;
+    top: 10px;
+    position: absolute;
+    @include breakpoint(s) {
+      display: block;
+    }
   }
   .item {
     cursor: pointer;
@@ -107,7 +118,7 @@ html, body {
     @include transitionTiming(cubic-bezier(0.075, 0.82, 0.165, 1));
     @include duration(400ms);
     span {
-      @include fontSize2;
+      @include fontSize3;
       width: 100%;
       letter-spacing: 2px;
       color: $light;
@@ -135,9 +146,57 @@ html, body {
     }
   }
   @include breakpoint(s) {
-    width: 240px;
+    width: 100%;
     padding-left: 24px;
+    padding-top: 110px;
+    .logo {
+      margin: 0;
+      left: 24px;
+      top: 5vh;
+      position: absolute;
+      width: 70%;
+    }
+    &.shrink {
+      padding-top: 48px;
+      width: 100%;
+      background-color: $dark0_70;
+      @include animate(background-color, 4000ms);
+      height: 48px;
+      overflow: hidden;
+      .logo {
+        left: 60px;
+        top: 10px;
+        opacity: 1;
+        height: 28px;
+      }
+      .item {
+        opacity: 0;
+      }
+      .mobileMenu {
+        opacity: 1;
+        @include duration(800ms);
+      }
+      &.expanded {
+        height: 280px;
+        background-color: $dark0;
+        .item {
+          opacity: 1;
+        }
+      }
+    }
   }
+}
+
+.button {
+  display: block;
+  @include fontSize1;
+  width: 160px;
+  background: $light;
+  color: $dark0;
+  text-align: center;
+  padding: 8px;
+  border-radius: 2px;
+  letter-spacing: 2px;
 }
 
 // Main page content scrolling section
@@ -263,18 +322,10 @@ html, body {
         }
       }
       .button {
-        vertical-align: top;
         display: inline-block;
+        vertical-align: top;
         margin-top: 40px;
         margin-right: 40px;
-        @include fontSize1;
-        width: 160px;
-        background: $light;
-        color: $dark0;
-        text-align: center;
-        padding: 8px;
-        border-radius: 2px;
-        letter-spacing: 2px;
         @include desktopOnlyInline;
       }
       .subtle {
@@ -305,6 +356,68 @@ html, body {
         margin-bottom: -100px;
       }
       .text {padding: 0 15px;}
+    }
+  }
+}
+
+// Forms experience
+.questionsPage {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background: whitesmoke;
+}
+.questionsArea {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  margin: 0 auto;
+  .question {
+    text-align: center;
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+    &.visible {
+      pointer-events: all;
+      opacity: 1;
+      height: auto;
+    }
+    textarea {
+      border-radius: 10px;
+      background: none;
+      color: $dark0;
+      margin: 15px auto;
+      width: 100%;
+      padding: 15px;
+    }
+  }
+  .bottom {
+    padding: 20px 0;
+    display: block;
+    position: relative;
+    width: 100%;
+    .finishText {
+      display: none;
+    }
+    .button {
+      display: block;
+      position: absolute;
+      &.next {
+        right: 0;
+      }
+      &.disabled {
+        pointer-events: none;
+        opacity: .6;
+      }
+    }
+    .finish {
+      margin: 0 auto;
+      position: initial;
+      float: none;
+      display: none;
+      &.visible {
+        display: block;
+      }
     }
   }
 }
