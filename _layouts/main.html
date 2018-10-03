@@ -5,12 +5,7 @@
 </head>
 <body>
   {% include sidebar.html %}
-  <div class="background">
-    <video autoplay muted loop class="smallScreen">
-      <source src="assets/{{ page.backgroundVideo }}" type="video/mp4">
-    </video>
-    <img src="assets/{{ page.backgroundImage }}">
-  </div>
+  {% include videoBackground.html %}
   <div id="downArrow" onclick="scrollArrow()"></div>
   <div class="overlay">
     <div class="videoGrade"></div>
