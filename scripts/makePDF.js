@@ -1,15 +1,18 @@
 let questionsLength;
+let page;
 
 $( document ).ready(function() {
+
   // Initiate form
   initiateQuestions();
+  // Get total number of questions
   questionsLength = $(".question").length;
 
   let button = $("#download");
 
   button[0].addEventListener("click", function(){
 
-    let questions = $(".qname");
+    let questions = $(".question");
     let answers = $(".answer");
 
     let doc = new jsPDF();
@@ -27,35 +30,84 @@ $( document ).ready(function() {
 });
 
 let initiateQuestions = function() {
-  $("#q1").addClass("visible");
+  $("#step1").addClass("show");
 }
 
-// Get number of all questions
-let qid = "q1";
+// Define qid for first question
+let qid = "1";
+let thisQ;
+
+// Update question visibility each time question is changed
 let updateQuestionView = function(a) {
-  // Make current question invisible
-  $("#" + qid).removeClass("visible");
+  // Define current question and make invisible
+  thisQ = $("#step" + qid);
+  thisQ.removeClass("show");
 
+  // If Next is pressed and thisQ isn't last question
+  if (a == "next") {
+    let nextButton = $("#nextButton")[0];
 
-  // Increment or decrement id substring
-  let id = parseInt(qid.substring(1));
-  if (a == "next" && id < questionsLength) id++;
-  else if (a == "prev" && id > 1) id --;
+    // If last question, go to review and return
+    if (qid == questionsLength) {
+      prepareReview();
+      return;
+    }
+    // If not last question, increment qid and update nextButton text as necessary
+    else if (qid < questionsLength) {
+      // If second to last question, update nextButton text, else use default text
+      if (qid == questionsLength - 1) nextButton.innerHTML = "Review";
+      else nextButton.innerHTML = "Next";
 
-  // Make new question visible
-  qid = "q" + id;
-  $("#" + qid).addClass("visible");
+      // Increment qid
+      qid++;
+    }
+  }
+  // If Prev is pressed and thisQ isn't first question, decrement qid
+  else if (a == "prev" && qid > 1) qid --;
 
-  // Show download button if all questions have content
-  // let allAnswered = true;
-  // allAnswered = $(".answer").map(answer => {
-  //   if (!answer.value) return false;
-  // })
-  // if (allAnswered) {
-  //   $("#download").addClass("visible");
-  // }
+  // Make next question visible
+  let nextQ = $("#step" + qid);
+  setTimeout( function() {
+    nextQ.addClass("show");
+  }, 600);
+}
 
-  if (id == questionsLength) {
-    $("#download").addClass("visible");
+// Update question visibility after answering askFirst
+let updateAskFirst = function(a) {
+  thisQ = $("#step" + qid);
+
+  // If yes, reveal question
+  if (a == "yes") thisQ.removeClass("askFirst");
+
+  // If no, show ifNo text and go to next question;
+  if (a == "no") {
+    thisQ.addClass("no");
+    setTimeout( function() {
+      thisQ.removeClass("no");
+      updateQuestionView("next");
+    }, 3000);
+  }
+}
+
+// Go to review page
+let prepareReview = function() {
+  page = $(".questionsPage");
+  page.addClass("finalReview");
+  
+  let answers = $(".answer");
+  let reviewAnswers = $(".reviewA");
+  let reviewQuestions = $(".reviewQ");
+  let reviewSteps = $(".reviewStep");
+  console.log("answers", answers);
+  console.log("reviewAnswers", reviewAnswers);
+
+  // Populate user answers, hide questions that are unanswered
+  for (let i = 0; i < reviewAnswers.length; i++) {
+    // Populate answer, or treat as skipped if unanswered
+    if (answers[i].value && answers[i].value.length) reviewAnswers[i].innerHTML = answers[i].value;
+    else {
+      reviewQuestions[i].innerHTML = "Skipped";
+      $(reviewSteps[i]).addClass("skipped");
+    }
   }
 }

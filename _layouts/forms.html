@@ -16,21 +16,40 @@
   </div>
   <div class="questionsArea">
     {% for question in page.questions %}
-      <div class="question" id="q{{ forloop.index }}">
+      <div class="step {% if question.askFirst %}askFirst{% endif %}" id="step{{ forloop.index }}">
+        {% if question.askFirst %}
+          <div class="yesOrNo">
+            <h3 class="ask">{{ question.askFirst }}</h3>
+            <div class="yes" onclick="updateAskFirst('yes')" >Yes</div>
+            <div class="no" onclick="updateAskFirst('no')" >Not right now</div>
+            <div class="ifNo">That's fine.<br>If you change your mind, just come back here and you'll be asked again.</div>
+          </div>
+        {% endif %}
         <div class="counter">{{ forloop.index }} of {{ forloop.length }}</div>
-        <h2 class="qname" >{{ question }}</h2>
+        <h2 class="question" >{{ question.title }}</h2>
         <textarea class="answer" id="a{{ forloop.index }}" cols="30" rows="10"></textarea>
       </div>
     {% endfor %}
-    <div class="bottom">
+    <div id="formsButtons">
       <button class="button prev" onclick="updateQuestionView('prev')" >{{ page.prevButtonText }}</button>
-      <button class="button next" onclick="updateQuestionView('next')" >{{ page.nextButtonText }}</button>
-      <div class="finishText">{{ page.finishText }}</div>
+      <button class="button next" id="nextButton" onclick="updateQuestionView('next')" >{{ page.nextButtonText }}</button>
+    </div>
+  </div>
+  <div class="reviewArea">
+    {% for question in page.questions %}
+      <div class="reviewStep">
+        <div class="number">{{ forloop.index }}</div>
+        <div class="content">
+          <h4 class="reviewQ">{{ question.title }}</h4>
+          <div class="reviewA"></div>
+        </div>
+      </div>
+    {% endfor %}
+    <div>{{ page.finishText }}</div>
+    <div id="reviewButtons">
+      <div class="back"></div>
       <button class="button finish" id="download">{{ page.downloadButtonText }}</button>
     </div>
   </div>
-
-  <!-- <textarea id="text-val" rows="4">This is the content of my file</textarea><br/>
-  <input type="button" id="dwn-btn" value="Download dinamically generated text file"/> -->
 </body>
 </html>

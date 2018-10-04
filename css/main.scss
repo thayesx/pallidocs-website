@@ -366,36 +366,81 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   align-items: center;
   height: 100vh;
   background: whitesmoke;
-}
-.questionsArea {
-  display: flex;
-  flex-direction: column;
-  width: 640px;
-  margin: 0 auto;
-  .question {
-    text-align: center;
-    opacity: 0;
-    height: 0;
-    pointer-events: none;
-    &.visible {
-      pointer-events: all;
-      opacity: 1;
-      height: auto;
+  &.finalReview {
+    display: block;
+    .questionsArea {
+      display: none;
     }
-    textarea {
-      border-radius: 10px;
-      background: none;
-      color: $dark0;
-      margin: 15px auto;
-      width: 100%;
-      padding: 15px;
+    .reviewArea {
+      display: block;
     }
   }
-  .bottom {
+}
+.questionsArea {
+  position: relative;
+  width: 640px;
+  max-height: 80vh;
+  height: 540px;
+  margin: 0 auto;
+  .step {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    @include transition(all 500ms);
+    @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+    .answer {
+      border-radius: 10px;
+      background: white;
+      margin: 15px auto;
+      border: none;
+      width: 100%;
+      padding: 15px;
+      max-height: 40vh;
+    }
+    .yesOrNo {
+      display: none;
+    }
+    // Current question
+    &.show {
+      opacity: 1; 
+      pointer-events: all;
+      @include transition(all 500ms);
+      @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+      &.askFirst {
+        .question, .counter, .answer {
+          opacity: 0;
+          pointer-events: none;
+        }
+        .yesOrNo {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          margin-top: 30%;
+          width: 100%;
+          .ask {font-style: italic;}
+          .ifNo {display: none;}
+          .yes, .no {
+            padding: 20px;
+            cursor: pointer;
+          }
+        }
+        // If 'no' is clicked on askFirst
+        &.no {
+          .ask, .yes, .no {display: none; pointer-events: none;}
+          .ifNo {display: block;}
+        }
+      }
+    }
+  }
+  #formsButtons {
+    position: absolute;
+    bottom: 0;
     padding: 20px 0;
     display: block;
-    position: relative;
-    width: 100%;
+    width: 640px;
     .finishText {
       display: none;
     }
@@ -418,6 +463,33 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       &.visible {
         display: block;
       }
+    }
+  }
+}
+.reviewArea {
+  width: 800px;
+  margin: 0 auto;
+  padding: 40px 0 80px;
+  display: none;
+  .reviewStep {
+    position: relative;
+    margin: 60px 0;
+    .number, .content {
+      display: inline-block;
+      vertical-align: text-top;
+    }
+    .number {
+      position: absolute;
+    }
+    .content {
+      margin-left: 40px;
+      .reviewQ {
+        margin: 0;
+      }
+    }
+    &.skipped {
+      .content {opacity: .6;}
+      .reviewQ {font-style: italic;}
     }
   }
 }
