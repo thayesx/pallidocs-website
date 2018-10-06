@@ -77,13 +77,13 @@ let updateAskFirst = function(a) {
   thisQ = $("#step" + qid);
 
   // If yes, reveal question
-  if (a == "yes") thisQ.removeClass("askFirst");
+  if (a == "yes") thisQ.removeClass("showAskFirst");
 
   // If no, show ifNo text and go to next question;
   if (a == "no") {
-    thisQ.addClass("no");
+    thisQ.addClass("noClicked");
     setTimeout( function() {
-      thisQ.removeClass("no");
+      thisQ.removeClass("noClicked");
       updateQuestionView("next");
     }, 3000);
   }

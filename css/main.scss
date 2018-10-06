@@ -387,10 +387,13 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     top: 0;
     width: 100%;
     text-align: center;
-    opacity: 0;
     pointer-events: none;
-    @include transition(all 500ms);
-    @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+    .question, .counter, .answer {
+      opacity: 0; 
+      pointer-events: none;
+      @include transition(all 500ms);
+      @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+    }
     .answer {
       border-radius: 10px;
       background: white;
@@ -400,37 +403,57 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       padding: 15px;
       max-height: 40vh;
     }
-    .yesOrNo {
-      display: none;
+    .askFirst {
+      opacity: 0;
+      pointer-events: none;
+      display: block;
+      position: absolute;
+      margin-top: 25%;
+      width: 100%;
+      @include transition(all 500ms);
+      @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+      .askText {font-style: italic; margin-bottom: 20px;}
+      .noText {opacity: 0; margin-top: -100px; pointer-events: none;}
+      .yes, .no {
+        padding: 20px;
+        cursor: pointer;
+      }
     }
     // Current question
     &.show {
-      opacity: 1; 
-      pointer-events: all;
-      @include transition(all 500ms);
-      @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
-      &.askFirst {
+      .question, .counter, .answer {
+        opacity: 1; 
+        pointer-events: all;
+        @include transition(all 500ms);
+        @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+      }
+      &.showAskFirst {
         .question, .counter, .answer {
-          opacity: 0;
+          opacity: 0; 
           pointer-events: none;
+          @include transition(all 500ms);
+          @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
         }
-        .yesOrNo {
-          display: flex;
-          flex-direction: column;
-          position: absolute;
-          margin-top: 30%;
-          width: 100%;
-          .ask {font-style: italic;}
-          .ifNo {display: none;}
-          .yes, .no {
-            padding: 20px;
-            cursor: pointer;
+        .askFirst {
+          opacity: 1;
+          pointer-events: all;
+          @include transition(all 500ms);
+          @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+        }
+        &.yesClicked, &.noClicked {
+          .askText, .yes, .no {
+            opacity: 0;
+            pointer-events: none;
+            @include transition(all 500ms);
+            @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+          } 
+        }
+        &.noClicked {
+          .noText {
+            opacity: 1;
+            @include transition(all 500ms);
+            @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
           }
-        }
-        // If 'no' is clicked on askFirst
-        &.no {
-          .ask, .yes, .no {display: none; pointer-events: none;}
-          .ifNo {display: block;}
         }
       }
     }

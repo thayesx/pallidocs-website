@@ -16,13 +16,13 @@
   </div>
   <div class="questionsArea">
     {% for question in page.questions %}
-      <div class="step {% if question.askFirst %}askFirst{% endif %}" id="step{{ forloop.index }}">
+      <div class="step {% if question.askFirst %}showAskFirst{% endif %}" id="step{{ forloop.index }}">
         {% if question.askFirst %}
-          <div class="yesOrNo">
-            <h3 class="ask">{{ question.askFirst }}</h3>
+          <div class="askFirst">
+            <h3 class="askText">{{ question.askFirst }}</h3>
             <div class="yes" onclick="updateAskFirst('yes')" >Yes</div>
             <div class="no" onclick="updateAskFirst('no')" >Not right now</div>
-            <div class="ifNo">That's fine.<br>If you change your mind, just come back here and you'll be asked again.</div>
+            <div class="noText">That's fine.<br>If you change your mind, just come back here and you'll be asked again.</div>
           </div>
         {% endif %}
         <div class="counter">{{ forloop.index }} of {{ forloop.length }}</div>
