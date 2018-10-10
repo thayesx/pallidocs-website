@@ -9,7 +9,7 @@ let p5;
 let sidebar;
 let downArrow;
 let text;
-let videos;
+let films;
 let video1;
 let video2;
 let videoPreview;
@@ -82,11 +82,11 @@ let fadeInOverlay1 = function() {
 let fadeInOverlay2 = function() {
   let startFromTop = window.innerHeight;
   let slowness = 400;
-  transitionOpacityOnScroll(colorChange2, startFromTop, slowness, videos);
+  transitionOpacityOnScroll(colorChange2, startFromTop, slowness, films);
 }
 
-// Fade in videos
-let fadeInVideos = function() {
+// Fade in films
+let fadeInFilms = function() {
   let startFromTop = window.innerHeight * .8;
   addClassOnScroll(video1, startFromTop, "show");
   addClassOnScroll(video2, startFromTop, "show");
@@ -132,7 +132,7 @@ $( window ).scroll(function() {
   // Delay buffer
   if (window.scrollY > 1000) {
     fadeInOverlay2();
-    fadeInVideos();
+    fadeInFilms();
   }
 });
 
@@ -147,7 +147,7 @@ $( document ).ready(function() {
   sidebar = $("#sidebar");
   downArrow = $("#downArrow");
   text = $("#text");
-  videos = $("#videos");
+  films = $("#films");
   video1 = $("#video1");
   video2 = $("#video2");
 

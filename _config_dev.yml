@@ -3,12 +3,12 @@ title: Pallidocs
 description: >-
   Pallidocs website.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://pallidocs.netlify.com/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://127.0.0.1:4000/" # the base hostname & protocol for your site, e.g. http://example.com
 navigation:
 - name: Films
-  nav: /#films
+  nav: 'index/#films'
 - name: Forms
-  nav: questions
+  nav: "questions"
 - name: Contact
   nav: contact
 collections:
@@ -18,6 +18,5 @@ collections:
 # Build settings
 markdown: kramdown
 sass:
-  style: compressed
+  style: full
   sass_dir: css
-exclude: ["package.json", "package-lock.json", "node_modules", ".sass-cache"]
