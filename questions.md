@@ -1,5 +1,5 @@
 ---
-layout: forms
+layout: questions
 questions:
 - title: "What is your understanding now of where you are with your illness?"
 - title: "What are your most important goals if your health situaton worsens?"
