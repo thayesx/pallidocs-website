@@ -39,17 +39,15 @@
     {% for question in page.questions %}
       <div class="reviewStep">
         <div class="number">{{ forloop.index }}</div>
-        <div class="content">
+        <div class="content" onclick="returnToAnswer('{{ forloop.index }}')">
           <h4 class="reviewQ">{{ question.title }}</h4>
           <div class="reviewA"></div>
+          <div class="edit">Back to answer</div>
         </div>
       </div>
     {% endfor %}
-    <div>{{ page.finishText }}</div>
-    <div id="reviewButtons">
-      <div class="back"></div>
-      <button class="button finish" id="download">{{ page.downloadButtonText }}</button>
-    </div>
+    <div class="finishText">{{ page.finishText }}</div>
+    <button class="button finish" id="download">{{ page.downloadButtonText }}</button>
   </div>
 </body>
 </html>

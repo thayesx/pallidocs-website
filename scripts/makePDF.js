@@ -2,6 +2,7 @@ let questionsLength;
 let page;
 
 $( document ).ready(function() {
+  page = $(".questionsPage");
 
   // Initiate form
   initiateQuestions();
@@ -54,17 +55,19 @@ let updateQuestionView = function(a) {
     }
     // If not last question, increment qid and update nextButton text as necessary
     else if (qid < questionsLength) {
-      // If second to last question, update nextButton text, else use default text
-      if (qid == questionsLength - 1) nextButton.innerHTML = "Review";
-      else nextButton.innerHTML = "Next";
 
       // Increment qid
       qid++;
     }
   }
+
   // If Prev is pressed and thisQ isn't first question, decrement qid
   else if (a == "prev" && qid > 1) qid --;
 
+  // If second to last question, update nextButton text, else use default text
+  if (qid == questionsLength) nextButton.innerHTML = "Review";
+  else nextButton.innerHTML = "Next";
+  
   // Make next question visible
   let nextQ = $("#step" + qid);
   setTimeout( function() {
@@ -72,7 +75,7 @@ let updateQuestionView = function(a) {
   }, 600);
 }
 
-// Update question visibility after answering askFirst
+// Handle visibility transition for questions with AskFirst
 let updateAskFirst = function(a) {
   thisQ = $("#step" + qid);
 
@@ -91,15 +94,12 @@ let updateAskFirst = function(a) {
 
 // Go to review page
 let prepareReview = function() {
-  page = $(".questionsPage");
   page.addClass("finalReview");
   
   let answers = $(".answer");
   let reviewAnswers = $(".reviewA");
   let reviewQuestions = $(".reviewQ");
   let reviewSteps = $(".reviewStep");
-  console.log("answers", answers);
-  console.log("reviewAnswers", reviewAnswers);
 
   // Populate user answers, hide questions that are unanswered
   for (let i = 0; i < reviewAnswers.length; i++) {
@@ -110,4 +110,11 @@ let prepareReview = function() {
       $(reviewSteps[i]).addClass("skipped");
     }
   }
+}
+
+// Return to specific answer from review page
+let returnToAnswer = function(id) {
+  page.removeClass("finalReview");
+  qid = id;
+  updateQuestionView();
 }

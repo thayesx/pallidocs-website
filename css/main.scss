@@ -86,6 +86,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     }
   }
   .logo {
+    display: block;
     width: 80%;
     height: 60px;
     margin-bottom: 20px;
@@ -111,6 +112,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     }
   }
   .item {
+    display: block;
     cursor: pointer;
     padding: 15px 0 5px;
     margin-top: 10px;
@@ -189,6 +191,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
 
 .button {
   display: block;
+  cursor: pointer;
   @include fontSize1;
   width: 160px;
   background: $light;
@@ -260,11 +263,12 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       }
     }
   }
-  div#videos {
+  div#films {
     position: relative;
     z-index: 20;
     width: 900px;
-    margin: 40px auto;
+    padding-top: 40px;
+    margin: 0px auto 40px;
     color: $light;
     .text {
       position: relative;
@@ -394,6 +398,13 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       @include transition(all 500ms);
       @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
     }
+    .question {
+      margin: 15px auto;
+    }
+    .counter {
+      @include fontSize1;
+      color: $dark0_70;
+    }
     .answer {
       border-radius: 10px;
       background: white;
@@ -464,9 +475,6 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     padding: 20px 0;
     display: block;
     width: 640px;
-    .finishText {
-      display: none;
-    }
     .button {
       display: block;
       position: absolute;
@@ -478,21 +486,12 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         opacity: .6;
       }
     }
-    .finish {
-      margin: 0 auto;
-      position: initial;
-      float: none;
-      display: none;
-      &.visible {
-        display: block;
-      }
-    }
   }
 }
 .reviewArea {
   width: 800px;
   margin: 0 auto;
-  padding: 40px 0 80px;
+  padding: 30vh 0 80px;
   display: none;
   .reviewStep {
     position: relative;
@@ -506,13 +505,44 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     }
     .content {
       margin-left: 40px;
+      cursor: pointer;
       .reviewQ {
         margin: 0;
+      }
+      .edit {
+        margin: 10px auto 0;
+        text-align: center;
+        opacity: 0;
+        color: $dark1;
+      }
+    }
+    .finish {
+      margin: 20px auto;
+      width: auto;
+      position: initial;
+      float: none;
+      display: none;
+      &.visible {
+        display: block;
       }
     }
     &.skipped {
       .content {opacity: .6;}
       .reviewQ {font-style: italic;}
     }
+    &:hover {
+      .edit {
+        opacity: 1;
+        @include transition(all 500ms);
+        @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+      }
+    }
+  }
+  .finishText {
+    text-align: center;
+  }
+  .finish {
+    width: auto;
+    margin: 40px auto;
   }
 }
