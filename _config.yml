@@ -6,7 +6,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://pallidocs.netlify.com/" # the base hostname & protocol for your site, e.g. http://example.com
 navigation:
 - name: Films
-  nav: /#films
+  nav: /?films
 - name: Forms
   nav: questions
 - name: Contact
