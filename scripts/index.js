@@ -94,10 +94,12 @@ let fadeInFilms = function() {
 
 // Scroll to target point
 let moveTo = function(target, offset) {
+  console.log("moveTo", target);
+  let moveOffset = offset? offset : 0;
   let object = "#" + target;
   let destination = $(object)[0].offsetTop;
   window.scroll({
-    top: destination - offset,
+    top: destination - moveOffset,
     left: 0,
     behavior: "smooth"
   });
@@ -155,5 +157,10 @@ $( document ).ready(function() {
   videoPreview = $(".preview").hover(playPreview, pausePreview);
 
   window.scroll(0, 0);
+  console.log(window.location);
+  if (window.location.search == "?films") {
+    console.log("go");
+    moveTo("films", 40);
+  }
 });
 
