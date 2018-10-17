@@ -23,8 +23,8 @@ let prepareDownload = function(button) {
   
       // Combine question and answer strings into single text body
       let steps = [];
+      let q = 1;
       for (let i in questions) {
-        let q = 1;
         let step = {
           "question": q + ". " + questions[i].textContent,
           "answer": answers[i].value
