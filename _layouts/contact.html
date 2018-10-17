@@ -3,10 +3,21 @@
 <head>
   {% include head.html %}
 </head>
-<body>
+<body class="contact">
   {% include sidebar.html %}
   <div class="container">
-    Test
+    <div class="formArea">
+      <h2>{{ page.contactMessage }}</h2>
+      <form name="contact" netlify>
+        <h4>Name</h4>
+        <input type="text" name="name" />
+        <h4>Email</h4>
+        <input type="email" name="email" />
+        <h4>Message</h4>
+        <textarea name="message" cols="30" rows="4"></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>

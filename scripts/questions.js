@@ -16,6 +16,7 @@ $( document ).ready(function() {
 
 // Handle page download and doc formatting
 let prepareDownload = function(button) {
+  
     // Setup download button functionality
     button[0].addEventListener("click", function(){
       let questions = $(".question");
@@ -23,8 +24,8 @@ let prepareDownload = function(button) {
   
       // Combine question and answer strings into single text body
       let steps = [];
+      let q = 1;
       for (let i in questions) {
-        let q = 1;
         let step = {
           "question": q + ". " + questions[i].textContent,
           "answer": answers[i].value
@@ -98,7 +99,6 @@ let prepareDownload = function(button) {
             verticalOffset = margin;
           }
         }
-  
       }
   
       doc.save('PallidocsForms.pdf');
@@ -117,21 +117,19 @@ let thisQ;
 let updateQuestionView = function(a) {
   // Define current question and make invisible
   thisQ = $("#step" + qid);
+  console.log("this", thisQ);
   thisQ.removeClass("show");
 
   // If Next is pressed and thisQ isn't last question
   if (a == "next") {
-    let nextButton = $("#nextButton")[0];
 
     // If last question, go to review and return
     if (qid == questionsLength) {
       prepareReview();
       return;
     }
-    // If not last question, increment qid and update nextButton text as necessary
+    // If not last question, increment qid
     else if (qid < questionsLength) {
-
-      // Increment qid
       qid++;
     }
   }
@@ -140,12 +138,13 @@ let updateQuestionView = function(a) {
   else if (a == "prev" && qid > 1) qid --;
 
   // If second to last question, update nextButton text, else use default text
+  let nextButton = $("#nextButton")[0];
   if (qid == questionsLength) nextButton.innerHTML = "Review";
   else nextButton.innerHTML = "Next";
   
-  // Make next question visible
-  let nextQ = $("#step" + qid);
+  // Make nextQ visible with delay to account for thisQ fadeOut
   setTimeout( function() {
+    let nextQ = $("#step" + qid);
     nextQ.addClass("show");
   }, 600);
 }
