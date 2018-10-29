@@ -3,6 +3,7 @@ let page;
 
 $( document ).ready(function() {
   page = $(".questionsPage");
+  $('#sidebar').addClass("shrink");
 
   // Initiate form
   initiateQuestions();
