@@ -72,6 +72,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
 
 #sidebar {
   position: fixed;
+  top: 0;
   height: 100%;
   z-index: 10;
   padding-top: 5vh;
@@ -126,6 +127,9 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       color: $light;
       .questionsPage &, .contact & {
         color: $dark0_70;
+        @include breakpoint(s) {
+          color: $light;
+        }
       }
     }
     &:hover {
@@ -152,7 +156,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   }
   @include breakpoint(s) {
     width: 100%;
-    padding-left: 24px;
+    padding-left: 15px;
     padding-top: 110px;
     .logo {
       margin: 0;
@@ -520,6 +524,26 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       &.disabled {
         pointer-events: none;
         opacity: .6;
+      }
+    }
+  }
+  @include breakpoint(s) {
+    width: 100%;
+    max-height: none;
+    height: 85vh;
+    align-self: flex-end;
+    .step {
+      padding: 0 10px;
+      width: 100%;
+      .question {@include fontSize3; margin: 10px auto 0;}
+    }
+    #formsButtons {
+      width: 100%;
+      bottom: 40px;
+      .button {
+        max-width: 40%;
+        &.prev {left: 10px;}
+        &.next {right: 10px;}
       }
     }
   }
