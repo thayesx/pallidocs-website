@@ -303,6 +303,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         height: 400px;
         margin-bottom: -60px;
         overflow: hidden;
+        opacity: 0;
         cursor: pointer;
         .play {
           background: url("../assets/play.svg");
@@ -389,12 +390,10 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         }
       }
       &.show {
-        .filmHeader:hover {
-          .preview {
-            @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
-            @include duration(1000ms);
-            opacity: 1;
-          }
+        .filmHeader {
+          @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+          @include duration(1000ms);
+          opacity: 1;
         }
       }
     }
