@@ -117,6 +117,22 @@ let mobileMenu = function() {
   else sidebar.removeClass("expanded");
 }
 
+// Show/hide video embed
+let updateTheater = function(id, show) {
+  let video = $("#" + id);
+  let theater = video.children(".theater")[0];
+  let iframe;
+  // Show theater
+  if (show) {
+    if (!$(theater).hasClass("show")) $(theater).addClass(" show");
+  } else {
+    if ($(theater).hasClass("show")) $(theater).removeClass("show");
+    iframe = $(theater).children("iframe")[0];
+    // Reload iframe
+    iframe.src = iframe.src;
+  }
+}
+
 // Stagger updates made on scroll to conserve computing
 setInterval(function() {
   if(didScroll) {
@@ -157,7 +173,6 @@ $( document ).ready(function() {
   videoPreview = $(".preview").hover(playPreview, pausePreview);
 
   window.scroll(0, 0);
-  console.log(window.location);
   if (window.location.search == "?films") {
     console.log("go");
     moveTo("films", 40);
