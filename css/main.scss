@@ -344,6 +344,46 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         color: $lightTrans;
         @include fontSize1;
       }
+      .theater {
+        display: none;
+        opacity: 0;
+        z-index: 10;
+        width: 100vw;
+        height: 100vh;
+        background: $dark0;
+        @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+        @include duration(500ms);
+        iframe {
+          display: block;
+          width: 86vw;
+          height: 90vh;
+          margin: 3vh auto 0;
+        }
+        .close {
+          cursor: pointer;
+          position: absolute;
+          bottom: 2vh;
+          width: 100%;
+          text-align: center;
+          span {
+            display: inline-block;
+            color: $light;
+            border-bottom: 1px solid transparent;
+          }
+          &:hover {
+            span {border-color: $light;}
+          }
+        }
+        &.show {
+          position: fixed;
+          top: 0;
+          left: 0;
+          display: block;
+          opacity: 1;
+          @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+          @include duration(500ms);
+        }
+      }
       &.show {
         .filmHeader:hover {
           .play {

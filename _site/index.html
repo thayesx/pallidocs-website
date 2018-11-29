@@ -61,7 +61,7 @@
     <div id="films">
       
         <div class="film" id="video1">
-  <div class="filmHeader">
+  <div class="filmHeader" onclick="updateTheater('video1', true)">
     <div class="play"></div>
     <div class="filmOverlay"></div>
     <video muted loop class="preview" id="video1">
@@ -75,12 +75,16 @@
     <div class="button" onClick="" >Play Film</div>
     <p class="subtle">Directed by John Stavas & Dr. Mark Stavas<br> Produced by Dr. Sara F. Martin, <br>Director of Photography: Cody Huff</p>
   </div>
+  <div class="theater">
+    <iframe src="https://player.vimeo.com/video/254395573" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <div class="close" onclick="updateTheater('video1')"><span>Back</span></div>
+  </div>
 </div>
 
 
       
         <div class="film" id="video2">
-  <div class="filmHeader">
+  <div class="filmHeader" onclick="updateTheater('video2', true)">
     <div class="play"></div>
     <div class="filmOverlay"></div>
     <video muted loop class="preview" id="video2">
@@ -93,6 +97,10 @@
     <p>Intentional Healing is a restorative documentary that follows the famed Nashville music producer Jesse Boyce as he contemplates his own mortality following a diagnosis of terminal prostate cancer. He returns to the studio as an artist, producer and mentor to compose one last song with Black Violin. The film demonstrates the healing power of music and candidly depicts 21st-century cancer care in Music City. To Jesse, hope is a lasting belief that life will be fine regardless of the outcome; joy is independent of the journey.</p>
     <div class="button" onClick="" >Play Film</div>
     <p class="subtle">Directed by John Stavas<br> Produced by Drs. Mark and Joseph Stavas<br>Director of Photograpy: Cody Huff</p>
+  </div>
+  <div class="theater">
+    <iframe src="https://player.vimeo.com/video/254431048" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <div class="close" onclick="updateTheater('video2')"><span>Back</span></div>
   </div>
 </div>
 
