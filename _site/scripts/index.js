@@ -17,10 +17,12 @@ let didScroll = false;
 
 // Manage pausing and playing film previews
 let playPreview = function() {
-  $(this).get(0).play();
+  let preview = $(this).children(".preview")[0];
+  $(preview).get(0).play();
 }
 let pausePreview = function() {
-  $(this).get(0).pause();
+  let preview = $(this).children(".preview")[0];
+  $(preview).get(0).pause();
 }
 
 // Transition css property on scroll
@@ -170,7 +172,7 @@ $( document ).ready(function() {
   video2 = $("#video2");
 
   // Assign play and pause behavior to film previews
-  videoPreview = $(".preview").hover(playPreview, pausePreview);
+  videoPreview = $(".filmHeader").hover(playPreview, pausePreview);
 
   window.scroll(0, 0);
   if (window.location.search == "?films") {

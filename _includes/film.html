@@ -1,6 +1,6 @@
 <div class="film" id="{{ film.id }}">
-  <div class="filmHeader">
-    <div class="play" onclick="updateTheater('{{ film.id }}', true)"></div>
+  <div class="filmHeader" onclick="updateTheater('{{ film.id }}', true)">
+    <div class="play"></div>
     <div class="filmOverlay"></div>
     <video muted loop class="preview" id="{{ film.id }}">
       <source src="assets/{{ film.previewVideo }}" type="video/mp4">
@@ -10,7 +10,6 @@
   <div class="text">
     <h1>{{ film.title }}</h1>
     <p>{{ film.description }}</p>
-    <div class="button" onclick="updateTheater('{{ film.id }}', true)">Play Film</div>
     <p class="subtle">{{ film.extra }}</p>
   </div>
   <div class="theater">
