@@ -312,7 +312,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
           height: 60px;
           left: 20px;
           top: 20px;
-          opacity: 0;
+          opacity: 0.65;
           z-index: 2;
           // pointer-events: none;
           @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
@@ -390,11 +390,6 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       }
       &.show {
         .filmHeader:hover {
-          .play {
-            @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
-            @include duration(1000ms);
-            opacity: .65;
-          }
           .preview {
             @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
             @include duration(1000ms);
