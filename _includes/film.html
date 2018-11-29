@@ -1,8 +1,8 @@
-<div class="film" id="{{ film.id }}">
-  <div class="filmHeader" onclick="updateTheater('{{ film.id }}', true)">
+<div class="film" id="{{ filmId }}">
+  <div class="filmHeader" onclick="updateTheater('{{ filmId }}', true)">
     <div class="play"></div>
     <div class="filmOverlay"></div>
-    <video muted loop class="preview" id="{{ film.id }}">
+    <video muted loop class="preview" id="{{ filmId }}">
       <source src="assets/{{ film.previewVideo }}" type="video/mp4">
     </video>
     <!-- <div class="image" style="background-image: url('assets/{{ film.image }}')"></div> -->
@@ -14,7 +14,7 @@
   </div>
   <div class="theater">
     <iframe src="{{ film.embedURL }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    <div class="close" onclick="updateTheater('{{ film.id }}')"><span>Back</span></div>
+    <div class="close" onclick="updateTheater('{{ filmId }}')"><span>Back</span></div>
   </div>
 </div>
 
