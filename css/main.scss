@@ -13,7 +13,7 @@ $dark0Trans: rgba(12, 11, 8, 0);
 
 $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 100%);
 
-.background {
+#backgroundVideo {
   position: fixed;
   pointer-events: none;
   height: 100%;
@@ -36,6 +36,9 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     @include mobileOnly;
     height: 100%;
     margin: 0 auto;
+  }
+  &.hide {
+    display: none;
   }
 }
 

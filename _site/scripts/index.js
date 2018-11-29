@@ -96,7 +96,6 @@ let fadeInFilms = function() {
 
 // Scroll to target point
 let moveTo = function(target, offset) {
-  console.log("moveTo", target);
   let moveOffset = offset? offset : 0;
   let object = "#" + target;
   let destination = $(object)[0].offsetTop;
@@ -127,25 +126,32 @@ let updateTheater = function(id, show) {
   // Show theater
   if (show) {
     if (!$(theater).hasClass("show")) $(theater).addClass(" show");
-  } else {
+  } 
+  // Hide theater
+  else {
     if ($(theater).hasClass("show")) $(theater).removeClass("show");
-    iframe = $(theater).children("iframe")[0];
     // Reload iframe
+    iframe = $(theater).children("iframe")[0];
     iframe.src = iframe.src;
   }
 }
 
-// Stagger updates made on scroll to conserve computing
+// Stagger updates made on scroll to reduce load
 setInterval(function() {
   if(didScroll) {
     didScroll = false;
   }
 }, 100);
 
+// Call functions onscroll
 $( window ).scroll(function() {
+  // Handle didScroll stagger
   if (!didScroll){
     didScroll = true;
   }
+
+  // Handle onScroll DOM updates
+  addClassOnScroll(backgroundVideo, 0, "hide", {reference: films, remove: true});
   fadeInOverlay1();
   fadeInParagraphs();
 
@@ -157,6 +163,7 @@ $( window ).scroll(function() {
 });
 
 $( document ).ready(function() {
+  backgroundVideo = $("#backgroundVideo");
   colorChange1 = $("#colorChange1");
   colorChange2 = $("#colorChange2");
   p1 = $("#p1");
@@ -174,10 +181,8 @@ $( document ).ready(function() {
   // Assign play and pause behavior to film previews
   videoPreview = $(".filmHeader").hover(playPreview, pausePreview);
 
+  // Reset scroll position and handle navigation to films
   window.scroll(0, 0);
-  if (window.location.search == "?films") {
-    console.log("go");
-    moveTo("films", 40);
-  }
+  if (window.location.search == "?films") moveTo("films", 40);
 });
 
