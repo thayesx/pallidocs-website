@@ -303,19 +303,29 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         height: 400px;
         margin-bottom: -60px;
         overflow: hidden;
+        cursor: pointer;
         .play {
           background: url("../assets/play.svg");
           background-size: contain;
           position: absolute;
           width: 60px;
           height: 60px;
-          left: 12px;
-          top: 12px;
-          opacity: .75;
-          z-index: 3;
+          left: 20px;
+          top: 20px;
+          opacity: 0;
+          z-index: 2;
+          // pointer-events: none;
           @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
-          @include duration(500ms);
-          @include mobileOnly;
+          @include duration(200ms);
+          @include breakpoint(s) {
+            opacity: .75;
+            left: 12px;
+            top: 12px;
+          }
+          &:hover {
+            opacity: 1 !important;
+            @include duration(100ms);
+          }
         }
         .preview, .filmOverlay {
           position: absolute;
@@ -334,16 +344,8 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
           z-index: 2;
         }
       }
-      .button {
-        display: inline-block;
-        vertical-align: top;
-        margin-top: 40px;
-        margin-right: 40px;
-        @include desktopOnlyInline;
-      }
       .subtle {
-        margin-top: 32px;
-        display: inline-block;
+        margin-top: 10px;
         color: $lightTrans;
         @include fontSize1;
       }
@@ -391,7 +393,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
           .play {
             @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
             @include duration(1000ms);
-            opacity: .9;
+            opacity: .65;
           }
           .preview {
             @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
