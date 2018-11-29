@@ -9,10 +9,8 @@ let p5;
 let sidebar;
 let downArrow;
 let text;
-let films;
-let video1;
-let video2;
-let videoPreview;
+let filmsSection;
+let filmPreview;
 let didScroll = false;
 
 // Manage pausing and playing film previews
@@ -47,16 +45,16 @@ let addClassOnScroll = function(target, startFromTop, className, config) {
   // If no reference defined, target is used
   let scrollReference = target;
   if (config && config.reference) scrollReference = config.reference;
-  let distanceFromTop = scrollReference.offset().top - window.scrollY;
+  let distanceFromTop = scrollReference? (scrollReference.offset().top - window.scrollY) : 0;
 
   // Determine if class should be removed on reverse scroll
   let remove = false;
   if (config && config.remove) remove = true;
   
   // At distanceFromTop, add class to target if target doesn't already have class
-  if (distanceFromTop <= startFromTop && !target[0].className.includes(className))
+  if (distanceFromTop <= startFromTop && target[0] && !target[0].className.includes(className))
     target.addClass(className);
-  else if (distanceFromTop > startFromTop && target[0].className.includes(className) && remove)
+  else if (distanceFromTop > startFromTop && target[0] && target[0].className.includes(className) && remove)
     target.removeClass(className);
 }
 
@@ -84,14 +82,16 @@ let fadeInOverlay1 = function() {
 let fadeInOverlay2 = function() {
   let startFromTop = window.innerHeight;
   let slowness = 400;
-  transitionOpacityOnScroll(colorChange2, startFromTop, slowness, films);
+  transitionOpacityOnScroll(colorChange2, startFromTop, slowness, filmsSection);
 }
 
 // Fade in films
 let fadeInFilms = function() {
   let startFromTop = window.innerHeight * .8;
-  addClassOnScroll(video1, startFromTop, "show");
-  addClassOnScroll(video2, startFromTop, "show");
+  for (let i in films) {
+    let film = $(films[i]);
+    addClassOnScroll(film, startFromTop, "show");  
+  }
 }
 
 // Scroll to target point
@@ -120,8 +120,8 @@ let mobileMenu = function() {
 
 // Show/hide video embed
 let updateTheater = function(id, show) {
-  let video = $("#" + id);
-  let theater = video.children(".theater")[0];
+  let film = $("#" + id);
+  let theater = film.children(".theater")[0];
   let iframe;
   // Show theater
   if (show) {
@@ -151,7 +151,7 @@ $( window ).scroll(function() {
   }
 
   // Handle onScroll DOM updates
-  addClassOnScroll(backgroundVideo, 0, "hide", {reference: films, remove: true});
+  addClassOnScroll(backgroundVideo, 0, "hide", {reference: filmsSection, remove: true});
   fadeInOverlay1();
   fadeInParagraphs();
 
@@ -174,15 +174,14 @@ $( document ).ready(function() {
   sidebar = $("#sidebar");
   downArrow = $("#downArrow");
   text = $("#text");
-  films = $("#films");
-  video1 = $("#video1");
-  video2 = $("#video2");
+  filmsSection = $("#films");
+  films = $(".film");
+  console.log("filmx", films);
 
   // Assign play and pause behavior to film previews
-  videoPreview = $(".filmHeader").hover(playPreview, pausePreview);
+  filmPreview = $(".filmHeader").hover(playPreview, pausePreview);
 
   // Reset scroll position and handle navigation to films
   window.scroll(0, 0);
-  if (window.location.search == "?films") moveTo("films", 40);
+  if (window.location.search == "?films") moveTo("filmsSection", 40);
 });
-

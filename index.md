@@ -23,7 +23,6 @@ paragraphs:
     Karlekar, MD<br> Mark Stavas, MD
 films:
 - title: A Modicum of Joy
-  id: video1
   previewVideo: aModicumOfJoyPreview.mp4
   embedURL: "https://player.vimeo.com/video/254395573"
   image: modicumOfJoy2.png
@@ -36,7 +35,6 @@ films:
   extra: 'Directed by John Stavas & Dr. Mark Stavas<br> Produced by Dr. Sara F. Martin,
     <br>Director of Photography: Cody Huff'
 - title: Intentional Healing
-  id: video2
   previewVideo: intentionalHealingPreview.mp4
   embedURL: "https://player.vimeo.com/video/254431048"
   image: intentionalHealing.png

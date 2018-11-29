@@ -20,6 +20,7 @@
     </div>
     <div id="films">
       {% for film in page.films %}
+        {% capture filmId %}film{{ forloop.index }}{% endcapture %}
         {% include film.html %}
       {% endfor %}
     </div>
