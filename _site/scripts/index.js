@@ -88,7 +88,7 @@ let fadeInOverlay2 = function() {
 // Fade in films
 let fadeInFilms = function() {
   let startFromTop = window.innerHeight * .8;
-  for (let i in films) {
+  for (let i = 0; i < films.length; i++) {
     let film = $(films[i]);
     addClassOnScroll(film, startFromTop, "show");  
   }
@@ -176,7 +176,6 @@ $( document ).ready(function() {
   text = $("#text");
   filmsSection = $("#films");
   films = $(".film");
-  console.log("filmx", films);
 
   // Assign play and pause behavior to film previews
   filmPreview = $(".filmHeader").hover(playPreview, pausePreview);

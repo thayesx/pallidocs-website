@@ -14,7 +14,7 @@
     <div class="container">
       <div id="text">
         {% for p in page.paragraphs %}
-          <p id="{{ p.id }}">{{ p.content }}</p>
+          <p id="p{{ forloop.index }}">{{ p }}</p>
         {% endfor %}
       </div>
     </div>
