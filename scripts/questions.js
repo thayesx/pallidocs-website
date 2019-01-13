@@ -3,6 +3,7 @@ let page;
 
 $( document ).ready(function() {
   page = $(".questionsPage");
+  page.addClass("intro");
   $('#sidebar').addClass("shrink");
 
   // Initiate form
@@ -12,8 +13,11 @@ $( document ).ready(function() {
 
   let button = $("#download");
   prepareDownload(button);
-
 });
+
+let startQuestions = function() {
+  page.removeClass("intro");
+};
 
 // Handle page download and doc formatting
 let prepareDownload = function(button) {
@@ -43,8 +47,8 @@ let prepareDownload = function(button) {
         width = 595 - margin * 2,
         verticalOffset = margin,
         endMargin = 760,
-        fontSize = 12,
-        lineHeight = fontSize * 1.1;
+        fontSize = 11,
+        lineHeight = fontSize * 1.4;
       doc.setFont("georgia", "regular");
       doc.setFontSize(fontSize);
 
@@ -55,50 +59,49 @@ let prepareDownload = function(button) {
       verticalOffset += (headline.length + 4) * fontSize;
   
       for (let i in steps) {
-        let styleQ = "bold";
+        let styleQ = "italic";
         let styleA = "regular";
-        let linesToPrint = [];
+        let lines;
   
         // Format question
         lines = doc.setFontStyle(styleQ).splitTextToSize(steps[i].question, width);
-        linesToPrint = [];
         for (let i in lines) {
-          // If room left on page
-          if ((verticalOffset + i * lineHeight) < endMargin){
-            linesToPrint.push(lines[i]);
-            // If all lines fit
-            if (i == lines.length - 1) {
-              doc.text(linesToPrint, margin, verticalOffset + lineHeight);
-              verticalOffset += (lines.length + 1) * lineHeight;
-            }
+          // If line fits on page, but avoid widowed lines
+          if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)){
+            doc.text(lines[i], margin, verticalOffset);
           }
+
           // If page overflow
           else {
-            doc.text(linesToPrint, margin, verticalOffset + fontSize);
-            doc.addPage();
             verticalOffset = margin;
+            doc.addPage();
+            doc.text(lines[i], margin, verticalOffset);
           }
+
+          if (i == lines.length - 1) {
+            verticalOffset += 2 * lineHeight;
+          } else verticalOffset += lineHeight;
         }
   
         // Format answer
         lines = doc.setFontStyle(styleA).splitTextToSize(steps[i].answer, width);
-        linesToPrint = [];
         for (let i in lines) {
-          // If room left on page
-          if ((verticalOffset + i * lineHeight) < endMargin){
-            linesToPrint.push(lines[i]);
-            // If all lines fit
-            if (i == lines.length - 1) {
-              doc.text(linesToPrint, margin, verticalOffset + lineHeight);
-              verticalOffset += (lines.length + 4) * lineHeight;
-            }
+          // If line fits on page, but avoid widowed lines
+          if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)){
+            doc.text(lines[i], margin, verticalOffset);
           }
+
           // If page overflow
           else {
-            doc.text(linesToPrint, margin, verticalOffset + lineHeight);
-            doc.addPage();
             verticalOffset = margin;
+            doc.addPage();
+            doc.text(lines[i], margin, verticalOffset);
           }
+
+          // If last line, add extra break before next Q
+          if (i == lines.length - 1) {
+            verticalOffset += 4 * lineHeight;
+          } else verticalOffset += lineHeight;
         }
       }
   
@@ -118,7 +121,6 @@ let thisQ;
 let updateQuestionView = function(a) {
   // Define current question and make invisible
   thisQ = $("#step" + qid);
-  console.log("this", thisQ);
   thisQ.removeClass("show");
 
   // If Next is pressed and thisQ isn't last question
@@ -176,10 +178,9 @@ let prepareReview = function() {
   let reviewQuestions = $(".reviewQ");
   let reviewSteps = $(".reviewStep");
 
-  // Populate user answers, hide questions that are unanswered
+  // Populate answer, or treat as skipped if unanswered
   for (let i = 0; i < reviewAnswers.length; i++) {
-    // Populate answer, or treat as skipped if unanswered
-    if (answers[i].value && answers[i].value.length) reviewAnswers[i].innerHTML = answers[i].value;
+    if (answers[i].value && answers[i].value.length) reviewAnswers[i].prepend(answers[i].value);
     else {
       reviewQuestions[i].innerHTML = "Skipped";
       $(reviewSteps[i]).addClass("skipped");

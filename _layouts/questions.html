@@ -8,13 +8,13 @@
 <body class="questionsPage">
   {% include sidebar.html %}
   {% include videoBackground.html %}
-  <div id="backgroundVideo">
-    <video autoplay muted loop class="smallScreen">
-      <source src="assets/{{ page.backgroundVideo }}" type="video/mp4">
-    </video>
-    <img src="assets/{{ page.backgroundImage }}">
+  <div id="introArea">
+    <p>{{ page.intro.paragraph }}</p>
+    <p class="quote">{{ page.intro.quote }}</p>
+    <p>{{ page.intro.ask }}</p>
+    <button class="button" onclick="startQuestions()">{{ page.intro.yesButton }}</button>
   </div>
-  <div class="questionsArea">
+  <div id="questionsArea">
     {% for question in page.questions %}
       <div class="step {% if question.askFirst %}showAskFirst{% endif %}" id="step{{ forloop.index }}">
         {% if question.askFirst %}
@@ -35,13 +35,13 @@
       <button class="button next" id="nextButton" onclick="updateQuestionView('next')" >{{ page.nextButtonText }}</button>
     </div>
   </div>
-  <div class="reviewArea">
+  <div id="reviewArea">
     {% for question in page.questions %}
       <div class="reviewStep">
         <div class="number">{{ forloop.index }}</div>
         <div class="content" onclick="returnToAnswer('{{ forloop.index }}')">
           <h4 class="reviewQ">{{ question.title }}</h4>
-          <div class="reviewA"></div>
+          <p class="reviewA"></p>
           <div class="edit">Back to answer</div>
         </div>
       </div>

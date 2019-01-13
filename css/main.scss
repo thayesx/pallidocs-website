@@ -451,17 +451,29 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   align-items: center;
   height: 100vh;
   background: whitesmoke;
+  &.intro {
+    #introArea {display: block;}
+    #questionsArea {display: none;}
+    #reviewArea {display: none;}
+  }
   &.finalReview {
     display: block;
-    .questionsArea {
-      display: none;
-    }
-    .reviewArea {
-      display: block;
-    }
+    #introArea {display: none;}
+    #questionsArea {display: none;}
+    #reviewArea {display: block;}
   }
 }
-.questionsArea {
+#introArea {
+  display: none;
+  .quote {
+    padding: 45px;
+    font-style: italic;
+  }
+  .button {
+    margin: 20px auto;
+  }
+}
+#introArea, #questionsArea {
   position: relative;
   width: 640px;
   max-height: 80vh;
@@ -469,8 +481,12 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   margin: 0 auto;
   .step {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 48px;
     top: 0;
     width: 100%;
+    height: 100%;
     text-align: center;
     pointer-events: none;
     .question, .counter, .answer {
@@ -589,14 +605,17 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     }
   }
 }
-.reviewArea {
+#reviewArea {
   width: 800px;
   margin: 0 auto;
-  padding: 30vh 0 80px;
+  padding: 10vh 0 80px;
   display: none;
   .reviewStep {
     position: relative;
-    margin: 60px 0;
+    margin: 50px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid transparent;
     .number, .content {
       display: inline-block;
       vertical-align: text-top;
@@ -606,9 +625,14 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     }
     .content {
       margin-left: 40px;
+      width: calc(100% - 40px);
       cursor: pointer;
       .reviewQ {
         margin: 0;
+      }
+      .reviewA {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
       }
       .edit {
         margin: 10px auto 0;
@@ -632,6 +656,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       .reviewQ {font-style: italic;}
     }
     &:hover {
+      border-color: $light;
       .edit {
         opacity: 1;
         @include transition(all 500ms);
