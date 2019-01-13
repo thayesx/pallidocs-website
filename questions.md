@@ -1,16 +1,24 @@
 ---
 layout: questions
+intro: 
+  paragraph: "Thinking about what matters most in your life and sharing your hopes and fears will give you more control over the care you receive in the future. It will also help your loved ones to make decisions for you if you can’t make them at some point down the road.<br><br>
+This is the beginning of an ongoing discussion, however, we believe that individuals  who think about what is important to them often feel more control of their situation, feel less anxious and reach a sense of peace."
+  quote: "To speak of sorrow works upon it, Moves it from its crouched place, barring the way to and from the soul’s hall<br><br>- Denise Levertov"
+  ask: "Would you feel comfortable taking a few minutes to document your goals and wishes?"
+  yesButton: "Yes"
 questions:
 - title: "What is your understanding now of where you are with your illness?"
-- title: "What are your most important goals if your health situaton worsens?"
-  askFirst: "Do you feel open to talking about this uncomfortable thing?"
-- title: "What are your biggest fears and worries about the future with your health?"
-- title: "What gives you strength as you think about the future with your illness?"
-- title: "What abilites are so critcal to your life that you can’t imagine living without them?"
-- title: "If you become sicker, how much are you willing to go through for the possibility of gaining more tme?"
-- title: "How much does your family know about your priorites and wishes?"
-finishText: "We hope that answering these questions will help you in your process of reflection. Download your answers as a PDF to reference later, or to discuss with your doctor if you'd like."
+- title: "What would you like to know about your illness and what lies ahead?"
+- title: "What type of information would help you make decisions about your future?"
+- title: "What is most important for you to have a good quality of life? What abilities or functions are so critical to your life that you can’t imagine living without?"
+- title: "If your health situation worsens, what are your most important goals?"
+- title: "What are your biggest fears and worries about the future of your illness?"
+- title: "What types of medical care do you NOT want?"
+- title: "Who looks at the world through your eyes? Who would you trust to make your medical decisions?"
+- title: "If you become sicker, how much are you willing to go through for the possibility of gaining more time? Do you prioritize more time or quality of life?"
+- title: "How much does your family know about your priorities and wishes?"
+finishText: "Would you like to receive a copy of your reflections to have and share with your loved ones and your doctor?"
 prevButtonText: "Previous"
 nextButtonText: "Next"
-downloadButtonText: "Finish and download form"
+downloadButtonText: "Yes, download answers"
 ---
