@@ -98,6 +98,7 @@ let fadeInFilms = function() {
 let moveTo = function(target, offset) {
   let moveOffset = offset? offset : 0;
   let object = "#" + target;
+  console.log("object", object);
   let destination = $(object)[0].offsetTop;
   window.scroll({
     top: destination - moveOffset,
@@ -182,5 +183,5 @@ $( document ).ready(function() {
 
   // Reset scroll position and handle navigation to films
   window.scroll(0, 0);
-  if (window.location.search == "?films") moveTo("filmsSection", 40);
+  if (window.location.search == "?films") moveTo("films", 40);
 });
