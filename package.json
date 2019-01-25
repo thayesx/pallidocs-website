@@ -2,8 +2,9 @@
   "name": "pallidocs-website-jekyll",
   "version": "1.0.0",
   "description": "",
-  "main": "index.md",
+  "main": "index",
   "scripts": {
+    "start" : "gulp && jekyll serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tyler Hayes",
@@ -13,10 +14,6 @@
     "node_modules"
   ],
   "dependencies": {
-    "gulp": "^4.0.0",
-    "gulp-clean-css": "^3.10.0",
-    "gulp-minify": "^3.1.0",
-    "gulp-rename": "^1.4.0",
     "jquery": "^3.2.1",
     "jquery-mask-plugin": "^1.14.11"
   },
@@ -25,5 +22,12 @@
       "js": "js/",
       "css": "css/"
     }
+  },
+  "devDependencies": {
+    "@types/gulp": "^4.0.5",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-filter": "^5.1.0",
+    "gulp-minify": "^3.1.0"
   }
 }
