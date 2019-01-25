@@ -12,6 +12,9 @@ $(document).ready(function () {
   // Get total number of questions
   questionsLength = $(".question").length;
 
+  let finishReviewButton = $("#finishReview");
+  prepareFinishReviewButton(finishReviewButton);
+
   let downloadButton = $("#download");
   prepareDownloadButton(downloadButton);
 });
@@ -21,11 +24,16 @@ let startQuestions = function () {
 };
 
 let prepareDownloadButton = function (downloadButton) {
-
-  // Setup download button functionality
   downloadButton[0]
     .addEventListener("click", function () {
       createPDF();
+    }, false);
+}
+
+let prepareFinishReviewButton = function (finishReviewButton) {
+  finishReviewButton[0]
+    .addEventListener("click", function () {
+      finishReview();
     }, false);
 }
 
@@ -97,24 +105,23 @@ let createPDF = function () {
     doc.text(headlineLines[i], margin, verticalOffset);
     verticalOffset += lineHeight;
   }
-  verticalOffset += lineHeight;
-
-  let healthcareAgent = "Healthcare agent:";
-  let name = "Name: XXXX";
-  let relationship = "Relationship: XXXX";
-  let address = "Address: XXXX";
-  let contact = "Contact number: XXXX";
-
-  doc.text(healthcareAgent, margin, verticalOffset);
   verticalOffset += lineHeight * 2;
-  doc.text(name, margin, verticalOffset);
+
+  // Print healthcare agent info
+  doc
+    .setFontStyle("bold")
+    .text("Healthcare Agent:", margin, verticalOffset);
   verticalOffset += lineHeight;
-  doc.text(relationship, margin, verticalOffset);
+  doc.setFontStyle("regular");
+  let healthcareAgentInput = $(".healthcareAgentInfo");
+  console.log("healthcareinput", healthcareAgentInput);
+  for (let i = 0; i < healthcareAgentInput.length; i++) {
+    let input = healthcareAgentInput[i];
+    let toPrint = input.id + ": " + input.value;
+    doc.text(toPrint, margin, verticalOffset);
+    verticalOffset += lineHeight;
+  }
   verticalOffset += lineHeight;
-  doc.text(address, margin, verticalOffset);
-  verticalOffset += lineHeight;
-  doc.text(contact, margin, verticalOffset);
-  verticalOffset += lineHeight * 2;
 
   let healthcareAgentNotice = "This Health Care Agent shall take effect in the event that a determination is ma" +
       "de by my doctor that I lack the capacity to make or to communicate my own health" +
@@ -269,4 +276,10 @@ let returnToAnswer = function (id) {
   page.removeClass("finalReview");
   qid = id;
   updateQuestionView();
+}
+
+// Get healthcare agent info
+let finishReview = function () {
+  page.removeClass("finalReview");
+  page.addClass("healthcareAgentReview");
 }

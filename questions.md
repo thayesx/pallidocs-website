@@ -7,19 +7,24 @@ This is the beginning of an ongoing discussion, however, we believe that individ
   ask: "Would you feel comfortable taking a few minutes to document your goals and wishes?"
   yesButton: "Yes"
 questions:
-- title: "What is your understanding now of where you are with your illness?"
-- title: "What would you like to know about your illness and what lies ahead?"
-# - title: "What type of information would help you make decisions about your future?"
-# - title: "What is most important for you to have a good quality of life? What abilities or functions are so critical to your life that you can’t imagine living without?"
-# - title: "If your health situation worsens, what are your most important goals?"
-# - title: "What are your biggest fears and worries about the future of your illness?"
-# - title: "What types of medical care do you NOT want?"
-# - title: "Who looks at the world through your eyes? Who would you trust to make your medical decisions?"
-# - title: "If you become sicker, how much are you willing to go through for the possibility of gaining more time? Do you prioritize more time or quality of life?"
-# - title: "How much does your family know about your priorities and wishes?"
+- "What is your understanding now of where you are with your illness?"
+- "What would you like to know about your illness and what lies ahead?"
+# - "What type of information would help you make decisions about your future?"
+# - "What is most important for you to have a good quality of life? What abilities or functions are so critical to your life that you can’t imagine living without?"
+# - "If your health situation worsens, what are your most important goals?"
+# - "What are your biggest fears and worries about the future of your illness?"
+# - "What types of medical care do you NOT want?"
+# - "Who looks at the world through your eyes? Who would you trust to make your medical decisions?"
+# - "If you become sicker, how much are you willing to go through for the possibility of gaining more time? Do you prioritize more time or quality of life?"
+# - "How much does your family know about your priorities and wishes?"
+healthcareAgentInfo:
+- Name
+- Relationship
+- Address
+- Contact number
 finishText: "Would you like to receive a copy of your reflections to have and share with your loved ones and your doctor?"
 prevButtonText: "Previous"
 nextButtonText: "Next"
-downloadButtonText: "Yes, download answers"
+downloadButtonText: "Download form"
 downloadFormIntro1: "The following are answers to the questions provided by pallidocs.com regarding ___ goals and wishes during their journey with a serious illness."
 ---

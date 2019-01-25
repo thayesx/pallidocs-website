@@ -203,6 +203,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   display: block;
   cursor: pointer;
   @include fontSize1;
+  min-width: 100px;
   width: 160px;
   background: $light;
   color: $dark0;
@@ -454,6 +455,13 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   &.intro {
     #introArea {display: block;}
     #questionsArea {display: none;}
+    #healthcareAgentArea {display: none;}
+    #reviewArea {display: none;}
+  }
+  &.healthcareAgentReview {
+    #introArea {display: none;}
+    #questionsArea {display: none;}
+    #healthcareAgentArea {display: block;}
     #reviewArea {display: none;}
   }
   &.finalReview {
@@ -463,6 +471,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     #reviewArea {display: block;}
   }
 }
+
 #introArea {
   display: none;
   .quote {
@@ -473,7 +482,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     margin: 20px auto;
   }
 }
-#introArea, #questionsArea {
+#introArea, #questionsArea, #healthcareAgentArea {
   position: relative;
   width: 640px;
   max-height: 80vh;
@@ -666,6 +675,23 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   }
   .finishText {
     text-align: center;
+  }
+  .finish {
+    width: auto;
+    margin: 40px auto;
+  }
+}
+#healthcareAgentArea {
+  display: none;
+  label, button {margin-top: 20px; display: block;}
+  input {
+    display: block;
+    outline: none;
+    background: white;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    padding: 10px;
   }
   .finish {
     width: auto;
