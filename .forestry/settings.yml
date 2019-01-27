@@ -8,7 +8,7 @@ sections:
   path: index.md
   label: Home page
 - type: document
-  path: forms.md
+  path: questions.md
   label: Forms page
 - type: document
   path: contact.md
