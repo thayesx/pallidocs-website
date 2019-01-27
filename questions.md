@@ -1,5 +1,7 @@
 ---
 layout: questions
+backgroundImage:
+backgroundVideo:
 intro: 
   paragraph: "Thinking about what matters most in your life and sharing your hopes and fears will give you more control over the care you receive in the future. It will also help your loved ones to make decisions for you if you can’t make them at some point down the road.<br><br>
 This is the beginning of an ongoing discussion, however, we believe that individuals  who think about what is important to them often feel more control of their situation, feel less anxious and reach a sense of peace."
