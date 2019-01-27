@@ -5,14 +5,14 @@ admin_path: ''
 webhook_url: 
 sections:
 - type: document
-  path: index.md
-  label: Home page
-- type: document
   path: questions.md
   label: Forms page
 - type: document
   path: contact.md
   label: Contact page
+- type: document
+  path: index.md
+  label: Home page
 - type: document
   path: readme.md
   label: Info (private)
