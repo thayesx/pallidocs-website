@@ -1,7 +1,8 @@
 let questionsLength;
 let page;
+let logoImgDataURL;
 
-$( document ).ready(function() {
+$(document).ready(function () {
   page = $(".questionsPage");
   page.addClass("intro");
   $('#sidebar').addClass("shrink");
@@ -11,105 +12,182 @@ $( document ).ready(function() {
   // Get total number of questions
   questionsLength = $(".question").length;
 
-  let button = $("#download");
-  prepareDownload(button);
+  let finishReviewButton = $("#finishReview");
+  prepareFinishReviewButton(finishReviewButton);
+
+  let downloadButton = $("#download");
+  prepareDownloadButton(downloadButton);
 });
 
-let startQuestions = function() {
+let startQuestions = function () {
   page.removeClass("intro");
 };
 
-// Handle page download and doc formatting
-let prepareDownload = function(button) {
-  
-    // Setup download button functionality
-    button[0].addEventListener("click", function(){
-      let questions = $(".question");
-      let answers = $(".answer");
-  
-      // Combine question and answer strings into single text body
-      let steps = [];
-      let q = 1;
-      for (let i in questions) {
-        let step = {
-          "question": q + ". " + questions[i].textContent,
-          "answer": answers[i].value
-        }
-        q++;
-        if (!answers[i].value) step.answer = "No answer";
-        if (!questions[i].textContent) break;
-        steps.push(step);
-      }
-  
-      // Create doc with parameters
-      let doc = new jsPDF("p", "pt", "a4"),
-        margin = 72,
-        width = 595 - margin * 2,
-        verticalOffset = margin,
-        endMargin = 760,
-        fontSize = 11,
-        lineHeight = fontSize * 1.4;
-      doc.setFont("georgia", "regular");
-      doc.setFontSize(fontSize);
-
-      // Write headline
-      let headlineText = "These are your answers to the question on the Pallidocs website. May they be of use to you in your personal journey, or to your healthcare provider as you see fit.";
-      headline = doc.setFontStyle("italic").splitTextToSize(headlineText, width);
-      doc.text(headline, 595/2, verticalOffset, "center");
-      verticalOffset += (headline.length + 4) * fontSize;
-  
-      for (let i in steps) {
-        let styleQ = "italic";
-        let styleA = "regular";
-        let lines;
-  
-        // Format question
-        lines = doc.setFontStyle(styleQ).splitTextToSize(steps[i].question, width);
-        for (let i in lines) {
-          // If line fits on page, but avoid widowed lines
-          if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)){
-            doc.text(lines[i], margin, verticalOffset);
-          }
-
-          // If page overflow
-          else {
-            verticalOffset = margin;
-            doc.addPage();
-            doc.text(lines[i], margin, verticalOffset);
-          }
-
-          if (i == lines.length - 1) {
-            verticalOffset += 2 * lineHeight;
-          } else verticalOffset += lineHeight;
-        }
-  
-        // Format answer
-        lines = doc.setFontStyle(styleA).splitTextToSize(steps[i].answer, width);
-        for (let i in lines) {
-          // If line fits on page, but avoid widowed lines
-          if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)){
-            doc.text(lines[i], margin, verticalOffset);
-          }
-
-          // If page overflow
-          else {
-            verticalOffset = margin;
-            doc.addPage();
-            doc.text(lines[i], margin, verticalOffset);
-          }
-
-          // If last line, add extra break before next Q
-          if (i == lines.length - 1) {
-            verticalOffset += 4 * lineHeight;
-          } else verticalOffset += lineHeight;
-        }
-      }
-  
-      doc.save('PallidocsForms.pdf');
+let prepareDownloadButton = function (downloadButton) {
+  downloadButton[0]
+    .addEventListener("click", function () {
+      createPDF();
     }, false);
 }
 
-let initiateQuestions = function() {
+let prepareFinishReviewButton = function (finishReviewButton) {
+  finishReviewButton[0]
+    .addEventListener("click", function () {
+      finishReview();
+    }, false);
+}
+
+function toDataURL(src) {
+  var img = new Image();
+  img.crossOrigin = 'Anonymous';
+  img.onload = function () {
+    var canvas = document.createElement('CANVAS');
+    var ctx = canvas.getContext('2d');
+    var dataURL;
+    canvas.height = this.naturalHeight;
+    canvas.width = this.naturalWidth;
+    ctx.drawImage(this, 0, 0);
+    dataURL = canvas.toDataURL();
+    console.log("onLoad", dataURL);
+    logoImgDataURL = dataURL;
+  };
+  img.src = src;
+}
+
+let createPDF = function () {
+
+  let questions = $(".question");
+  let answers = $(".answer");
+
+  // Combine question and answer strings into single text body
+  let steps = [];
+  let q = 1;
+  for (let i in questions) {
+    let step = {
+      "question": q + ". " + questions[i].textContent,
+      "answer": answers[i].value
+    }
+    q++;
+    if (!answers[i].value) 
+      step.answer = "No answer";
+    if (!questions[i].textContent) 
+      break;
+    steps.push(step);
+  }
+
+  // Create doc with parameters
+  let doc = new jsPDF("p", "pt", "a4"),
+    margin = 72,
+    width = 595 - margin * 2,
+    verticalOffset = margin,
+    endMargin = 760,
+    fontSize = 11,
+    lineHeight = fontSize * 1.4;
+  doc.setFont("georgia", "regular");
+  doc.setFontSize(fontSize);
+
+  // Add logo
+  doc.addImage(logoImgDataURL, 'PNG', margin, margin, 146, 25);
+  verticalOffset += 25 + lineHeight * 3;
+
+  let date = "Date: XXXX";
+  doc.text(date, margin, verticalOffset);
+  verticalOffset += lineHeight * 2;
+
+  let dearDoctor = "Dear Doctor XXXX"
+  doc.text(dearDoctor, margin, verticalOffset);
+  verticalOffset += lineHeight * 2;
+
+  let headline = "The following are answers to the questions provided by pallidocs.com regarding X" +
+      "XXX'sgoals and wishes during their journey with a serious illness.";
+  let headlineLines = doc.splitTextToSize(headline, width);
+  for (let i in headlineLines) {
+    doc.text(headlineLines[i], margin, verticalOffset);
+    verticalOffset += lineHeight;
+  }
+  verticalOffset += lineHeight * 2;
+
+  // Print healthcare agent info
+  doc
+    .setFontStyle("bold")
+    .text("Healthcare Agent:", margin, verticalOffset);
+  verticalOffset += lineHeight;
+  doc.setFontStyle("regular");
+  let healthcareAgentInput = $(".healthcareAgentInfo");
+  console.log("healthcareinput", healthcareAgentInput);
+  for (let i = 0; i < healthcareAgentInput.length; i++) {
+    let input = healthcareAgentInput[i];
+    let toPrint = input.id + ": " + input.value;
+    doc.text(toPrint, margin, verticalOffset);
+    verticalOffset += lineHeight;
+  }
+  verticalOffset += lineHeight;
+
+  let healthcareAgentNotice = "This Health Care Agent shall take effect in the event that a determination is ma" +
+      "de by my doctor that I lack the capacity to make or to communicate my own health" +
+      " care decisions."
+  let healthcareAgentNoticeLines = doc
+    .setFontStyle("italic")
+    .setFontSize(9)
+    .splitTextToSize(healthcareAgentNotice, width);
+  doc.text(healthcareAgentNoticeLines, margin, verticalOffset);
+  verticalOffset += lineHeight * 4;
+
+  doc.setFontSize(fontSize);
+
+  for (let i in steps) {
+    let styleQ = "italic";
+    let styleA = "regular";
+    let lines;
+
+    // Format question
+    lines = doc
+      .setFontStyle(styleQ)
+      .splitTextToSize(steps[i].question, width);
+    for (let i in lines) {
+      // If line fits on page, but avoid widowed lines
+      if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)) {
+        doc.text(lines[i], margin, verticalOffset // If page overflow
+        );
+      } else {
+        verticalOffset = margin;
+        doc.addPage();
+        doc.text(lines[i], margin, verticalOffset);
+      }
+
+      if (i == lines.length - 1) {
+        verticalOffset += 2 * lineHeight;
+      } else 
+        verticalOffset += lineHeight;
+      }
+    
+    // Format answer
+    lines = doc
+      .setFontStyle(styleA)
+      .splitTextToSize(steps[i].answer, width);
+    for (let i in lines) {
+      // If line fits on page, but avoid widowed lines
+      if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)) {
+        doc.text(lines[i], margin, verticalOffset // If page overflow
+        );
+      } else {
+        verticalOffset = margin;
+        doc.addPage();
+        doc.text(lines[i], margin, verticalOffset);
+      }
+
+      // If last line, add extra break before next Q
+      if (i == lines.length - 1) {
+        verticalOffset += 4 * lineHeight;
+      } else 
+        verticalOffset += lineHeight;
+      }
+    }
+
+  doc.save('PallidocsForms.pdf');
+}
+
+let initiateQuestions = function () {
   $("#step1").addClass("show");
 }
 
@@ -118,7 +196,7 @@ let qid = "1";
 let thisQ;
 
 // Update question visibility each time question is changed
-let updateQuestionView = function(a) {
+let updateQuestionView = function (a) {
   // Define current question and make invisible
   thisQ = $("#step" + qid);
   thisQ.removeClass("show");
@@ -129,40 +207,40 @@ let updateQuestionView = function(a) {
     // If last question, go to review and return
     if (qid == questionsLength) {
       prepareReview();
+      // If not last question, increment qid
       return;
+    } else if (qid < questionsLength) {
+      qid++ // If Prev is pressed and thisQ isn't first question, decrement qid;
     }
-    // If not last question, increment qid
-    else if (qid < questionsLength) {
-      qid++;
-    }
-  }
-
-  // If Prev is pressed and thisQ isn't first question, decrement qid
-  else if (a == "prev" && qid > 1) qid --;
-
+  } else if (a == "prev" && qid > 1) 
+    qid--;
+  
   // If second to last question, update nextButton text, else use default text
   let nextButton = $("#nextButton")[0];
-  if (qid == questionsLength) nextButton.innerHTML = "Review";
-  else nextButton.innerHTML = "Next";
+  if (qid == questionsLength) 
+    nextButton.innerHTML = "Review";
+  else 
+    nextButton.innerHTML = "Next";
   
   // Make nextQ visible with delay to account for thisQ fadeOut
-  setTimeout( function() {
+  setTimeout(function () {
     let nextQ = $("#step" + qid);
     nextQ.addClass("show");
   }, 600);
 }
 
 // Handle visibility transition for questions with AskFirst
-let updateAskFirst = function(a) {
+let updateAskFirst = function (a) {
   thisQ = $("#step" + qid);
 
   // If yes, reveal question
-  if (a == "yes") thisQ.removeClass("showAskFirst");
-
+  if (a == "yes") 
+    thisQ.removeClass("showAskFirst");
+  
   // If no, show ifNo text and go to next question;
   if (a == "no") {
     thisQ.addClass("noClicked");
-    setTimeout( function() {
+    setTimeout(function () {
       thisQ.removeClass("noClicked");
       updateQuestionView("next");
     }, 3000);
@@ -170,9 +248,9 @@ let updateAskFirst = function(a) {
 }
 
 // Go to review page
-let prepareReview = function() {
+let prepareReview = function () {
   page.addClass("finalReview");
-  
+
   let answers = $(".answer");
   let reviewAnswers = $(".reviewA");
   let reviewQuestions = $(".reviewQ");
@@ -180,17 +258,28 @@ let prepareReview = function() {
 
   // Populate answer, or treat as skipped if unanswered
   for (let i = 0; i < reviewAnswers.length; i++) {
-    if (answers[i].value && answers[i].value.length) reviewAnswers[i].prepend(answers[i].value);
+    if (answers[i].value && answers[i].value.length) 
+      reviewAnswers[i].prepend(answers[i].value);
     else {
       reviewQuestions[i].innerHTML = "Skipped";
       $(reviewSteps[i]).addClass("skipped");
     }
   }
+
+  // Prepare logo file for pdf generating
+  let logoImgUrl = "assets/logo_1_dark.png";
+  toDataURL(logoImgUrl);
 }
 
 // Return to specific answer from review page
-let returnToAnswer = function(id) {
+let returnToAnswer = function (id) {
   page.removeClass("finalReview");
   qid = id;
   updateQuestionView();
+}
+
+// Get healthcare agent info
+let finishReview = function () {
+  page.removeClass("finalReview");
+  page.addClass("healthcareAgentReview");
 }
