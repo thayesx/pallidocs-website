@@ -5,6 +5,7 @@
   {% include head.html %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
   <script src="scripts/questions.min.js"></script>
+  <script src="scripts/makePdf.min.js"></script>
 </head>
 
 <body class="questionsPage">
@@ -51,13 +52,17 @@
     <div class="finishText">{{ page.finishText }}</div>
     <button class="button finish" id="finishReview">Yes</button>
   </div>
-  <div id="healthcareAgentArea">
-    <p>Who looks at the world through your eyes? Which individual would you trust to make your meidcal decisions or be
-      your power of attorney?</p>
-    {% for info in page.healthcareAgentInfo %}
+  <div id="personalInfoArea">
+    <label for="yourName">Your name</label>
+    <input id="yourName" type="text">
+    <br><br>
+    <h3>Who looks at the world through your eyes? Which individual would you trust to make your meidcal decisions or be
+      your power of attorney?</h3>
+    {% for infoItem in page.healthcareAgentInfo %}
     <div>
-      <label for="{{ info }}">{{ info }}</label>
-      <input class="healthcareAgentInfo" id="{{ info }}" type="text"></div>
+      <label for="{{ infoItem }}">{{ infoItem }}</label>
+      <input class="healthcareAgentInfo" id="{{ infoItem }}" type="text">
+    </div>
     {% endfor %}
     <button class="button finish" id="download">{{ page.downloadButtonText }}</button>
   </div>

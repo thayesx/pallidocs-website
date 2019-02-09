@@ -435,7 +435,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         background: white;
         border: none;
         padding: 10px;
-        border-radius: 10px;
+        border-radius: 2px;
         min-width: 400px;
         margin: 5px 0 30px;
       }
@@ -455,13 +455,13 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   &.intro {
     #introArea {display: block;}
     #questionsArea {display: none;}
-    #healthcareAgentArea {display: none;}
+    #personalInfoArea {display: none;}
     #reviewArea {display: none;}
   }
   &.healthcareAgentReview {
     #introArea {display: none;}
     #questionsArea {display: none;}
-    #healthcareAgentArea {display: block;}
+    #personalInfoArea {display: block;}
     #reviewArea {display: none;}
   }
   &.finalReview {
@@ -482,7 +482,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     margin: 20px auto;
   }
 }
-#introArea, #questionsArea, #healthcareAgentArea {
+#introArea, #questionsArea, #personalInfoArea {
   position: relative;
   width: 640px;
   max-height: 80vh;
@@ -512,7 +512,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       color: $dark0_70;
     }
     .answer {
-      border-radius: 10px;
+      border-radius: 2px;
       background: white;
       margin: 15px auto;
       border: none;
@@ -623,7 +623,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     position: relative;
     margin: 50px 0;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 2px;
     border: 1px solid transparent;
     .number, .content {
       display: inline-block;
@@ -681,14 +681,14 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     margin: 40px auto;
   }
 }
-#healthcareAgentArea {
+#personalInfoArea {
   display: none;
   label, button {margin-top: 20px; display: block;}
   input {
     display: block;
     outline: none;
     background: white;
-    border-radius: 10px;
+    border-radius: 2px;
     border: none;
     width: 100%;
     padding: 10px;

@@ -12,13 +12,13 @@ questions:
 - "What is your understanding now of where you are with your illness?"
 - "What would you like to know about your illness and what lies ahead?"
 - "What type of information would help you make decisions about your future?"
-- "What is most important for you to have a good quality of life? What abilities or functions are so critical to your life that you can’t imagine living without?"
-- "If your health situation worsens, what are your most important goals?"
-- "What are your biggest fears and worries about the future of your illness?"
-- "What types of medical care do you NOT want?"
-- "Who looks at the world through your eyes? Who would you trust to make your medical decisions?"
-- "If you become sicker, how much are you willing to go through for the possibility of gaining more time? Do you prioritize more time or quality of life?"
-- "How much does your family know about your priorities and wishes?"
+# - "What is most important for you to have a good quality of life? What abilities or functions are so critical to your life that you can’t imagine living without?"
+# - "If your health situation worsens, what are your most important goals?"
+# - "What are your biggest fears and worries about the future of your illness?"
+# - "What types of medical care do you NOT want?"
+# - "Who looks at the world through your eyes? Who would you trust to make your medical decisions?"
+# - "If you become sicker, how much are you willing to go through for the possibility of gaining more time? Do you prioritize more time or quality of life?"
+# - "How much does your family know about your priorities and wishes?"
 healthcareAgentInfo:
 - Name
 - Relationship
