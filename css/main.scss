@@ -1,23 +1,23 @@
 ---
 ---
+@import "colors";
 @import "defaults";
 
-$light: #ebdec9;
-$lightTrans: rgba(235, 222, 201, .4);
+html.dark {
+  background: $dark0;
+}
 
-$dark1: rgba(95, 75, 56, 1);
-
-$dark0: rgba(12, 11, 8, 1);
-$dark0_70: rgba(12, 11, 8, .7);
-$dark0Trans: rgba(12, 11, 8, 0);
-
-$videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 100%);
-
-#backgroundVideo {
+.backgroundVideo {
   position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
   pointer-events: none;
   height: 100%;
   width: 100%;
+  .questionsPage & {
+    background: whitesmoke;
+  }
   video {
     position: absolute;
     top: 50%; 
@@ -94,12 +94,15 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     width: 80%;
     height: 60px;
     margin-bottom: 20px;
-    background-image: url("../assets/logo1_light.svg");
+    background-image: url("../assets/logo1_dark.svg");
     background-size: contain;
     background-position: bottom left;
     background-repeat: no-repeat;
-    &.light {
-      background-image: url("../assets/logo1_dark.svg");
+    .dark & {      
+      background-image: url("../assets/logo1_light.svg");
+      @include breakpoint(s) {
+        background-image: url("../assets/logo1_dark.svg");
+      }
     }
   }
   .mobileMenu {
@@ -130,11 +133,11 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       @include fontSize3;
       width: 100%;
       letter-spacing: 2px;
-      color: $light;
-      .questionsPage &, .contact & {
-        color: $dark0_70;
+      color: $dark0_70;
+      .dark &{
+        color: $light;
         @include breakpoint(s) {
-          color: $light;
+          color: $dark0_70;
         }
       }
     }
@@ -454,7 +457,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   display: flex;
   align-items: center;
   height: 100vh;
-  background: whitesmoke;
+  background: transparent;
   &.intro {
     #introArea {display: block;}
     #questionsArea {display: none;}
@@ -484,6 +487,9 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   .button {
     margin: 20px auto;
   }
+  @include breakpoint(s) {
+    padding: 0 10px;
+  }
 }
 #introArea, #questionsArea, #personalInfoArea {
   position: relative;
@@ -501,7 +507,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     height: 100%;
     text-align: center;
     pointer-events: none;
-    .question, .counter, .answer {
+    .question, .counter, .answer, .backgroundVideo {
       opacity: 0; 
       pointer-events: none;
       @include transition(all 500ms);
@@ -541,14 +547,14 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     }
     // Current question
     &.show {
-      .question, .counter, .answer {
+      .question, .counter, .answer, .backgroundVideo {
         opacity: 1; 
         pointer-events: all;
         @include transition(all 500ms);
         @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
       }
       &.showAskFirst {
-        .question, .counter, .answer {
+        .question, .counter, .answer, .backgroundVideo {
           opacity: 0; 
           pointer-events: none;
           @include transition(all 500ms);

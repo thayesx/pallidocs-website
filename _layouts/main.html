@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   {% include head.html %}
 </head>
 <body>
   {% include sidebar.html %}
+  {% assign videoUrl = page.backgroundVideo %}
   {% include videoBackground.html %}
   <div id="downArrow" onclick="scrollArrow()"></div>
   <div class="overlay">

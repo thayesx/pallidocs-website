@@ -1,9 +1,7 @@
 ---
 layout: main
-backgroundVideoLrg:
-backgroundVideo: bgVideo1440-trimmed-sm.mp4
-backgroundImageLrg:
-backgroundImage: backgroundImage1.png
+backgroundImage:
+backgroundVideo: https://player.vimeo.com/external/134025228.hd.mp4?s=9fdf3d36312edfd18b3a5a8df0be17e3&profile_id=113.mp4
 paragraphs:
 - "The emotions that come with a serious diagnosis can be hard to manage. It's an experience that will force anyone to reckon with their goals in life—while each moment can shift the balance between uncertainty and grace."
 - "But with crisis comes an opportunity to find new meaning. Old wounds may become new openings. One can see the world through the eyes of the heart."

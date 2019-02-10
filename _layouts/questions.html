@@ -15,7 +15,6 @@
 
 <body class="questionsPage">
   {% include sidebar.html %}
-  {% include videoBackground.html %}
   <div id="introArea">
     <p>{{ page.intro.paragraph }}</p>
     <p class="quote">{{ page.intro.quote }}</p>
@@ -34,8 +33,10 @@
       </div>
       {% endif %}
       <div class="counter">{{ forloop.index }} of {{ forloop.length }}</div>
-      <h2 class="question">{{ question }}</h2>
+      <h2 class="question">{{ question.question }}</h2>
       <textarea class="answer" id="a{{ forloop.index }}" cols="30" rows="10"></textarea>
+      {% assign videoUrl = question.video %}
+      {% include videoBackground.html %}
     </div>
     {% endfor %}
     <div id="formsButtons">

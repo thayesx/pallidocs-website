@@ -1,0 +1,10 @@
+$light: #ebdec9;
+$lightTrans: rgba(235, 222, 201, .4);
+
+$dark1: rgba(95, 75, 56, 1);
+
+$dark0: rgba(12, 11, 8, 1);
+$dark0_70: rgba(12, 11, 8, .7);
+$dark0Trans: rgba(12, 11, 8, 0);
+
+$videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 100%);
