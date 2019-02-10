@@ -4,7 +4,7 @@
 <head>
   {% include head.html %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
-  {% if site.environment == production %}
+  {% if site.environment == "production" %}
   <script src="scripts/questions.min.js"></script>
   <script src="scripts/makePdf.min.js"></script>
   {% else %}

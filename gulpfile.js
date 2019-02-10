@@ -42,3 +42,4 @@ gulp.task('jekyll', done => {
 });
 
 gulp.task('default', gulp.series('formatScripts', 'jekyll'));
+gulp.task('build', gulp.task('formatScripts'));
