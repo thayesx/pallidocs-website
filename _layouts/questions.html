@@ -4,12 +4,16 @@
 <head>
   {% include head.html %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+  {% if site.environment == production %}
   <script src="scripts/questions.min.js"></script>
   <script src="scripts/makePdf.min.js"></script>
+  {% else %}
+  <script src="scripts/src/questions.js"></script>
+  <script src="scripts/src/makePdf.js"></script>
+  {% endif %}
 </head>
 
 <body class="questionsPage">
-  {{ site.environment }}
   {% include sidebar.html %}
   {% include videoBackground.html %}
   <div id="introArea">
