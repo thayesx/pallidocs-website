@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% include head.html %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+  {% if site.environment == "production" %}
+  <script src="scripts/questions.min.js"></script>
+  <script src="scripts/makePdf.min.js"></script>
+  {% else %}
+  <script src="scripts/src/questions.js"></script>
+  <script src="scripts/src/makePdf.js"></script>
+  {% endif %}
+</head>
+
+<body class="questionsPage">
+  {% include sidebar.html %}
+  {% include videoBackground.html %}
+  <div id="introArea">
+    <p>{{ page.intro.paragraph }}</p>
+    <p class="quote">{{ page.intro.quote }}</p>
+    <p>{{ page.intro.ask }}</p>
+    <button class="button" onclick="startQuestions()">{{ page.intro.yesButton }}</button>
+  </div>
+  <div id="questionsArea">
+    {% for question in page.questions %}
+    <div class="step {% if question.askFirst %}showAskFirst{% endif %}" id="step{{ forloop.index }}">
+      {% if question.askFirst %}
+      <div class="askFirst">
+        <h3 class="askText">{{ question.askFirst }}</h3>
+        <div class="yes" onclick="updateAskFirst('yes')">Yes</div>
+        <div class="no" onclick="updateAskFirst('no')">Not right now</div>
+        <div class="noText">That's fine.<br>If you change your mind, just come back here and you'll be asked again.</div>
+      </div>
+      {% endif %}
+      <div class="counter">{{ forloop.index }} of {{ forloop.length }}</div>
+      <h2 class="question">{{ question }}</h2>
+      <textarea class="answer" id="a{{ forloop.index }}" cols="30" rows="10"></textarea>
+    </div>
+    {% endfor %}
+    <div id="formsButtons">
+      <button class="button prev" onclick="updateQuestionView('prev')">{{ page.prevButtonText }}</button>
+      <button class="button next" id="nextButton" onclick="updateQuestionView('next')">{{ page.nextButtonText }}</button>
+    </div>
+  </div>
+  <div id="reviewArea">
+    {% for question in page.questions %}
+    <div class="reviewStep">
+      <div class="number">{{ forloop.index }}</div>
+      <div class="content" onclick="returnToAnswer('{{ forloop.index }}')">
+        <h4 class="reviewQ">{{ question }}</h4>
+        <p class="reviewA"></p>
+        <div class="edit">Back to answer</div>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="finishText">{{ page.finishText }}</div>
+    <button class="button finish" id="finishReview">Yes</button>
+  </div>
+  <div id="personalInfoArea">
+    <label for="yourName">Your name</label>
+    <input id="yourName" type="text">
+    <br><br>
+    <h3>Who looks at the world through your eyes? Which individual would you trust to make your meidcal decisions or be
+      your power of attorney?</h3>
+    {% for infoItem in page.healthcareAgentInfo %}
+    <div>
+      <label for="{{ infoItem }}">{{ infoItem }}</label>
+      <input class="healthcareAgentInfo" id="{{ infoItem }}" type="text">
+    </div>
+    {% endfor %}
+    <button class="button finish" id="download">{{ page.downloadButtonText }}</button>
+  </div>
+</body>
+
+</html>

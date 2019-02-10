@@ -1,37 +1,45 @@
-var gulp = require('gulp');
-var minify = require('gulp-minify');
-var cleanCSS = require('gulp-clean-css');
-var rename = require('gulp-rename');
+const gulp = require('gulp');
+const minify = require('gulp-minify');
+const filter = require('gulp-filter');
+const child = require('child_process');
+const gutil = require('gulp-util');
 
-gulp.task('copyLibraries', function () {
-	var sources = [
-		'./bower_components/jquery/dist/jquery.min.js',
-		'./bower_components/jquery-mask-plugin/dist/jquery.mask.min.js'
-	];
-    gulp.src(sources)
-        .pipe(gulp.dest('./js/'));
+const paths = {
+  scripts: {
+    src: 'scripts/src/*.js',
+    dest: 'scripts/'
+  }
+};
+
+gulp.task('formatScripts', done => {
+  gulp
+    .src(paths.scripts.src)
+    .pipe(minify({ext: ".min.js"}))
+    .pipe(filter('**/*.min.js'))
+    .pipe(gulp.dest(paths.scripts.dest));
+
+    done();
 });
 
-gulp.task('minifyJS', function () {
-	var sources = ['./js/main.js'];
-	gulp.src(sources)
-		.pipe(minify({
-			ext: {
-				min: '.min.js',
-			},
-			mangle: false,
-		}))
-		.pipe(gulp.dest('./js/'));
+gulp.task('jekyll', done => {
+  const jekyll = child.spawn('jekyll', ['serve', '--watch', '--incremental', '--drafts']);
+
+  const jekyllLogger = (buffer) => {
+    buffer
+      .toString()
+      .split(/\n/)
+      .forEach((message) => gutil.log('Jekyll: ' + message));
+  };
+
+  jekyll
+    .stdout
+    .on('data', jekyllLogger);
+  jekyll
+    .stderr
+    .on('data', jekyllLogger);
+
+  done();
 });
 
-gulp.task('minifyCSS', function () {
-	var sources = ['./css/fontawesome.css'];
-	gulp.src(sources)
-	    .pipe(cleanCSS())
-		.pipe(rename({
-	    	suffix: '.min'
-	    }))
-	    .pipe(gulp.dest('./css/'));
-});
-
-gulp.task('default', ['copyLibraries', 'minifyJS', 'minifyCSS']);
+gulp.task('default', gulp.task('formatScripts'));
+gulp.task('serve', gulp.series('formatScripts', 'jekyll'));

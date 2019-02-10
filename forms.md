@@ -1,6 +1,0 @@
----
-
-layout: forms
-title: Forms
-
----

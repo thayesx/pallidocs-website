@@ -5,11 +5,7 @@
 </head>
 <body>
   {% include sidebar.html %}
-  <div class="background">
-    <video autoplay muted loop>
-      <source src="assets/{{ page.backgroundVideo }}" type="video/mp4">
-    </video>
-  </div>
+  {% include videoBackground.html %}
   <div id="downArrow" onclick="scrollArrow()"></div>
   <div class="overlay">
     <div class="videoGrade"></div>
@@ -18,12 +14,13 @@
     <div class="container">
       <div id="text">
         {% for p in page.paragraphs %}
-          <p id="{{ p.id }}">{{ p.content }}</p>
+          <p id="p{{ forloop.index }}">{{ p }}</p>
         {% endfor %}
       </div>
     </div>
-    <div id="videos">
+    <div id="films">
       {% for film in page.films %}
+        {% capture filmId %}film{{ forloop.index }}{% endcapture %}
         {% include film.html %}
       {% endfor %}
     </div>

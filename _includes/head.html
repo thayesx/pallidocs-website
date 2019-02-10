@@ -9,4 +9,8 @@
 
 <!-- Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="scripts/index.js"></script>
+{% if site.environment == "production" %}
+<script src="scripts/index.min.js"></script>
+{% else %}
+<script src="scripts/src/index.js"></script>
+{% endif %}
