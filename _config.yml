@@ -20,4 +20,4 @@ markdown: kramdown
 sass:
   style: compressed
   sass_dir: css
-exclude: ["package.json", "package-lock.json", "node_modules", ".sass-cache", "gulpfile.js", "src"]
+exclude: ["package.json", "package-lock.json", "node_modules", ".sass-cache", "gulpfile.js"]
