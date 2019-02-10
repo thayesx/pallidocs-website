@@ -41,5 +41,5 @@ gulp.task('jekyll', done => {
   done();
 });
 
-gulp.task('default', gulp.series('formatScripts', 'jekyll'));
-gulp.task('build', gulp.task('formatScripts'));
+gulp.task('default', gulp.task('formatScripts'));
+gulp.task('serve', gulp.series('formatScripts', 'jekyll'));
