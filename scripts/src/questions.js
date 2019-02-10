@@ -137,7 +137,7 @@ let prepareReview = function () {
   }
 
   // Prepare logo file for pdf generating
-  let logoImgUrl = "assets/logo_1_dark.png";
+  let logoImgUrl = "assets/logo1_dark_print.png";
   toDataURL(logoImgUrl);
 }
 

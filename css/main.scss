@@ -94,10 +94,13 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     width: 80%;
     height: 60px;
     margin-bottom: 20px;
-    background-image: url("../assets/logo1.svg");
+    background-image: url("../assets/logo1_light.svg");
     background-size: contain;
     background-position: bottom left;
     background-repeat: no-repeat;
+    &.light {
+      background-image: url("../assets/logo1_dark.svg");
+    }
   }
   .mobileMenu {
     display: none;
