@@ -1,8 +1,7 @@
 ---
 
 layout: contact
-permalink: /contact
-title: Contact
+title: Pallidocs | Contact
 contactMessage: Get in touch with us
 
 ---

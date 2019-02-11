@@ -41,6 +41,8 @@ questions:
 - question: "How much does your family know about your priorities and wishes?"
   video:
   loadingImg: 
+prevButtonText: "Previous"
+nextButtonText: "Next"
 healthcareAgentInfo:
 - Name
 - Relationship
@@ -48,7 +50,5 @@ healthcareAgentInfo:
 - Contact number
 healthcareAgentText: Who looks at the world through your eyes? Which individual would you trust to make your medical decisions or be your power of attorney?
 finishText: "Would you like to receive a copy of your reflections to have and share with your loved ones and your doctor?"
-prevButtonText: "Previous"
-nextButtonText: "Next"
 downloadButtonText: "Download form"
 ---
