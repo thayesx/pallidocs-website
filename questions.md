@@ -1,7 +1,5 @@
 ---
 layout: questions
-backgroundImage:
-backgroundVideo:
 audio:
   media: http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4
   playText: Play music
@@ -15,24 +13,34 @@ This is the beginning of an ongoing discussion, however, we believe that individ
 questions:
 - question: "What is your understanding now of where you are with your illness?"
   video: https://player.vimeo.com/external/134025228.hd.mp4?s=9fdf3d36312edfd18b3a5a8df0be17e3&profile_id=113.mp4
+  loadingImg: sampleLoadingImg.png
 - question: "What would you like to know about your illness and what lies ahead?"
   video: https://player.vimeo.com/external/186481192.hd.mp4?s=9b50836a73b3749e1c3dd65eb78e8f81ee38c08e&profile_id=174
+  loadingImg: 
 - question: "What type of information would help you make decisions about your future?"
   video:
+  loadingImg: 
 - question: "What is most important for you to have a good quality of life? What abilities or functions are so critical to your life that you can’t imagine living without?"
   video:
+  loadingImg: 
 - question: "If your health situation worsens, what are your most important goals?"
   video:
+  loadingImg: 
 - question: "What are your biggest fears and worries about the future of your illness?"
   video:
+  loadingImg: 
 - question: "What types of medical care do you NOT want?"
   video:
+  loadingImg: 
 - question: "Who looks at the world through your eyes? Who would you trust to make your medical decisions?"
   video:
+  loadingImg: 
 - question: "If you become sicker, how much are you willing to go through for the possibility of gaining more time? Do you prioritize more time or quality of life?"
   video:
+  loadingImg: 
 - question: "How much does your family know about your priorities and wishes?"
   video:
+  loadingImg: 
 healthcareAgentInfo:
 - Name
 - Relationship

@@ -3,8 +3,11 @@
 @import "colors";
 @import "defaults";
 
-html.dark {
-  background: $dark0;
+html {
+  background: whitesmoke;
+  &.dark {
+    background: $dark0_1;
+  }
 }
 
 .backgroundVideo {
@@ -15,10 +18,10 @@ html.dark {
   pointer-events: none;
   height: 100%;
   width: 100%;
-  .questionsPage & {
-    background: whitesmoke;
-  }
   video {
+    .questionsPage & {
+      background: whitesmoke;
+    }
     position: absolute;
     top: 50%; 
     left: 50%;
@@ -32,7 +35,7 @@ html.dark {
     overflow: hidden;
     @include desktopOnly;
   }
-  img {
+  .backgroundImg {
     @include mobileOnly;
     height: 100%;
     margin: 0 auto;
@@ -196,7 +199,7 @@ html.dark {
       }
       &.expanded {
         height: 280px;
-        background-color: $dark0;
+        background-color: $dark0_1;
         .item {
           opacity: 1;
         }
@@ -251,7 +254,7 @@ html.dark {
   min-width: 100px;
   width: 160px;
   background: $light;
-  color: $dark0;
+  color: $dark0_1;
   text-align: center;
   padding: 8px;
   border-radius: 2px;
@@ -281,7 +284,7 @@ html.dark {
   }
   #colorChange2 {
     opacity: 0;
-    background: $dark0;
+    background: $dark0_1;
   }
   .container {
     position: relative;
@@ -404,7 +407,7 @@ html.dark {
         z-index: 10;
         width: 100vw;
         height: 100vh;
-        background: $dark0;
+        background: $dark0_1;
         iframe {
           display: block;
           width: 86vw;
@@ -469,8 +472,11 @@ html.dark {
     display: flex;
     align-items: center;
     .formArea {
+      .botField {
+        visibility: hidden;
+      }
       width: 100%;
-      color: $dark0_70;
+      color: $dark0_1;
       h2 {margin-bottom: 30px;}
       h4 {margin: 0; font-weight: 400;}
       form {
@@ -551,6 +557,13 @@ html.dark {
       pointer-events: none;
       @include transition(all 500ms);
       @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+    }
+    .backgroundVideo {
+      video {opacity: 0;}
+      &.loaded {
+        .loadingImg {display: none;}
+        video {opacity: 1;}
+      }  
     }
     .question {
       margin: 15px auto;

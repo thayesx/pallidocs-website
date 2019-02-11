@@ -39,6 +39,8 @@
       <h2 class="question">{{ question.question }}</h2>
       <textarea class="answer" id="a{{ forloop.index }}" cols="30" rows="10"></textarea>
       {% assign videoUrl = question.video %}
+      {% assign videoId = forloop.index %}
+      {% assign loadingImg = question.loadingImg %}
       {% include videoBackground.html %}
     </div>
     {% endfor %}
@@ -52,7 +54,7 @@
     <div class="reviewStep">
       <div class="number">{{ forloop.index }}</div>
       <div class="content" onclick="returnToAnswer('{{ forloop.index }}')">
-        <h4 class="reviewQ">{{ question }}</h4>
+        <h4 class="reviewQ">{{ question.question }}</h4>
         <p class="reviewA"></p>
         <div class="edit">Back to answer</div>
       </div>
@@ -64,6 +66,8 @@
   <div id="personalInfoArea">
     <label for="yourName">Your name</label>
     <input id="yourName" type="text">
+    <label for="doctorName">Your doctor's name</label>
+    <input id="doctorName" type="text">
     <br><br>
     <h3>Who looks at the world through your eyes? Which individual would you trust to make your meidcal decisions or be
       your power of attorney?</h3>

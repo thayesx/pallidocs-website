@@ -10,6 +10,7 @@ let createPDF = function () {
   let questions = $(".question");
   let answers = $(".answer");
   let yourName = $("#yourName")[0].value;
+  let doctorName = $("#doctorName")[0].value;
   let healthcareAgentInput = $(".healthcareAgentInfo");
 
   // Combine question and answer strings into single text body
@@ -44,7 +45,7 @@ let createPDF = function () {
   doc.text(date, margin, verticalOffset);
   skipLine(2);
 
-  let dearDoctor = "Dear Doctor _________________________________,";
+  let dearDoctor = "Dear Doctor " + doctorName + ",";
   doc.text(dearDoctor, margin, verticalOffset);
   skipLine(2);
 
