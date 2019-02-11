@@ -69,8 +69,7 @@
     <label for="doctorName">Your doctor's name</label>
     <input id="doctorName" type="text">
     <br><br>
-    <h3>Who looks at the world through your eyes? Which individual would you trust to make your meidcal decisions or be
-      your power of attorney?</h3>
+    <h3>{{ healthcareAgentText }}</h3>
     {% for infoItem in page.healthcareAgentInfo %}
     <div>
       <label for="{{ infoItem }}">{{ infoItem }}</label>
