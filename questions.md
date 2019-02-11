@@ -2,6 +2,10 @@
 layout: questions
 backgroundImage:
 backgroundVideo:
+audio:
+  media: http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4
+  playText: Play music
+  pauseText: Pause music
 intro: 
   paragraph: "Thinking about what matters most in your life and sharing your hopes and fears will give you more control over the care you receive in the future. It will also help your loved ones to make decisions for you if you can’t make them at some point down the road.<br><br>
 This is the beginning of an ongoing discussion, however, we believe that individuals  who think about what is important to them often feel more control of their situation, feel less anxious and reach a sense of peace."

@@ -1,0 +1,11 @@
+{% if page.audio %}
+<div id="audio" onclick="playPauseAudio()" class="isPaused">
+  <audio id="player">
+    <source src="{{ page.audio.media }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div id="btnPlayPause"></div>
+  <div id="playText">{{ page.audio.playText }}</div>
+  <div id="pauseText">{{ page.audio.pauseText }}</div>
+</div>
+{% endif %}

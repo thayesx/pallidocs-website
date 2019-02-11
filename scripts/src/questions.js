@@ -2,7 +2,7 @@ let questionsLength;
 let page;
 let logoImgDataURL;
 
-$(document).ready(function () {
+$(document).ready(() => {
   page = $(".questionsPage");
   page.addClass("intro");
   $('#sidebar').addClass("shrink");
@@ -93,7 +93,7 @@ let updateQuestionView = function (a) {
     nextButton.innerHTML = "Next";
   
   // Make nextQ visible with delay to account for thisQ fadeOut
-  setTimeout(function () {
+  setTimeout(() => {
     let nextQ = $("#step" + qid);
     nextQ.addClass("show");
   }, 600);
@@ -110,7 +110,7 @@ let updateAskFirst = function (a) {
   // If no, show ifNo text and go to next question;
   if (a == "no") {
     thisQ.addClass("noClicked");
-    setTimeout(function () {
+    setTimeout(() => {
       thisQ.removeClass("noClicked");
       updateQuestionView("next");
     }, 3000);

@@ -138,14 +138,14 @@ let updateTheater = function(id, show) {
 }
 
 // Stagger updates made on scroll to reduce load
-setInterval(function() {
+setInterval(() => {
   if(didScroll) {
     didScroll = false;
   }
 }, 100);
 
 // Call functions onscroll
-$( window ).scroll(function() {
+$( window ).scroll(() => {
   // Handle didScroll stagger
   if (!didScroll){
     didScroll = true;
@@ -163,7 +163,7 @@ $( window ).scroll(function() {
   }
 });
 
-$( document ).ready(function() {
+$( document ).ready(() => {
   backgroundVideo = $("#backgroundVideo");
   colorChange1 = $("#colorChange1");
   colorChange2 = $("#colorChange2");

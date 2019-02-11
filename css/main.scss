@@ -205,6 +205,45 @@ html.dark {
   }
 }
 
+#audio {
+  position: fixed;
+  left: 40px;
+  bottom: 15px;
+  z-index: 100;
+  opacity: .6;
+  cursor: pointer;
+  &:hover {
+    opacity: .75;
+  }
+  #btnPlayPause, #playText, #pauseText {
+    vertical-align: middle;
+  }
+  #btnPlayPause {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+  }
+  &.isPlaying {
+    #playText {display: none};
+    #pauseText {display: inline-block};
+    #btnPlayPause {background: url("../assets/pause_dark.svg")};
+    .dark & {
+      color: $light;
+      #btnPlayPause {background: url("../assets/pause_light.svg")};
+    }
+  }
+  &.isPaused {
+    #playText {display: inline-block};
+    #pauseText {display: none};
+    #btnPlayPause {background: url("../assets/play_dark.svg")};
+    .dark & {
+      color: $light;
+      #btnPlayPause {background: url("../assets/play_light.svg")};
+    }
+  }
+}
+
+
 .button, button {
   display: block;
   cursor: pointer;
@@ -316,7 +355,7 @@ html.dark {
         opacity: 0;
         cursor: pointer;
         .play {
-          background: url("../assets/play.svg");
+          background: url("../assets/play_preview.svg");
           background-size: contain;
           position: absolute;
           width: 60px;

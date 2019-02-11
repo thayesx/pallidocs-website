@@ -7,14 +7,17 @@
   {% if site.environment == "production" %}
   <script src="scripts/questions.min.js"></script>
   <script src="scripts/makePdf.min.js"></script>
+  <script src="scripts/audioControls.min.js"></script>
   {% else %}
   <script src="scripts/src/questions.js"></script>
   <script src="scripts/src/makePdf.js"></script>
+  <script src="scripts/src/audioControls.js"></script>
   {% endif %}
 </head>
 
 <body class="questionsPage">
   {% include sidebar.html %}
+  {% include audioPlayer.html %}
   <div id="introArea">
     <p>{{ page.intro.paragraph }}</p>
     <p class="quote">{{ page.intro.quote }}</p>
