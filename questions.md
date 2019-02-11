@@ -15,7 +15,7 @@ intro:
   quote: To speak of sorrow works upon it, Moves it from its crouched place, barring
     the way to and from the soul’s hall<br><br>- Denise Levertov
   ask: Would you feel comfortable taking a few minutes to document your goals and
-    wishes? test test test
+    wishes?
   yesButton: 'Yes'
 questions:
 - question: What is your understanding now of where you are with your illness?
