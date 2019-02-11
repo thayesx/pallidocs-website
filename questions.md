@@ -50,5 +50,4 @@ finishText: "Would you like to receive a copy of your reflections to have and sh
 prevButtonText: "Previous"
 nextButtonText: "Next"
 downloadButtonText: "Download form"
-downloadFormIntro1: "The following are answers to the questions provided by pallidocs.com regarding ___ goals and wishes during their journey with a serious illness."
 ---
