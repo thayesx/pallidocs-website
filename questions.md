@@ -19,7 +19,7 @@ intro:
   yesButton: 'Yes'
 questions:
 - question: What is your understanding now of where you are with your illness?
-  video: https://player.vimeo.com/external/134025228.hd.mp4?s=9fdf3d36312edfd18b3a5a8df0be17e3&profile_id=113.mp4
+  video: https://player.vimeo.com/external/316688839.hd.mp4?s=4918fb52dc194beb4cdae7733515faee71c7ba87&profile_id=175&download=1
   loadingImg: sampleLoadingImg.png
 - question: What would you like to know about your illness and what lies ahead?
   video: https://player.vimeo.com/external/186481192.hd.mp4?s=9b50836a73b3749e1c3dd65eb78e8f81ee38c08e&profile_id=174
@@ -51,14 +51,17 @@ questions:
 - question: How much does your family know about your priorities and wishes?
   video: 
   loadingImg: 
-prevButtonText: "Previous"
-nextButtonText: "Next"
 healthcareAgentInfo:
 - Name
 - Relationship
 - Address
 - Contact number
-healthcareAgentText: Who looks at the world through your eyes? Which individual would you trust to make your medical decisions or be your power of attorney?
-finishText: "Would you like to receive a copy of your reflections to have and share with your loved ones and your doctor?"
-downloadButtonText: "Download form"
+healthcareAgentText: Who looks at the world through your eyes? Which individual would
+  you trust to make your medical decisions or be your power of attorney?
+finishText: Would you like to receive a copy of your reflections to have and share
+  with your loved ones and your doctor?
+prevButtonText: Previous
+nextButtonText: Next
+downloadButtonText: Download form
+
 ---
