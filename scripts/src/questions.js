@@ -161,5 +161,6 @@ let finishReview = function () {
 
 let videoCanPlay = function (id) {
   let video = $("#" + id);
+  console.log("video loaded", video);
   video.addClass("loaded");
 }
