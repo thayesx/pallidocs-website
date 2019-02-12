@@ -13,9 +13,9 @@ intro:
     to them often feel more control of their situation, feel less anxious and reach
     a sense of peace.
   quote: To speak of sorrow works upon it, Moves it from its crouched place, barring
-    the way to and from the soul’s hall<br><br>- Denise Levertov
+    the way to and from the soul’s hall<br>- Denise Levertov
   ask: 'Would you feel comfortable taking a few minutes to document your goals and
-    wishes? <br>PLEASE NOTE: If you exit this section of the website before completing
+    wishes?<br><br>PLEASE NOTE: If you exit this section of the website before completing
     and downloading the questionnaire, your answers will NOT be saved.'
   yesButton: 'Yes'
 questions:
