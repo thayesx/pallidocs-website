@@ -38,7 +38,7 @@ questions:
   video: https://player.vimeo.com/external/316901045.hd.mp4?s=90f871b8f120098fbce9ce890ee1af1d39642182&profile_id=175&download=1
   loadingImg: 
 - question: What types of medical care do you NOT want?
-  video: https://player.vimeo.com/external/316899700.hd.mp4?s=b3bcd377cfce68a39dec5aeb4c4f84a7fb8b9dd9&profile_id=175&download=1
+  video: https://player.vimeo.com/external/316909153.hd.mp4?s=680417e03c788642f8b0258bb23de2eb309efc07&profile_id=175&download=1
   loadingImg: 
 - question: Who looks at the world through your eyes? Who would you trust to make
     your medical decisions?
