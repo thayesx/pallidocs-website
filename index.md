@@ -1,9 +1,7 @@
 ---
 layout: main
 backgroundImage: "/assets/backgroundImage1.png"
-backgroundVideo: |-
-  <iframe src="https://player.vimeo.com/video/316682756" width="640" height="337" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-  <p><a href="https://vimeo.com/316682756">WEBSITE OPENING</a> from <a href="https://vimeo.com/johnstavas">John Stavas</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+backgroundVideo: https://player.vimeo.com/external/316682756.hd.mp4?s=ee58f69f08de9678aa8dfc0d8870ccc7647e8fdb&profile_id=175&download=1
 paragraphs:
 - The emotions that come with a serious diagnosis can be hard to manage. It's an experience
   that will force anyone to reckon with their goals in life—while each moment can
