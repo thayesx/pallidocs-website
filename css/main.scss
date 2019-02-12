@@ -267,16 +267,11 @@ html {
   height: auto;
   width: 100%;
   z-index: 1;
-  .videoGrade, #colorChange1, #colorChange2 {
+  #colorChange1, #colorChange2 {
     position: fixed;
     top: 0;
     width: 100%;
     height: 100vh;
-  }
-  .videoGrade {
-    background-color: $dark1;
-    // mix-blend-mode: multiply;
-    opacity: .35;
   }
   #colorChange1 {
     opacity: 0;
