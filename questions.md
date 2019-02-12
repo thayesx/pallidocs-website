@@ -2,7 +2,7 @@
 layout: questions
 audio:
   media: https://player.vimeo.com/external/316872476.sd.mp4?s=f4a0d651b5560e5ad5274234ed618d3d3b4b9443&profile_id=165&download=1
-  playText: Play music by Andy Stavas
+  playText: 'Play music by Andy Stavas: SOLO PIANO'
   pauseText: Pause music
 intro:
   paragraph: Thinking about what matters most in your life and sharing your hopes
