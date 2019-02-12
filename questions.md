@@ -2,7 +2,7 @@
 layout: questions
 audio:
   media: http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4
-  playText: Play music
+  playText: 'Play music by Andy Stavas: SOLO PIANO'
   pauseText: Pause music
 intro:
   paragraph: Thinking about what matters most in your life and sharing your hopes
