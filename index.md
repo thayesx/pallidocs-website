@@ -1,7 +1,7 @@
 ---
 layout: main
 backgroundImage: "/assets/backgroundImage1.png"
-backgroundVideo: https://player.vimeo.com/external/316693666.source.mp4?s=d9635e42962e0438dddd710c82054f0ad2fc20c2&download=1
+backgroundVideo: https://player.vimeo.com/external/316693666.hd.mp4?s=bec802e55e623328cb30eab220aa44b1656a428a&profile_id=175&download=1
 paragraphs:
 - The emotions that come with a serious diagnosis can be hard to manage. It's an experience
   that will force anyone to reckon with their goals in life—while each moment can
