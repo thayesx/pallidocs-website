@@ -66,13 +66,13 @@ let qid = "1";
 let thisQ;
 
 // Update question visibility each time question is changed
-let updateQuestionView = function (a) {
+let updateQuestionView = function (dir) {
   // Define current question and make invisible
   thisQ = $("#step" + qid);
   thisQ.removeClass("show");
 
   // If Next is pressed and thisQ isn't last question
-  if (a == "next") {
+  if (dir == "next") {
 
     // If last question, go to review and return
     if (qid == questionsLength) {
@@ -82,7 +82,7 @@ let updateQuestionView = function (a) {
     } else if (qid < questionsLength) {
       qid++ // If Prev is pressed and thisQ isn't first question, decrement qid;
     }
-  } else if (a == "prev" && qid > 1) 
+  } else if (dir == "prev" && qid > 1) 
     qid--;
   
   // If second to last question, update nextButton text, else use default text
@@ -91,6 +91,11 @@ let updateQuestionView = function (a) {
     nextButton.innerHTML = "Review";
   else 
     nextButton.innerHTML = "Next";
+  
+  let prevButton = $("#prevButton");
+  if (qid == 1)
+    prevButton.addClass("hide");
+  else if (prevButton.hasClass("hide")) prevButton.removeClass("hide");
   
   // Make nextQ visible with delay to account for thisQ fadeOut
   setTimeout(() => {

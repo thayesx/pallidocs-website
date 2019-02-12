@@ -45,7 +45,7 @@
     </div>
     {% endfor %}
     <div id="formsButtons">
-      <button class="button prev" onclick="updateQuestionView('prev')">{{ page.prevButtonText }}</button>
+      <button class="button prev hide" id="prevButton" onclick="updateQuestionView('prev')">{{ page.prevButtonText }}</button>
       <button class="button next" id="nextButton" onclick="updateQuestionView('next')">{{ page.nextButtonText }}</button>
     </div>
   </div>

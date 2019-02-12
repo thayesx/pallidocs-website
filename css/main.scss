@@ -3,6 +3,8 @@
 @import "colors";
 @import "defaults";
 
+$mobileMenuHeight: 48px;
+
 html {
   background: whitesmoke;
   &.dark {
@@ -54,9 +56,8 @@ html {
   background: url("../assets/downArrow.svg");
   background-repeat: no-repeat;
   background-position: center;
-  left: 50%;
-  margin-left: -19px;
   padding: 4px;
+  left: calc(50% - 19px);
   opacity: .5;
   cursor: pointer;
   &:hover {
@@ -69,7 +70,7 @@ html {
     pointer-events: none;
   }
   @include breakpoint(l) {
-    margin-left: -24px;
+    left: calc(50% - 24px);
     width: 48px;
     height: 48px;
     bottom: 4%;
@@ -101,17 +102,17 @@ html {
     background-size: contain;
     background-position: bottom left;
     background-repeat: no-repeat;
-    .dark & {      
+    .dark & {
       background-image: url("../assets/logo1_light.svg");
-      @include breakpoint(s) {
-        background-image: url("../assets/logo1_dark.svg");
-      }
+    }
+    @include breakpoint(s) {
+      background-image: url("../assets/logo1_light.svg");
     }
   }
   .mobileMenu {
     display: none;
     opacity: 0;
-    background-image: url("../assets/hamburger.svg");
+    background-image: url("../assets/menu.svg");
     background-size: contain;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -137,11 +138,11 @@ html {
       width: 100%;
       letter-spacing: 2px;
       color: $dark0_70;
-      .dark &{
+      .dark & {
         color: $light;
-        @include breakpoint(s) {
-          color: $dark0_70;
-        }
+      }
+      @include breakpoint(s) {
+        color: $light;
       }
     }
     &:hover {
@@ -178,11 +179,11 @@ html {
       width: 70%;
     }
     &.shrink {
-      padding-top: 48px;
       width: 100%;
+      padding-top: $mobileMenuHeight;
+      height: $mobileMenuHeight;
       background-color: $dark0_70;
       @include animate(background-color, 4000ms);
-      height: 48px;
       overflow: hidden;
       .logo {
         left: 60px;
@@ -243,6 +244,9 @@ html {
       color: $light;
       #btnPlayPause {background: url("../assets/play_light.svg")};
     }
+  }
+  @include breakpoint(m) {
+    display: none;
   }
 }
 
@@ -528,7 +532,10 @@ html {
     margin: 20px auto;
   }
   @include breakpoint(s) {
-    padding: 0 10px;
+    padding: 20px 10px;
+    .button {
+      margin-bottom: 40px;
+    }
   }
 }
 #introArea, #questionsArea, #personalInfoArea {
@@ -643,25 +650,25 @@ html {
       &.next {
         right: 0;
       }
-      &.disabled {
-        pointer-events: none;
-        opacity: .6;
+      &.hide {
+        visibility: hidden;
       }
     }
   }
   @include breakpoint(s) {
     width: 100%;
     max-height: none;
-    height: 85vh;
+    height: calc(100% - 48px);
     align-self: flex-end;
     .step {
-      padding: 0 10px;
+      padding: 20px 10px 30px;
       width: 100%;
       .question {@include fontSize3; margin: 10px auto 0;}
     }
     #formsButtons {
       width: 100%;
-      bottom: 40px;
+      bottom: 50px;
+      padding-bottom: 30px;
       .button {
         max-width: 40%;
         &.prev {left: 10px;}
@@ -704,6 +711,10 @@ html {
         text-align: center;
         opacity: 0;
         color: $dark1;
+        @include breakpoint(s) {
+          opacity: 1;
+          text-align: left;
+        }
       }
     }
     .finish {
@@ -717,7 +728,9 @@ html {
       }
     }
     &.skipped {
-      .content {opacity: .6;}
+      .reviewQ {
+        opacity: .6;
+      }
       .reviewQ {font-style: italic;}
     }
     &:hover {
@@ -736,6 +749,10 @@ html {
     width: auto;
     margin: 40px auto;
   }
+  @include breakpoint(s) {
+    width: 100%;
+    padding: 30px 10px;
+  }
 }
 #personalInfoArea {
   display: none;
@@ -752,5 +769,9 @@ html {
   .finish {
     width: auto;
     margin: 40px auto;
+  }
+  @include breakpoint(s) {
+    width: 100%;
+    padding: 30px 10px;
   }
 }
