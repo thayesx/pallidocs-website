@@ -46,7 +46,7 @@ questions:
   loadingImg: 
 - question: If you become sicker, how much are you willing to go through for the possibility
     of gaining more time? Do you prioritize more time or quality of life?
-  video: 
+  video: https://player.vimeo.com/external/316905969.hd.mp4?s=c11a200a5052bcd468a68f5fa57c612c62dcc3e7&profile_id=175&download=1
   loadingImg: 
 - question: How much does your family know about your priorities and wishes?
   video: https://player.vimeo.com/external/316906698.hd.mp4?s=5dc952073aad39b45f8eb46b96f1c964a023468b&profile_id=175&download=1
