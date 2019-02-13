@@ -1,7 +1,7 @@
 ---
 layout: questions
 audio:
-  media: https://player.vimeo.com/external/316872476.sd.mp4?s=f4a0d651b5560e5ad5274234ed618d3d3b4b9443&profile_id=165&download=1
+  media: https://player.vimeo.com/external/317083307.sd.mp4?s=acb38ac1bd78547cc42cf0242ce2e87d0963770f&profile_id=164&download=1
   playText: 'Play music by Andy Stavas: SOLO PIANO'
   pauseText: Pause music
 intro:
@@ -21,10 +21,10 @@ intro:
 questions:
 - question: What is your understanding now of where you are with your illness?
   video: https://player.vimeo.com/external/316859577.hd.mp4?s=545d4967e86c91e7b73b43f83baca7c16ddae0a5&profile_id=175&download=1
-  loadingImg:
+  loadingImg: 
 - question: What would you like to know about your illness and what lies ahead?
   video: https://player.vimeo.com/external/316865720.hd.mp4?s=6f71d09051cc250a817ce553ae063f19c849e2b2&profile_id=175&download=1
-  loadingImg:
+  loadingImg: 
 - question: What type of information would help you make decisions about your future?
   video: https://player.vimeo.com/external/316889150.hd.mp4?s=73f1f5b37a5c5ad87598ece1587d5973c950b388&profile_id=175&download=1
   loadingImg: 
