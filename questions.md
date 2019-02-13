@@ -1,8 +1,8 @@
 ---
 layout: questions
 audio:
-  media: http://media.w3.org/2010/07/bunny/04-Death_Becomes_Fur.mp4
-  playText: Play music
+  media: https://player.vimeo.com/external/316872476.sd.mp4?s=f4a0d651b5560e5ad5274234ed618d3d3b4b9443&profile_id=165&download=1
+  playText: 'Play music by Andy Stavas: SOLO PIANO'
   pauseText: Pause music
 intro:
   paragraph: Thinking about what matters most in your life and sharing your hopes
@@ -13,9 +13,10 @@ intro:
     to them often feel more control of their situation, feel less anxious and reach
     a sense of peace.
   quote: To speak of sorrow works upon it, Moves it from its crouched place, barring
-    the way to and from the soul’s hall<br><br>- Denise Levertov
-  ask: Would you feel comfortable taking a few minutes to document your goals and
-    wishes?
+    the way to and from the soul’s hall<br>- Denise Levertov
+  ask: 'Would you feel comfortable taking a few minutes to document your goals and
+    wishes?<br><br>PLEASE NOTE: If you exit this section of the website before completing
+    and downloading the questionnaire, your answers will NOT be saved.'
   yesButton: 'Yes'
 questions:
 - question: What is your understanding now of where you are with your illness?
@@ -25,32 +26,32 @@ questions:
   video: https://player.vimeo.com/external/316865720.hd.mp4?s=6f71d09051cc250a817ce553ae063f19c849e2b2&profile_id=175&download=1
   loadingImg:
 - question: What type of information would help you make decisions about your future?
-  video: https://player.vimeo.com/external/316865720.hd.mp4?s=6f71d09051cc250a817ce553ae063f19c849e2b2&profile_id=175&download=1
-  loadingImg:
+  video: https://player.vimeo.com/external/316889150.hd.mp4?s=73f1f5b37a5c5ad87598ece1587d5973c950b388&profile_id=175&download=1
+  loadingImg: 
 - question: What is most important for you to have a good quality of life? What abilities
     or functions are so critical to your life that you can’t imagine living without?
-  video: 
-  loadingImg:
+  video: https://player.vimeo.com/external/316892162.hd.mp4?s=4e58314de8dc0383b4aeafdc8e69a01ee912834e&profile_id=175&download=1
+  loadingImg: 
 - question: If your health situation worsens, what are your most important goals?
-  video: 
-  loadingImg:
+  video: https://player.vimeo.com/external/316883594.hd.mp4?s=8fed080f4cede1b4ede27976768383b07948683b&profile_id=175&download=1
+  loadingImg: 
 - question: What are your biggest fears and worries about the future of your illness?
-  video: 
-  loadingImg:
+  video: https://player.vimeo.com/external/316901045.hd.mp4?s=90f871b8f120098fbce9ce890ee1af1d39642182&profile_id=175&download=1
+  loadingImg: 
 - question: What types of medical care do you NOT want?
-  video: 
-  loadingImg:
+  video: https://player.vimeo.com/external/316909153.hd.mp4?s=680417e03c788642f8b0258bb23de2eb309efc07&profile_id=175&download=1
+  loadingImg: 
 - question: Who looks at the world through your eyes? Who would you trust to make
     your medical decisions?
-  video: 
-  loadingImg:
+  video: https://player.vimeo.com/external/316900628.hd.mp4?s=52169e5b013f35b2644c83b003b6e9d79ccb1014&profile_id=175&download=1
+  loadingImg: 
 - question: If you become sicker, how much are you willing to go through for the possibility
     of gaining more time? Do you prioritize more time or quality of life?
-  video: 
-  loadingImg:
+  video: https://player.vimeo.com/external/316905969.hd.mp4?s=c11a200a5052bcd468a68f5fa57c612c62dcc3e7&profile_id=175&download=1
+  loadingImg: 
 - question: How much does your family know about your priorities and wishes?
-  video: 
-  loadingImg:
+  video: https://player.vimeo.com/external/316906698.hd.mp4?s=5dc952073aad39b45f8eb46b96f1c964a023468b&profile_id=175&download=1
+  loadingImg: 
 healthcareAgentInfo:
 - Name
 - Relationship
