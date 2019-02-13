@@ -1,6 +1,6 @@
 ---
 layout: main
-backgroundImage: "/assets/backgroundImage1.png"
+mobileBackgroundImage: "/assets/backgroundImage1.png"
 backgroundVideo: https://player.vimeo.com/external/316860417.hd.mp4?s=194e7716fe9063aae43517a2b9d311aaebbb2713&profile_id=175&download=1
 paragraphs:
 - The emotions that come with a serious diagnosis can be hard to manage. It's an experience
@@ -18,7 +18,6 @@ films:
 - title: A Modicum of Joy
   previewVideo: aModicumOfJoyPreview.mp4
   embedURL: https://player.vimeo.com/video/254395573
-  image: modicumOfJoy2.png
   description: 'A Modicum Of Joy is a modern film that explores the intersection of
     art and medicine in the face of a serious illness. The documentary follows Nashville
     photographer Fred Dusel II as he considers the role of palliative care in managing
@@ -30,7 +29,6 @@ films:
 - title: Intentional Healing
   previewVideo: intentionalHealingPreview.mp4
   embedURL: https://player.vimeo.com/video/254431048
-  image: intentionalHealing.png
   description: Intentional Healing is a restorative documentary that follows the famed
     Nashville music producer Jesse Boyce as he contemplates his own mortality following
     a diagnosis of terminal prostate cancer. He returns to the studio as an artist,
