@@ -21,7 +21,7 @@ intro:
   buttonText: 'Yes'
 questions:
 - question: What is your understanding now of where you are with your illness?
-  video: https://player.vimeo.com/external/317149564.hd.mp4?s=dfdcf6900854b88d03170c125a744d159d680190&profile_id=175
+  video: https://player.vimeo.com/external/316859577.hd.mp4?s=545d4967e86c91e7b73b43f83baca7c16ddae0a5&profile_id=175
   loadingImg: 
 - question: What would you like to know about your illness and what lies ahead?
   video: https://player.vimeo.com/external/317150121.hd.mp4?s=ce95066ee5aa20ed872213f3fc8ddba3a88b04bc&profile_id=175
