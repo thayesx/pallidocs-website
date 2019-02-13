@@ -1,6 +1,6 @@
 <div id="backgroundVideo{{ videoId }}" class="backgroundVideo">
   {% if videoUrl %}
-  <video autoplay muted loop oncanplay="videoCanPlay('backgroundVideo{{ videoId }}')">
+  <video autoplay muted loop oncanplay="videoLoaded('backgroundVideo{{ videoId }}')">
     <source src="{{ videoUrl }}" type="video/mp4">
   </video>
   {% elsif backgroundImage %}

@@ -185,3 +185,8 @@ $( document ).ready(() => {
   window.scroll(0, 0);
   if (window.location.search == "?films") moveTo("films", 40);
 });
+
+let videoLoaded = function (id) {
+  let video = $("#" + id);
+  video.addClass("loaded");
+}

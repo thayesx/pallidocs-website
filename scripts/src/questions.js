@@ -158,9 +158,3 @@ let finishReview = function () {
   page.removeClass("finalReview");
   page.addClass("healthcareAgentReview");
 }
-
-let videoCanPlay = function (id) {
-  let video = $("#" + id);
-  console.log("video loaded", video);
-  video.addClass("loaded");
-}

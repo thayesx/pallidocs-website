@@ -29,10 +29,11 @@ html {
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    min-width: 100%; 
-    min-height: 110%; 
-    width: auto; 
-    height: auto;
+    height: 100%;
+    min-width: 100%;
+    // Requires all videos to be 16:9 ratio
+    width: 177.77777778vh; // 100 * 16 / 9
+    min-height: 56.25vw; // 100 * 9 / 16
     z-index: -10; 
     overflow: hidden;
     @include desktopOnly;

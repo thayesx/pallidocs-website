@@ -20,37 +20,37 @@ intro:
 questions:
 - question: What is your understanding now of where you are with your illness?
   video: https://player.vimeo.com/external/316859577.hd.mp4?s=545d4967e86c91e7b73b43f83baca7c16ddae0a5&profile_id=175&download=1
-  loadingImg: ''
+  loadingImg:
 - question: What would you like to know about your illness and what lies ahead?
   video: https://player.vimeo.com/external/316865720.hd.mp4?s=6f71d09051cc250a817ce553ae063f19c849e2b2&profile_id=175&download=1
-  loadingImg: 
+  loadingImg:
 - question: What type of information would help you make decisions about your future?
   video: https://player.vimeo.com/external/316865720.hd.mp4?s=6f71d09051cc250a817ce553ae063f19c849e2b2&profile_id=175&download=1
-  loadingImg: 
+  loadingImg:
 - question: What is most important for you to have a good quality of life? What abilities
     or functions are so critical to your life that you can’t imagine living without?
   video: 
-  loadingImg: 
+  loadingImg:
 - question: If your health situation worsens, what are your most important goals?
   video: 
-  loadingImg: 
+  loadingImg:
 - question: What are your biggest fears and worries about the future of your illness?
   video: 
-  loadingImg: 
+  loadingImg:
 - question: What types of medical care do you NOT want?
   video: 
-  loadingImg: 
+  loadingImg:
 - question: Who looks at the world through your eyes? Who would you trust to make
     your medical decisions?
   video: 
-  loadingImg: 
+  loadingImg:
 - question: If you become sicker, how much are you willing to go through for the possibility
     of gaining more time? Do you prioritize more time or quality of life?
   video: 
-  loadingImg: 
+  loadingImg:
 - question: How much does your family know about your priorities and wishes?
   video: 
-  loadingImg: 
+  loadingImg:
 healthcareAgentInfo:
 - Name
 - Relationship
