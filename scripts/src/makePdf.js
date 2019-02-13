@@ -35,9 +35,11 @@ let createPDF = function () {
   doc.setFontSize(fontSize);
 
   // Add logo
-  let logoHeight = 25;
-  let logoWidth = 146;
-  doc.addImage(logoImgDataURL, 'PNG', margin, margin, logoWidth, logoHeight);
+  let logoHeight = 30;
+  let logoWidth = 140;
+  let logoTopMargin = margin;
+  let logoLeftMargin = (595 - logoWidth) / 2;
+  doc.addImage(logoImgDataURL, 'PNG', logoLeftMargin, logoTopMargin , logoWidth, logoHeight);
   verticalOffset += logoHeight;
   skipLine(3);
 
@@ -45,7 +47,7 @@ let createPDF = function () {
   doc.text(date, margin, verticalOffset);
   skipLine(2);
 
-  let dearDoctor = "Dear Doctor " + doctorName + ",";
+  let dearDoctor = "Dear " + doctorName + ",";
   doc.text(dearDoctor, margin, verticalOffset);
   skipLine(2);
 
