@@ -19,10 +19,12 @@
   {% include sidebar.html %}
   {% include audioPlayer.html %}
   <div id="introArea">
-    <p>{{ page.intro.paragraph }}</p>
+    {% for p in page.intro.paragraphs %}
+    <p>{{ p }}</p>
+    {% endfor %}
     <p class="quote">{{ page.intro.quote }}</p>
     <p>{{ page.intro.ask }}</p>
-    <button class="button" onclick="startQuestions()">{{ page.intro.yesButton }}</button>
+    <button class="button" onclick="startQuestions()">{{ page.intro.buttonText }}</button>
   </div>
   <div id="questionsArea">
     {% for question in page.questions %}

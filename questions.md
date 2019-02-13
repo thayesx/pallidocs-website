@@ -5,10 +5,12 @@ audio:
   playText: 'Play music by Andy Stavas: SOLO PIANO'
   pauseText: Pause music
 intro:
-  paragraph: Thinking about what matters most in your life and sharing your hopes
+  paragraph: 
+  - Thinking about what matters most in your life and sharing your hopes
     and fears will give you more control over the care you receive in the future.
     It will also help your loved ones to make decisions for you if you can’t make
-    them at some point down the road.<br><br> This is the beginning of an ongoing
+    them at some point down the road.
+  - This is the beginning of an ongoing
     discussion, however, we believe that individuals  who think about what is important
     to them often feel more control of their situation, feel less anxious and reach
     a sense of peace.
@@ -17,7 +19,7 @@ intro:
   ask: 'Would you feel comfortable taking a few minutes to document your goals and
     wishes?<br><br>PLEASE NOTE: If you exit this section of the website before completing
     and downloading the questionnaire, your answers will NOT be saved.'
-  yesButton: 'Yes'
+  buttonText: 'Yes'
 questions:
 - question: What is your understanding now of where you are with your illness?
   video: https://player.vimeo.com/external/316859577.hd.mp4?s=545d4967e86c91e7b73b43f83baca7c16ddae0a5&profile_id=175&download=1
@@ -52,17 +54,17 @@ questions:
 - question: How much does your family know about your priorities and wishes?
   video: https://player.vimeo.com/external/316906698.hd.mp4?s=5dc952073aad39b45f8eb46b96f1c964a023468b&profile_id=175&download=1
   loadingImg: 
+prevButtonText: Previous
+nextButtonText: Next
+finishText: Would you like to receive a copy of your reflections to have and share
+  with your loved ones and your doctor?
+downloadButtonText: Download form
+healthcareAgentText: Who looks at the world through your eyes? Which individual would
+  you trust to make your medical decisions or be your power of attorney?
 healthcareAgentInfo:
 - Name
 - Relationship
 - Address
 - Contact number
-healthcareAgentText: Who looks at the world through your eyes? Which individual would
-  you trust to make your medical decisions or be your power of attorney?
-finishText: Would you like to receive a copy of your reflections to have and share
-  with your loved ones and your doctor?
-prevButtonText: Previous
-nextButtonText: Next
-downloadButtonText: Download form
 
 ---
