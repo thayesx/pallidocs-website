@@ -5,7 +5,7 @@ audio:
   playText: 'Play music by Andy Stavas: SOLO PIANO'
   pauseText: Pause music
 intro:
-  paragraph: 
+  paragraphs: 
   - Thinking about what matters most in your life and sharing your hopes
     and fears will give you more control over the care you receive in the future.
     It will also help your loved ones to make decisions for you if you can’t make

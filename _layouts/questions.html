@@ -20,7 +20,7 @@
   {% include audioPlayer.html %}
   <div id="introArea">
     {% for p in page.intro.paragraphs %}
-    <p>{{ p }}</p>
+    <p>{{ p }}</p>{% if forloop.last == false %}<br>{% endif %}
     {% endfor %}
     <p class="quote">{{ page.intro.quote }}</p>
     <p>{{ page.intro.ask }}</p>
