@@ -37,7 +37,7 @@ questions:
   video: https://player.vimeo.com/external/317161586.hd.mp4?s=b8c403c6cdfc8bae477dab08a486ae938c22ab48&profile_id=175
   loadingImg: 
 - question: What are your biggest fears and worries about the future of your illness?
-  video: https://player.vimeo.com/external/316901045.hd.mp4?s=90f871b8f120098fbce9ce890ee1af1d39642182&profile_id=175&download=1
+  video: https://player.vimeo.com/external/317162011.hd.mp4?s=ddd65beb5f909763c91ce6f57fe916dd9c0f1679&profile_id=175
   loadingImg: 
 - question: What types of medical care do you NOT want?
   video: https://player.vimeo.com/external/316909153.hd.mp4?s=680417e03c788642f8b0258bb23de2eb309efc07&profile_id=175&download=1
