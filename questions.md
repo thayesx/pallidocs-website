@@ -51,7 +51,7 @@ questions:
   video: https://player.vimeo.com/external/317163839.hd.mp4?s=1e9235e55c00ffb4c3a67df9f46de72ee29cc74a&profile_id=175
   loadingImg: 
 - question: How much does your family know about your priorities and wishes?
-  video: https://player.vimeo.com/external/316906698.hd.mp4?s=5dc952073aad39b45f8eb46b96f1c964a023468b&profile_id=175&download=1
+  video: https://player.vimeo.com/external/317164327.hd.mp4?s=da1fdb4ef54392142724c1f8870c5f7bf40e9239&profile_id=175
   loadingImg: 
 prevButtonText: Previous
 nextButtonText: Next
