@@ -20,5 +20,5 @@ markdown: kramdown
 sass:
   style: compressed
   sass_dir: css
-exclude: ["package.json", "package-lock.json", "node_modules", ".sass-cache", "gulpfile.js", "scripts/src"]
+exclude: ["package.json", "package-lock.json", "node_modules", ".sass-cache", "gulpfile.js", "Gemfile", "Gemfile.lock", "scripts/src"]
 environment: production

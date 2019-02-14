@@ -1,40 +1,49 @@
 ---
 ---
+@import "colors";
 @import "defaults";
 
-$light: #ebdec9;
-$lightTrans: rgba(235, 222, 201, .4);
+$mobileMenuHeight: 48px;
 
-$dark1: rgba(95, 75, 56, 1);
+html {
+  background: whitesmoke;
+  &.dark {
+    background: $dark0_1;
+  }
+}
 
-$dark0: rgba(12, 11, 8, 1);
-$dark0_70: rgba(12, 11, 8, .7);
-$dark0Trans: rgba(12, 11, 8, 0);
-
-$videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 100%);
-
-#backgroundVideo {
+.backgroundVideo {
   position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
   pointer-events: none;
   height: 100%;
   width: 100%;
   video {
+    .questionsPage & {
+      background: whitesmoke;
+    }
     position: absolute;
     top: 50%; 
     left: 50%;
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    min-width: 100%; 
-    min-height: 110%; 
-    width: auto; 
-    height: auto;
+    height: 100%;
+    min-width: 100%;
+    // Requires all videos to be 16:9 ratio
+    width: 177.77777778vh; // 100 * 16 / 9
+    min-height: 56.25vw; // 100 * 9 / 16
     z-index: -10; 
     overflow: hidden;
     @include desktopOnly;
   }
-  img {
+  .mobileBackgroundImg {
     @include mobileOnly;
-    height: 100%;
+    min-height: 100%;
+    min-width: 100vw;
+    object-fit: cover;
+    object-position: center;
     margin: 0 auto;
   }
   &.hide {
@@ -51,9 +60,8 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   background: url("../assets/downArrow.svg");
   background-repeat: no-repeat;
   background-position: center;
-  left: 50%;
-  margin-left: -19px;
   padding: 4px;
+  left: calc(50% - 19px);
   opacity: .5;
   cursor: pointer;
   &:hover {
@@ -66,7 +74,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     pointer-events: none;
   }
   @include breakpoint(l) {
-    margin-left: -24px;
+    left: calc(50% - 24px);
     width: 48px;
     height: 48px;
     bottom: 4%;
@@ -94,15 +102,21 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     width: 80%;
     height: 60px;
     margin-bottom: 20px;
-    background-image: url("../assets/logo1.svg");
+    background-image: url("../assets/logo1_dark.svg");
     background-size: contain;
     background-position: bottom left;
     background-repeat: no-repeat;
+    .dark & {
+      background-image: url("../assets/logo1_light.svg");
+    }
+    @include breakpoint(s) {
+      background-image: url("../assets/logo1_light.svg");
+    }
   }
   .mobileMenu {
     display: none;
     opacity: 0;
-    background-image: url("../assets/hamburger.svg");
+    background-image: url("../assets/menu.svg");
     background-size: contain;
     background-position: bottom;
     background-repeat: no-repeat;
@@ -127,12 +141,12 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       @include fontSize3;
       width: 100%;
       letter-spacing: 2px;
-      color: $light;
-      .questionsPage &, .contact & {
-        color: $dark0_70;
-        @include breakpoint(s) {
-          color: $light;
-        }
+      color: $dark0_70;
+      .dark & {
+        color: $light;
+      }
+      @include breakpoint(s) {
+        color: $light;
       }
     }
     &:hover {
@@ -169,11 +183,11 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       width: 70%;
     }
     &.shrink {
-      padding-top: 48px;
       width: 100%;
+      padding-top: $mobileMenuHeight;
+      height: $mobileMenuHeight;
       background-color: $dark0_70;
       @include animate(background-color, 4000ms);
-      height: 48px;
       overflow: hidden;
       .logo {
         left: 60px;
@@ -190,7 +204,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       }
       &.expanded {
         height: 280px;
-        background-color: $dark0;
+        background-color: $dark0_1;
         .item {
           opacity: 1;
         }
@@ -199,6 +213,48 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   }
 }
 
+#audio {
+  position: fixed;
+  left: 40px;
+  bottom: 15px;
+  z-index: 100;
+  opacity: .6;
+  cursor: pointer;
+  &:hover {
+    opacity: .75;
+  }
+  #btnPlayPause, #playText, #pauseText {
+    vertical-align: middle;
+  }
+  #btnPlayPause {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+  }
+  &.isPlaying {
+    #playText {display: none};
+    #pauseText {display: inline-block};
+    #btnPlayPause {background: url("../assets/pause_dark.svg")};
+    .dark & {
+      color: $light;
+      #btnPlayPause {background: url("../assets/pause_light.svg")};
+    }
+  }
+  &.isPaused {
+    #playText {display: inline-block};
+    #pauseText {display: none};
+    #btnPlayPause {background: url("../assets/play_dark.svg")};
+    .dark & {
+      color: $light;
+      #btnPlayPause {background: url("../assets/play_light.svg")};
+    }
+  }
+  @include breakpoint(m) {
+    display: none;
+  }
+}
+
+
 .button, button {
   display: block;
   cursor: pointer;
@@ -206,7 +262,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   min-width: 100px;
   width: 160px;
   background: $light;
-  color: $dark0;
+  color: $dark0_1;
   text-align: center;
   padding: 8px;
   border-radius: 2px;
@@ -219,16 +275,11 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   height: auto;
   width: 100%;
   z-index: 1;
-  .videoGrade, #colorChange1, #colorChange2 {
+  #colorChange1, #colorChange2 {
     position: fixed;
     top: 0;
     width: 100%;
     height: 100vh;
-  }
-  .videoGrade {
-    background-color: $dark1;
-    // mix-blend-mode: multiply;
-    opacity: .35;
   }
   #colorChange1 {
     opacity: 0;
@@ -236,7 +287,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   }
   #colorChange2 {
     opacity: 0;
-    background: $dark0;
+    background: $dark0_1;
   }
   .container {
     position: relative;
@@ -310,7 +361,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         opacity: 0;
         cursor: pointer;
         .play {
-          background: url("../assets/play.svg");
+          background: url("../assets/play_preview.svg");
           background-size: contain;
           position: absolute;
           width: 60px;
@@ -359,7 +410,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         z-index: 10;
         width: 100vw;
         height: 100vh;
-        background: $dark0;
+        background: $dark0_1;
         iframe {
           display: block;
           width: 86vw;
@@ -424,8 +475,12 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     display: flex;
     align-items: center;
     .formArea {
+      .botField {
+        visibility: hidden;
+        height: 0;
+      }
       width: 100%;
-      color: $dark0_70;
+      color: $dark0_1;
       h2 {margin-bottom: 30px;}
       h4 {margin: 0; font-weight: 400;}
       form {
@@ -451,7 +506,7 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   display: flex;
   align-items: center;
   height: 100vh;
-  background: whitesmoke;
+  background: transparent;
   &.intro {
     #introArea {display: block;}
     #questionsArea {display: none;}
@@ -481,6 +536,12 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   .button {
     margin: 20px auto;
   }
+  @include breakpoint(s) {
+    padding: 20px 10px;
+    .button {
+      margin-bottom: 40px;
+    }
+  }
 }
 #introArea, #questionsArea, #personalInfoArea {
   position: relative;
@@ -498,11 +559,18 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     height: 100%;
     text-align: center;
     pointer-events: none;
-    .question, .counter, .answer {
+    .question, .counter, .answer, .backgroundVideo {
       opacity: 0; 
       pointer-events: none;
       @include transition(all 500ms);
       @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+    }
+    .backgroundVideo {
+      video {opacity: 0;}
+      &.loaded {
+        .loadingImg {display: none;}
+        video {opacity: 1;}
+      }  
     }
     .question {
       margin: 15px auto;
@@ -538,14 +606,14 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     }
     // Current question
     &.show {
-      .question, .counter, .answer {
+      .question, .counter, .answer, .backgroundVideo {
         opacity: 1; 
         pointer-events: all;
         @include transition(all 500ms);
         @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
       }
       &.showAskFirst {
-        .question, .counter, .answer {
+        .question, .counter, .answer, .backgroundVideo {
           opacity: 0; 
           pointer-events: none;
           @include transition(all 500ms);
@@ -587,25 +655,25 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       &.next {
         right: 0;
       }
-      &.disabled {
-        pointer-events: none;
-        opacity: .6;
+      &.hide {
+        visibility: hidden;
       }
     }
   }
   @include breakpoint(s) {
     width: 100%;
     max-height: none;
-    height: 85vh;
+    height: calc(100% - 48px);
     align-self: flex-end;
     .step {
-      padding: 0 10px;
+      padding: 20px 10px 30px;
       width: 100%;
       .question {@include fontSize3; margin: 10px auto 0;}
     }
     #formsButtons {
       width: 100%;
-      bottom: 40px;
+      bottom: 50px;
+      padding-bottom: 30px;
       .button {
         max-width: 40%;
         &.prev {left: 10px;}
@@ -648,6 +716,10 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
         text-align: center;
         opacity: 0;
         color: $dark1;
+        @include breakpoint(s) {
+          opacity: 1;
+          text-align: left;
+        }
       }
     }
     .finish {
@@ -661,7 +733,9 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
       }
     }
     &.skipped {
-      .content {opacity: .6;}
+      .reviewQ {
+        opacity: .6;
+      }
       .reviewQ {font-style: italic;}
     }
     &:hover {
@@ -680,6 +754,10 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
     width: auto;
     margin: 40px auto;
   }
+  @include breakpoint(s) {
+    width: 100%;
+    padding: 30px 10px;
+  }
 }
 #personalInfoArea {
   display: none;
@@ -696,5 +774,9 @@ $videoOverlay: linear-gradient(to top, $dark0 0%, $dark0Trans 85%, $dark0Trans 1
   .finish {
     width: auto;
     margin: 40px auto;
+  }
+  @include breakpoint(s) {
+    width: 100%;
+    padding: 30px 10px;
   }
 }

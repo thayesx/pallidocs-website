@@ -48,13 +48,13 @@ let addClassOnScroll = function(target, startFromTop, className, config) {
   let distanceFromTop = scrollReference? (scrollReference.offset().top - window.scrollY) : 0;
 
   // Determine if class should be removed on reverse scroll
-  let remove = false;
-  if (config && config.remove) remove = true;
+  let removeOnReverse = false;
+  if (config && config.removeOnReverse) removeOnReverse = true;
   
   // At distanceFromTop, add class to target if target doesn't already have class
   if (distanceFromTop <= startFromTop && target[0] && !target[0].className.includes(className))
     target.addClass(className);
-  else if (distanceFromTop > startFromTop && target[0] && target[0].className.includes(className) && remove)
+  else if (distanceFromTop > startFromTop && target[0] && target[0].className.includes(className) && removeOnReverse)
     target.removeClass(className);
 }
 
@@ -67,18 +67,18 @@ let fadeInParagraphs = function() {
   addClassOnScroll(p4, startFromTop, "show");
   addClassOnScroll(p5, startFromTop, "show");
   addClassOnScroll(text, startFromTop, "show");
-  addClassOnScroll(sidebar, startFromTop, "shrink", {reference: p1, remove: true});
-  addClassOnScroll(downArrow, startFromTop, "hide", {reference: p1, remove: true});
+  addClassOnScroll(sidebar, startFromTop, "shrink", {reference: p1, removeOnReverse: true});
+  addClassOnScroll(downArrow, startFromTop, "hide", {reference: p1, removeOnReverse: true});
 }
 
-// Fade in color overlay over video
+// Fade in color overlay
 let fadeInOverlay1 = function() {
   let startFromTop = window.innerHeight;
   let slowness = 400;
   transitionOpacityOnScroll(colorChange1, startFromTop, slowness, p1);
 }
 
-// Fade in color overlay over background video
+// Fade in second color overlay
 let fadeInOverlay2 = function() {
   let startFromTop = window.innerHeight;
   let slowness = 400;
@@ -126,7 +126,7 @@ let updateTheater = function(id, show) {
   let iframe;
   // Show theater
   if (show) {
-    if (!$(theater).hasClass("show")) $(theater).addClass(" show");
+    if (!$(theater).hasClass("show")) $(theater).addClass("show");
   } 
   // Hide theater
   else {
@@ -138,21 +138,21 @@ let updateTheater = function(id, show) {
 }
 
 // Stagger updates made on scroll to reduce load
-setInterval(function() {
+setInterval(() => {
   if(didScroll) {
     didScroll = false;
   }
 }, 100);
 
 // Call functions onscroll
-$( window ).scroll(function() {
+$( window ).scroll(() => {
   // Handle didScroll stagger
   if (!didScroll){
     didScroll = true;
   }
 
   // Handle onScroll DOM updates
-  addClassOnScroll(backgroundVideo, 0, "hide", {reference: filmsSection, remove: true});
+  addClassOnScroll(backgroundVideo, 0, "hide", {reference: filmsSection, removeOnReverse: true});
   fadeInOverlay1();
   fadeInParagraphs();
 
@@ -163,7 +163,7 @@ $( window ).scroll(function() {
   }
 });
 
-$( document ).ready(function() {
+$( document ).ready(() => {
   backgroundVideo = $("#backgroundVideo");
   colorChange1 = $("#colorChange1");
   colorChange2 = $("#colorChange2");
@@ -185,3 +185,8 @@ $( document ).ready(function() {
   window.scroll(0, 0);
   if (window.location.search == "?films") moveTo("films", 40);
 });
+
+let videoLoaded = function (id) {
+  let video = $("#" + id);
+  video.addClass("loaded");
+}

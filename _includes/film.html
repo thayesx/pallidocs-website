@@ -2,10 +2,9 @@
   <div class="filmHeader" onclick="updateTheater('{{ filmId }}', true)">
     <div class="play"></div>
     <div class="filmOverlay"></div>
-    <video muted loop class="preview" id="{{ filmId }}">
+    <video muted loop preload="auto" class="preview" id="{{ filmId }}">
       <source src="assets/{{ film.previewVideo }}" type="video/mp4">
     </video>
-    <!-- <div class="image" style="background-image: url('assets/{{ film.image }}')"></div> -->
   </div>
   <div class="text">
     <h1>{{ film.title }}</h1>

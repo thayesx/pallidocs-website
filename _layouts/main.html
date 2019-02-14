@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   {% include head.html %}
 </head>
 <body>
   {% include sidebar.html %}
+  {% include audioPlayer.html %}
+  {% assign videoUrl = page.backgroundVideo %}
+  {% assign mobileBackgroundImg = page.mobileBackgroundImg %}
+  {% assign loadingImg = page.loadingImg %}
   {% include videoBackground.html %}
   <div id="downArrow" onclick="scrollArrow()"></div>
   <div class="overlay">
-    <div class="videoGrade"></div>
     <div id="colorChange1"></div>
     <div id="colorChange2"></div>
     <div class="container">

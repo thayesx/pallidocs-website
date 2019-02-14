@@ -2,7 +2,7 @@ let questionsLength;
 let page;
 let logoImgDataURL;
 
-$(document).ready(function () {
+$(document).ready(() => {
   page = $(".questionsPage");
   page.addClass("intro");
   $('#sidebar').addClass("shrink");
@@ -66,13 +66,13 @@ let qid = "1";
 let thisQ;
 
 // Update question visibility each time question is changed
-let updateQuestionView = function (a) {
+let updateQuestionView = function (dir) {
   // Define current question and make invisible
   thisQ = $("#step" + qid);
   thisQ.removeClass("show");
 
   // If Next is pressed and thisQ isn't last question
-  if (a == "next") {
+  if (dir == "next") {
 
     // If last question, go to review and return
     if (qid == questionsLength) {
@@ -82,7 +82,7 @@ let updateQuestionView = function (a) {
     } else if (qid < questionsLength) {
       qid++ // If Prev is pressed and thisQ isn't first question, decrement qid;
     }
-  } else if (a == "prev" && qid > 1) 
+  } else if (dir == "prev" && qid > 1) 
     qid--;
   
   // If second to last question, update nextButton text, else use default text
@@ -92,8 +92,13 @@ let updateQuestionView = function (a) {
   else 
     nextButton.innerHTML = "Next";
   
+  let prevButton = $("#prevButton");
+  if (qid == 1)
+    prevButton.addClass("hide");
+  else if (prevButton.hasClass("hide")) prevButton.removeClass("hide");
+  
   // Make nextQ visible with delay to account for thisQ fadeOut
-  setTimeout(function () {
+  setTimeout(() => {
     let nextQ = $("#step" + qid);
     nextQ.addClass("show");
   }, 600);
@@ -110,7 +115,7 @@ let updateAskFirst = function (a) {
   // If no, show ifNo text and go to next question;
   if (a == "no") {
     thisQ.addClass("noClicked");
-    setTimeout(function () {
+    setTimeout(() => {
       thisQ.removeClass("noClicked");
       updateQuestionView("next");
     }, 3000);
@@ -137,7 +142,7 @@ let prepareReview = function () {
   }
 
   // Prepare logo file for pdf generating
-  let logoImgUrl = "assets/logo_1_dark.png";
+  let logoImgUrl = "assets/logo1_dark_print.png";
   toDataURL(logoImgUrl);
 }
 

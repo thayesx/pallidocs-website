@@ -10,6 +10,7 @@ let createPDF = function () {
   let questions = $(".question");
   let answers = $(".answer");
   let yourName = $("#yourName")[0].value;
+  let doctorName = $("#doctorName")[0].value;
   let healthcareAgentInput = $(".healthcareAgentInfo");
 
   // Combine question and answer strings into single text body
@@ -34,9 +35,11 @@ let createPDF = function () {
   doc.setFontSize(fontSize);
 
   // Add logo
-  let logoHeight = 25;
-  let logoWidth = 146;
-  doc.addImage(logoImgDataURL, 'PNG', margin, margin, logoWidth, logoHeight);
+  let logoHeight = 30;
+  let logoWidth = 140;
+  let logoTopMargin = margin;
+  let logoLeftMargin = (595 - logoWidth) / 2;
+  doc.addImage(logoImgDataURL, 'PNG', logoLeftMargin, logoTopMargin , logoWidth, logoHeight);
   verticalOffset += logoHeight;
   skipLine(3);
 
@@ -44,7 +47,7 @@ let createPDF = function () {
   doc.text(date, margin, verticalOffset);
   skipLine(2);
 
-  let dearDoctor = "Dear Doctor _________________________________,";
+  let dearDoctor = "Dear " + doctorName + ",";
   doc.text(dearDoctor, margin, verticalOffset);
   skipLine(2);
 

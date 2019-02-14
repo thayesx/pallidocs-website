@@ -8,7 +8,10 @@
   <div class="container">
     <div class="formArea">
       <h2>{{ page.contactMessage }}</h2>
-      <form name="contact" netlify>
+      <form name="contact" netlify-honeypot="bot-field" netlify>
+        <p class="botField">
+          <label>Don't type in this field: <input name="bot-field" /></label>
+        </p>
         <h4>Name</h4>
         <input type="text" name="name" />
         <h4>Email</h4>

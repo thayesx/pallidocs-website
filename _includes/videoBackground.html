@@ -1,6 +1,13 @@
-<div id="backgroundVideo">
-  <video autoplay muted loop >
-    <source src="assets/{{ page.backgroundVideo }}" type="video/mp4">
+<div id="backgroundVideo{{ videoId }}" class="backgroundVideo">
+  {% if videoUrl %}
+  <video autoplay muted loop oncanplay="videoLoaded('backgroundVideo{{ videoId }}')">
+    <source src="{{ videoUrl }}" type="video/mp4">
   </video>
-  <img src="assets/{{ page.backgroundImage }}">
+  {% endif %}
+  {% if mobileBackgroundImage %}
+  <img class="mobileBackgroundImg" src="assets/{{ mobileBackgroundImage }}">
+  {% endif %}
+  {% if loadingImg %}
+  <img class="loadingImg" src="assets/{{ loadingImg }}">
+  {% endif %}
 </div>

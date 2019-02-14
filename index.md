@@ -1,20 +1,23 @@
 ---
 layout: main
-backgroundVideoLrg:
-backgroundVideo: bgVideo1440-trimmed-sm.mp4
-backgroundImageLrg:
-backgroundImage: backgroundImage1.png
+backgroundImage: "/assets/backgroundImage1.png"
+backgroundVideo: https://player.vimeo.com/external/317148607.hd.mp4?s=a2e9cd5cbb41d0f9c61e2abf99488147eddc9261&profile_id=175
 paragraphs:
-- "The emotions that come with a serious diagnosis can be hard to manage. It's an experience that will force anyone to reckon with their goals in life—while each moment can shift the balance between uncertainty and grace."
-- "But with crisis comes an opportunity to find new meaning. Old wounds may become new openings. One can see the world through the eyes of the heart."
-- "These films are meant to honor a community built on strength and fellowship. They're intended to remind each of us that we're never alone."
-- "We hope they can inspire conversation, open doors to new emotions, and remind us that joy can always be found in unexpected ways."
-- "Sincerely,<br><br> John Stavas<br> Cody Huff<br> Sara Martin, MD<br> Mohana Karlekar, MD<br> Mark Stavas, MD"
+- The emotions that come with a serious diagnosis can be hard to manage. It's an experience
+  that will force anyone to reckon with their goals in life—while each moment can
+  shift the balance between uncertainty and grace.
+- But with crisis comes an opportunity to find new meaning. Old wounds may become
+  new openings. One can see the world through the eyes of the heart.
+- These films are meant to honor a community built on strength and fellowship. They're
+  intended to remind each of us that we're never alone.
+- We hope they can inspire conversation, open doors to new emotions, and remind us
+  that joy can always be found in unexpected ways.
+- Sincerely,<br><br> John Stavas<br> Cody Huff<br> Sara Martin, MD<br> Mohana Karlekar,
+  MD<br> Mark Stavas, MD
 films:
 - title: A Modicum of Joy
   previewVideo: aModicumOfJoyPreview.mp4
-  embedURL: "https://player.vimeo.com/video/254395573"
-  image: modicumOfJoy2.png
+  embedURL: https://player.vimeo.com/video/254395573
   description: 'A Modicum Of Joy is a modern film that explores the intersection of
     art and medicine in the face of a serious illness. The documentary follows Nashville
     photographer Fred Dusel II as he considers the role of palliative care in managing
@@ -25,8 +28,7 @@ films:
     <br>Director of Photography: Cody Huff'
 - title: Intentional Healing
   previewVideo: intentionalHealingPreview.mp4
-  embedURL: "https://player.vimeo.com/video/254431048"
-  image: intentionalHealing.png
+  embedURL: https://player.vimeo.com/video/254431048
   description: Intentional Healing is a restorative documentary that follows the famed
     Nashville music producer Jesse Boyce as he contemplates his own mortality following
     a diagnosis of terminal prostate cancer. He returns to the studio as an artist,
