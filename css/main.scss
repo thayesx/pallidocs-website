@@ -88,7 +88,7 @@ html {
   position: fixed;
   top: 0;
   height: 100%;
-  z-index: 10;
+  z-index: 100;
   padding-top: 5vh;
   padding-left: 40px;
   width: 300px;
@@ -113,6 +113,7 @@ html {
       background-image: url("../assets/logo1_light.svg");
     }
     @include breakpoint(s) {
+      // max-width: 80px;
       background-image: url("../assets/logo1_light.svg");
     }
   }
@@ -158,7 +159,7 @@ html {
       opacity: 1;
     }
   }
-  &.shrink {
+  &.shrink, .sidebarShrink & {
     width: 200px;
     padding-top: 2vh;
     @include duration(400ms);
@@ -177,15 +178,15 @@ html {
   @include breakpoint(s) {
     width: 100%;
     padding-left: 15px;
-    padding-top: 110px;
+    padding-top: $mobileMenuHeight + 40px;
     .logo {
       margin: 0;
       left: 24px;
-      top: 5vh;
+      top: $mobileMenuHeight;
+      height: 32px;
       position: absolute;
-      width: 70%;
     }
-    &.shrink {
+    &.shrink, .sidebarShrink & {
       width: 100%;
       padding-top: $mobileMenuHeight;
       height: $mobileMenuHeight;
@@ -451,7 +452,22 @@ html {
           left: 0;
         }
       }
+      .image {
+        background-position: center;
+        background-size: cover;
+        display: block;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        opacity: .1;
+      }
       &.show {
+        .image {
+          transition-duration: 1000ms;
+          transition-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+          margin-top: 0px;
+          opacity: .9;
+        }
         .filmHeader {
           @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
           @include duration(1000ms);
@@ -486,6 +502,7 @@ html {
         visibility: hidden;
         height: 0;
       }
+      position: relative;
       width: 100%;
       color: $dark0_1;
       h2 {margin-bottom: 30px;}
@@ -503,6 +520,11 @@ html {
       }
       textarea {
         width: 100%;
+      }
+      @include breakpoint(s) {
+        padding: 20px 10px;
+        // width: calc(100% - 20px);
+        input, textarea {min-width: unset; width: 100%;}
       }
     }
   }
@@ -537,28 +559,6 @@ html {
   }
 }
 
-#introArea {
-  display: none;
-  @include transition(all 500ms);
-  @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
-  .quote {
-    padding: 45px;
-    font-style: italic;
-  }
-  .note {
-    @include fontSize1;
-    color: $dark0_70;
-  }
-  .button {
-    margin: 20px auto;
-  }
-  @include breakpoint(s) {
-    padding: 20px 10px;
-    .button {
-      margin-bottom: 40px;
-    }
-  }
-}
 #introArea, #questionsArea, #personalInfoArea {
   position: relative;
   width: 640px;
@@ -702,6 +702,31 @@ html {
         &.prev {left: 10px;}
         &.next {right: 10px;}
       }
+    }
+  }
+}
+#introArea {
+  display: none;
+  @include transition(all 500ms);
+  @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
+  .quote {
+    padding: 45px;
+    font-style: italic;
+  }
+  .note {
+    @include fontSize1;
+    color: $dark0_70;
+  }
+  .button {
+    margin: 20px auto;
+  }
+  @include breakpoint(s) {
+    margin-top: $mobileMenuHeight + 20px;
+    padding: 20px 10px;
+    align-self: flex-start;
+    height: auto;
+    .button {
+      margin-bottom: 40px;
     }
   }
 }

@@ -5,7 +5,6 @@ let logoImgDataURL;
 $(document).ready(() => {
   page = $(".questionsPage");
   page.addClass("intro");
-  $('#sidebar').addClass("shrink");
 
   // Initiate form
   initiateQuestions();

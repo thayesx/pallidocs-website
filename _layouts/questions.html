@@ -15,7 +15,7 @@
   {% endif %}
 </head>
 
-<body class="questionsPage">
+<body class="questionsPage sidebarShrink">
   {% include sidebar.html %}
   {% include audioPlayer.html %}
   <div id="introArea">
@@ -46,6 +46,7 @@
       {% assign videoUrl = question.video %}
       {% assign videoId = forloop.index %}
       {% assign loadingImg = question.loadingImg %}
+      {% assign mobileBackgroundImg = question.mobileBackgroundImg %}
       {% include videoBackground.html %}
     </div>
     {% endfor %}

@@ -52,7 +52,7 @@ Text on intro section of questions page.
 #### Questions
 - **Question:** Question text.
 - **AskFirst:** (_Currently not used_) Will ask the user before displaying a question, giving them the option to skip it. Designed to circumnavigate questions that cover a topic that may be upsetting to some users.
-- **Video/Loading Image:** _Refer to 'Background Videos' note at top._
+- **Video/Loading Image/Mobile Background Image:** _Refer to 'Background Videos' note at top._
 
 #### PrevButtonText/NextButtonText
 The text used on the next/previous buttons.
