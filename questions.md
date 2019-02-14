@@ -34,7 +34,7 @@ questions:
   video: https://player.vimeo.com/external/317161130.hd.mp4?s=fb27df2b58ffab03010b7c39cc2b5b3e198c0c82&profile_id=175
   loadingImg: 
 - question: If your health situation worsens, what are your most important goals?
-  video: https://player.vimeo.com/external/316883594.hd.mp4?s=8fed080f4cede1b4ede27976768383b07948683b&profile_id=175&download=1
+  video: https://player.vimeo.com/external/317161586.hd.mp4?s=b8c403c6cdfc8bae477dab08a486ae938c22ab48&profile_id=175
   loadingImg: 
 - question: What are your biggest fears and worries about the future of your illness?
   video: https://player.vimeo.com/external/316901045.hd.mp4?s=90f871b8f120098fbce9ce890ee1af1d39642182&profile_id=175&download=1
