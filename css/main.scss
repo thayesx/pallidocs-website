@@ -221,14 +221,14 @@ html {
   left: 40px;
   bottom: 15px;
   z-index: 100;
-  opacity: .6;
+  opacity: .8;
   background: $light;
   padding: 4px;
   @include rounded();
   @include fontSize1;
   cursor: pointer;
   &:hover {
-    opacity: .8;
+    opacity: 1;
   }
   #btnPlayPause, #playText, #pauseText {
     vertical-align: middle;
@@ -519,23 +519,28 @@ html {
     #questionsArea {display: none;}
     #personalInfoArea {display: none;}
     #reviewArea {display: none;}
+    #audio {display: none;}
   }
   &.healthcareAgentReview {
     #introArea {display: none;}
     #questionsArea {display: none;}
     #personalInfoArea {display: block;}
     #reviewArea {display: none;}
+    #audio {display: none;}
   }
   &.finalReview {
     display: block;
     #introArea {display: none;}
     #questionsArea {display: none;}
     #reviewArea {display: block;}
+    #audio {display: none;}
   }
 }
 
 #introArea {
   display: none;
+  @include transition(all 500ms);
+  @include transitionTiming(cubic-bezier(0.215, 0.610, 0.355, 1));
   .quote {
     padding: 45px;
     font-style: italic;
@@ -659,6 +664,13 @@ html {
     .button {
       display: block;
       position: absolute;
+      // background: transparent;
+      // color: $dark0_1;
+      // border: 1px solid $dark0_1;
+      opacity: .8;
+      &:hover {
+        opacity: 1;
+      }
       &.next {
         right: 0;
       }
