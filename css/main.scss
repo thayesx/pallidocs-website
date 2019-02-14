@@ -477,6 +477,7 @@ html {
     .formArea {
       .botField {
         visibility: hidden;
+        height: 0;
       }
       width: 100%;
       color: $dark0_1;
