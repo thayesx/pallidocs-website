@@ -18,7 +18,7 @@ Built using **Jekyll** static site generator and **Node** package manager
 ## Background videos
 - **Background Video:** Vimeo embed URL for the 16:9 video to play in the site background.
 - **Loading Image:** This will display in place of the background video while the video is being loaded. Ideally this will be a still of the video's first frame.
-- **Mobile Background Image:** Should be between 2:3 proportion (portrait). This will be used in place of a video when viewing on mobile.
+- **Mobile Background Image:** This will be used in place of a video when viewing on mobile. Should be 3:2 ratio (portrait) with ideal resolution being approximately 900x1800 (most phones are smaller). A bit time consuming, but best practice is to compress the images using something like [compressor.io](www.compressor.io).
 
 ---
 
