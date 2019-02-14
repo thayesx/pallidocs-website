@@ -47,6 +47,7 @@ Text on intro section of questions page.
 - **Quote:** Stylized text following paragraphs.
 - **Ask:** Text right before button that takes the user to the questions view.
 - **ButtonText:** Text displayed on button that takes user to the questions view.
+- **Note:** Small text displayed after button.
 
 #### Questions
 - **Question:** Question text.

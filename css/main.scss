@@ -545,6 +545,10 @@ html {
     padding: 45px;
     font-style: italic;
   }
+  .note {
+    @include fontSize1;
+    color: $dark0_70;
+  }
   .button {
     margin: 20px auto;
   }

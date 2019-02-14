@@ -25,6 +25,9 @@
     <p class="quote">{{ page.intro.quote }}</p>
     <p>{{ page.intro.ask }}</p>
     <button class="button" onclick="startQuestions()">{{ page.intro.buttonText }}</button>
+    {% if page.intro.note %}
+    <br><p class="note">{{ page.intro.note }}</p>
+    {% endif %}
   </div>
   <div id="questionsArea">
     {% for question in page.questions %}
