@@ -15,6 +15,10 @@ html {
   }
 }
 
+body {
+  color: $dark0_1;
+}
+
 .backgroundVideo {
   position: fixed;
   left: 0;
@@ -24,7 +28,7 @@ html {
   height: 100%;
   width: 100%;
   video {
-    .questionsPage & {
+    .reflectionPage & {
       background: whitesmoke;
     }
     position: absolute;
@@ -113,7 +117,6 @@ html {
       background-image: url("../assets/logo1_light.svg");
     }
     @include breakpoint(s) {
-      // max-width: 80px;
       background-image: url("../assets/logo1_light.svg");
     }
   }
@@ -145,6 +148,7 @@ html {
       @include fontSize3;
       width: 100%;
       letter-spacing: 2px;
+      font-variant-ligatures: no-common-ligatures;
       color: $dark0_70;
       .dark & {
         color: $light;
@@ -531,7 +535,7 @@ html {
 }
 
 // Forms experience
-.questionsPage {
+.reflectionPage {
   display: flex;
   align-items: center;
   height: 100vh;
@@ -668,9 +672,6 @@ html {
     .button {
       display: block;
       position: absolute;
-      // background: transparent;
-      // color: $dark0_1;
-      // border: 1px solid $dark0_1;
       opacity: .8;
       &:hover {
         opacity: 1;
@@ -735,6 +736,7 @@ html {
   margin: 0 auto;
   padding: 10vh 0 80px;
   display: none;
+  h2 {text-align: center};
   .reviewStep {
     position: relative;
     margin: 50px 0;

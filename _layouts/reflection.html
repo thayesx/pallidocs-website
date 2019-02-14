@@ -15,7 +15,7 @@
   {% endif %}
 </head>
 
-<body class="questionsPage sidebarShrink">
+<body class="reflectionPage intro sidebarShrink">
   {% include sidebar.html %}
   {% include audioPlayer.html %}
   <div id="introArea">
@@ -56,6 +56,7 @@
     </div>
   </div>
   <div id="reviewArea">
+    <h2>Your answers</h2>
     {% for question in page.questions %}
     <div class="reviewStep">
       <div class="number">{{ forloop.index }}</div>

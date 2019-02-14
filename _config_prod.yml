@@ -7,8 +7,8 @@ url: "http://pallidocs.netlify.com/" # the base hostname & protocol for your sit
 navigation:
 - name: Films
   nav: /?films
-- name: Questions
-  nav: questions
+- name: Reflection
+  nav: reflection
 - name: Contact
   nav: contact
 collections:
@@ -20,5 +20,5 @@ markdown: kramdown
 sass:
   style: compressed
   sass_dir: css
-exclude: ["package.json", "package-lock.json", "node_modules", ".sass-cache", "gulpfile.js", "Gemfile", "Gemfile.lock", "scripts/src"]
+exclude: ["package.json", "package-lock.json", "node_modules", ".sass-cache", "gulpfile.js", "Gemfile", "Gemfile.lock", "scripts/src", "readme"]
 environment: production
