@@ -31,7 +31,7 @@ questions:
   loadingImg: 
 - question: What is most important for you to have a good quality of life? What abilities
     or functions are so critical to your life that you can’t imagine living without?
-  video: https://player.vimeo.com/external/316892162.hd.mp4?s=4e58314de8dc0383b4aeafdc8e69a01ee912834e&profile_id=175&download=1
+  video: https://player.vimeo.com/external/317161130.hd.mp4?s=fb27df2b58ffab03010b7c39cc2b5b3e198c0c82&profile_id=175
   loadingImg: 
 - question: If your health situation worsens, what are your most important goals?
   video: https://player.vimeo.com/external/316883594.hd.mp4?s=8fed080f4cede1b4ede27976768383b07948683b&profile_id=175&download=1
