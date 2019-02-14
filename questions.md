@@ -44,7 +44,7 @@ questions:
   loadingImg: 
 - question: Who looks at the world through your eyes? Who would you trust to make
     your medical decisions?
-  video: https://player.vimeo.com/external/316900628.hd.mp4?s=52169e5b013f35b2644c83b003b6e9d79ccb1014&profile_id=175&download=1
+  video: https://player.vimeo.com/external/317162974.hd.mp4?s=03e91840d9cef82ebbf15087a76017cbc697c29d&profile_id=175
   loadingImg: 
 - question: If you become sicker, how much are you willing to go through for the possibility
     of gaining more time? Do you prioritize more time or quality of life?
