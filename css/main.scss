@@ -92,7 +92,7 @@ body {
   position: fixed;
   top: 0;
   height: 100%;
-  z-index: 100;
+  z-index: 15;
   padding-top: 5vh;
   padding-left: 40px;
   width: 300px;
@@ -454,7 +454,6 @@ body {
           position: fixed;
           top: 0;
           left: 0;
-          z-index: 110;
         }
       }
       .image {
