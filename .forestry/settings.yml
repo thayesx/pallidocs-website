@@ -8,8 +8,8 @@ sections:
   path: index.md
   label: Home page
 - type: document
-  path: questions.md
-  label: Forms page
+  path: reflections.md
+  label: Reflections page
 - type: document
   path: contact.md
   label: Contact page
