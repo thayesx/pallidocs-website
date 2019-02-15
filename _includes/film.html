@@ -3,7 +3,7 @@
     <div class="play"></div>
     <div class="filmOverlay"></div>
     <video muted loop preload="auto" class="preview" id="{{ filmId }}">
-      <source src="assets/{{ film.previewVideo }}" type="video/mp4">
+      <source src="film.previewVideoUrl" type="video/mp4">
     </video>
     <div class="image" style="background-image: url('assets/{{ film.image }}')"></div>
   </div>
@@ -13,7 +13,7 @@
     <p class="subtle">{{ film.extra }}</p>
   </div>
   <div class="theater">
-    <iframe src="{{ film.embedURL }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <iframe src="{{ film.embedUrl }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     <div class="close" onclick="updateTheater('{{ filmId }}')"><span>Back</span></div>
   </div>
 </div>

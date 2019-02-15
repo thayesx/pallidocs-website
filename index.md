@@ -16,9 +16,9 @@ paragraphs:
   MD<br> Mark Stavas, MD
 films:
 - title: A Modicum of Joy
-  previewVideo: aModicumOfJoyPreview.mp4
+  embedUrl: https://player.vimeo.com/video/254395573
+  previewVideo: https://player.vimeo.com/external/317148607.hd.mp4?s=a2e9cd5cbb41d0f9c61e2abf99488147eddc9261&profile_id=175
   image: modicumOfJoy.png
-  embedURL: https://player.vimeo.com/video/254395573
   description: 'A Modicum Of Joy is a modern film that explores the intersection of
     art and medicine in the face of a serious illness. The documentary follows Nashville
     photographer Fred Dusel II as he considers the role of palliative care in managing
@@ -28,9 +28,9 @@ films:
   extra: 'Directed by John Stavas & Dr. Mark Stavas<br> Produced by Dr. Sara F. Martin,
     <br>Director of Photography: Cody Huff'
 - title: Intentional Healing
-  previewVideo: intentionalHealingPreview.mp4
+  embedUrl: https://player.vimeo.com/video/254431048
+  previewVideo: https://player.vimeo.com/external/317148607.hd.mp4?s=a2e9cd5cbb41d0f9c61e2abf99488147eddc9261&profile_id=175
   image: intentionalHealing.png
-  embedURL: https://player.vimeo.com/video/254431048
   description: Intentional Healing is a restorative documentary that follows the famed
     Nashville music producer Jesse Boyce as he contemplates his own mortality following
     a diagnosis of terminal prostate cancer. He returns to the studio as an artist,
