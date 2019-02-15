@@ -18,7 +18,7 @@ films:
 - title: A Modicum of Joy
   previewVideo: aModicumOfJoyPreview.mp4
   image: modicumOfJoy.png
-  embedURL: https://player.vimeo.com/video/254395573
+  embedURL: https://player.vimeo.com/video/317188655
   description: 'A Modicum Of Joy is a modern film that explores the intersection of
     art and medicine in the face of a serious illness. The documentary follows Nashville
     photographer Fred Dusel II as he considers the role of palliative care in managing
