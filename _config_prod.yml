@@ -7,8 +7,8 @@ url: "http://pallidocs.netlify.com/" # the base hostname & protocol for your sit
 navigation:
 - name: Films
   nav: /?films
-- name: Reflection
-  nav: reflection
+- name: Reflections
+  nav: reflections
 - name: Contact
   nav: contact
 collections:

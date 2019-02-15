@@ -3,7 +3,7 @@ let page;
 let logoImgDataURL;
 
 $(document).ready(() => {
-  page = $(".reflectionPage");
+  page = $(".reflectionsPage");
 
   // Initiate form
   initiateQuestions();

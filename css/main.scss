@@ -28,7 +28,7 @@ body {
   height: 100%;
   width: 100%;
   video {
-    .reflectionPage & {
+    .reflectionsPage & {
       background: whitesmoke;
     }
     position: absolute;
@@ -535,7 +535,7 @@ body {
 }
 
 // Forms experience
-.reflectionPage {
+.reflectionsPage {
   display: flex;
   align-items: center;
   height: 100vh;
