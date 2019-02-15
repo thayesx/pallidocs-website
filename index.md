@@ -43,7 +43,7 @@ films:
 - title: Harold & Bev
   previewVideo: ''
   image: "/assets/091018_H&B_VANDY_1080p.00_12_49_21.Still001.jpg"
-  embedURL: https://vimeo.com/317339967/f63708e98b
+  embedURL: https://player.vimeo.com/video/317339967
   description: N/A
   extra: Directed by John Stavas <br> Produced by Mark Stavas <br> Director of Photography
     Cody Huff <br> Edited by John Stavas & Cody Huff
