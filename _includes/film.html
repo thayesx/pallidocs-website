@@ -3,7 +3,7 @@
     <div class="play"></div>
     <div class="filmOverlay"></div>
     <video muted loop preload="auto" class="preview" id="{{ filmId }}">
-      <source src="film.previewVideoUrl" type="video/mp4">
+      <source src="{{ film.previewVideoUrl }}" type="video/mp4">
     </video>
     <div class="image" style="background-image: url('assets/{{ film.image }}')"></div>
   </div>
