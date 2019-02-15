@@ -17,7 +17,7 @@ paragraphs:
 films:
 - title: A Modicum of Joy
   embedURL: https://player.vimeo.com/video/317188655
-  previewVideoUrl: https://player.vimeo.com/external/317148607.hd.mp4?s=a2e9cd5cbb41d0f9c61e2abf99488147eddc9261&profile_id=175
+  previewVideoUrl: https://player.vimeo.com/external/317381260.hd.mp4?s=ff0acd26c7d25dd46171432b9d68a8f841ad92f5&profile_id=175
   image: modicumOfJoy.png
   description: 'A Modicum Of Joy is a modern film that explores the intersection of
     art and medicine in the face of a serious illness. The documentary follows Nashville
@@ -30,7 +30,7 @@ films:
 - title: Harold & Bev
   embedURL: https://player.vimeo.com/video/317339967
   previewVideoUrl: https://player.vimeo.com/external/317379809.hd.mp4?s=01dcb0f8c41978f9a1dd08c3676df7e71bddbd4d&profile_id=175
-  image: "091018_H&B_VANDY_1080p.00_12_49_21.Still001.jpg"
+  image: '091018_H&B_VANDY_1080p.00_12_49_21.Still001.jpg'
   description: N/A
   extra: Directed by John Stavas <br> Produced by Mark Stavas <br> Director of Photography
     Cody Huff <br> Edited by John Stavas & Cody Huff
