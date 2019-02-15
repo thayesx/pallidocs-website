@@ -36,7 +36,7 @@ films:
     Cody Huff <br> Edited by John Stavas & Cody Huff
 - title: Intentional Healing
   embedUrl: https://player.vimeo.com/video/254431048
-  previewVideoUrl: https://player.vimeo.com/external/317148607.hd.mp4?s=a2e9cd5cbb41d0f9c61e2abf99488147eddc9261&profile_id=175
+  previewVideoUrl: https://player.vimeo.com/external/317383155.hd.mp4?s=acdfa8bfa3402e41ea0248f70f6ee31f50515501&profile_id=175
   image: intentionalHealing.png
   description: Intentional Healing is a restorative documentary that follows the famed
     Nashville music producer Jesse Boyce as he contemplates his own mortality following
