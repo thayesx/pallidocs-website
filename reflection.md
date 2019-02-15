@@ -24,7 +24,7 @@ questions:
 - question: What is your understanding now of where you are with your illness?
   video: https://player.vimeo.com/external/317159311.hd.mp4?s=f3f5a7c48ff3dd42b723d37b8d9bc229abc5239b&profile_id=175
   loadingImg: 
-  mobileBackgroundImg: /assets/backgroundImage1.png
+  mobileBackgroundImg: '/assets/backgroundImage1.png'
 - question: What would you like to know about your illness and what lies ahead?
   video: https://player.vimeo.com/external/317159953.hd.mp4?s=2856465a21900055bd859c32003eecb2d289afd1&profile_id=175
   loadingImg: 
