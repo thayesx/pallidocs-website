@@ -43,10 +43,7 @@ films:
 - title: Harold & Bev
   previewVideo: ''
   image: ''
-  embedURL: <iframe src="https://player.vimeo.com/video/282934999" width="640" height="338"
-    frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    <p><a href="https://vimeo.com/282934999">HAROLD_INTRO_JS_V4</a> from <a href="https://vimeo.com/johnstavas">John
-    Stavas</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+  embedURL: https://player.vimeo.com/external/282934999.hd.mp4?s=6131e6b1f595e9603683212991baffb20be557db&profile_id=175
   description: N/A
   extra: Directed by John Stavas <br> Produced by Mark Stavas <br> Director of Photography
     Cody Huff <br> Edited by John Stavas & Cody Huff
