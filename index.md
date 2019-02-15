@@ -41,7 +41,7 @@ films:
   extra: 'Directed by John Stavas<br> Produced by Drs. Mark and Joseph Stavas<br>Director
     of Photograpy: Cody Huff'
 - title: Harold & Bev
-  previewVideo: ''
+  previewVideo: https://player.vimeo.com/external/282934999.hd.mp4?s=6131e6b1f595e9603683212991baffb20be557db&profile_id=174
   image: ''
   embedURL: https://player.vimeo.com/external/317339967.hd.mp4?s=58be9f52544d9138bbf459b77e3aa3e248435f8b&profile_id=175
   description: N/A
