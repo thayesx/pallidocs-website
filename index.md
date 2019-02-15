@@ -27,6 +27,13 @@ films:
     for outreach and education.'
   extra: 'Directed by John Stavas & Dr. Mark Stavas<br> Produced by Dr. Sara F. Martin,
     <br>Director of Photography: Cody Huff'
+- title: Harold & Bev
+  previewVideo: https://player.vimeo.com/external/317379809.hd.mp4?s=01dcb0f8c41978f9a1dd08c3676df7e71bddbd4d&profile_id=175
+  image: "/assets/091018_H&B_VANDY_1080p.00_12_49_21.Still001.jpg"
+  embedURL: https://player.vimeo.com/video/317339967
+  description: N/A
+  extra: Directed by John Stavas <br> Produced by Mark Stavas <br> Director of Photography
+    Cody Huff <br> Edited by John Stavas & Cody Huff
 - title: Intentional Healing
   previewVideo: intentionalHealingPreview.mp4
   image: intentionalHealing.png
@@ -40,12 +47,5 @@ films:
     the outcome; joy is independent of the journey.
   extra: 'Directed by John Stavas<br> Produced by Drs. Mark and Joseph Stavas<br>Director
     of Photograpy: Cody Huff'
-- title: Harold & Bev
-  previewVideo: ''
-  image: "/assets/091018_H&B_VANDY_1080p.00_12_49_21.Still001.jpg"
-  embedURL: https://player.vimeo.com/video/317339967
-  description: N/A
-  extra: Directed by John Stavas <br> Produced by Mark Stavas <br> Director of Photography
-    Cody Huff <br> Edited by John Stavas & Cody Huff
 
 ---
