@@ -5,7 +5,7 @@
     <video muted loop preload="auto" class="preview" id="{{ filmId }}">
       <source src="{{ film.previewVideoUrl }}" type="video/mp4">
     </video>
-    <div class="image" style="background-image: url('assets/{{ film.image }}')"></div>
+    <div class="image" style="background-image: url('{{ film.image }}')"></div>
   </div>
   <div class="text">
     <h1>{{ film.title }}</h1>
