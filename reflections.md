@@ -2,7 +2,7 @@
 layout: reflections
 audio:
   media: https://player.vimeo.com/external/317083307.sd.mp4?s=acb38ac1bd78547cc42cf0242ce2e87d0963770f&profile_id=164&download=1
-  playText: 'Play music '
+  playText: Play music
   pauseText: Pause music
 intro:
   paragraphs:
