@@ -34,10 +34,10 @@ films:
   previewVideoUrl: https://player.vimeo.com/external/317379809.hd.mp4?s=01dcb0f8c41978f9a1dd08c3676df7e71bddbd4d&profile_id=175
   image: "/assets/091018_H&B_VANDY_1080p.00_12_49_21.Still001.jpg"
   description: 'Harold and Bev is a film that follows Country Music Hall of Fame legend
-    Harold Bradley during his journey through dialysis. The film explores what it
-    means to pursuing more time. It demonstrates the trials of aging and the impact
-    a serious illness can have on caregivers and family all the while maintaining
-    a sense of joy and passion. '
+    Harold Bradley during his journey with dialysis. The film explores the benefits
+    and burdens of choosing a treatment that may offer “more time”. It demonstrates
+    the trials of aging and the impact a serious illness can have on caregivers and
+    family. '
   extra: Directed by John Stavas <br> Produced by Dr. Mark Stavas <br> Director of
     Photography Cody Huff <br> Edited by John Stavas & Cody Huff
 - title: Intentional Healing
