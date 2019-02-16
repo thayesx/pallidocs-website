@@ -23,7 +23,7 @@ films:
   image: "/assets/modicumOfJoy.png"
   description: 'A Modicum Of Joy is a modern film that explores the intersection of
     art and medicine in the face of a serious illness. The documentary follows Nashville
-    photographer Fred Dusel II as he considers the role of palliative care in managing
+    photographer Fred Dusel III as he considers the role of palliative care in managing
     his own disease: metastatic lung cancer. Fred reminds us that wisdom can be found
     between the hollows of hope, ritual and the arts. The film offers a novel platform
     for outreach and education.'
