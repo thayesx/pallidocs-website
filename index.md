@@ -31,9 +31,13 @@ films:
   embedUrl: https://player.vimeo.com/video/317396542
   previewVideoUrl: https://player.vimeo.com/external/317379809.hd.mp4?s=01dcb0f8c41978f9a1dd08c3676df7e71bddbd4d&profile_id=175
   image: "/assets/091018_H&B_VANDY_1080p.00_12_49_21.Still001.jpg"
-  description: N/A
-  extra: Directed by John Stavas <br> Produced by Mark Stavas <br> Director of Photography
-    Cody Huff <br> Edited by John Stavas & Cody Huff
+  description: 'Harold and Bev is a film that follows Country Music Hall of Fame legend
+    Harold Bradley during his journey through dialysis. The film explores what it
+    means to pursuing more time. It demonstrates the trials of aging and the impact
+    a serious illness can have on caregivers and family all the while maintaining
+    a sense of joy and passion. '
+  extra: Directed by John Stavas <br> Produced by Dr. Mark Stavas <br> Director of
+    Photography Cody Huff <br> Edited by John Stavas & Cody Huff
 - title: Intentional Healing
   embedUrl: https://player.vimeo.com/video/254431048
   previewVideoUrl: https://player.vimeo.com/external/317383155.hd.mp4?s=acdfa8bfa3402e41ea0248f70f6ee31f50515501&profile_id=175
