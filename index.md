@@ -3,15 +3,17 @@ layout: main
 backgroundVideo: https://player.vimeo.com/external/317148607.hd.mp4?s=a2e9cd5cbb41d0f9c61e2abf99488147eddc9261&profile_id=175
 mobileBackgroundImg: "/assets/Phone_PICTURE.png"
 paragraphs:
-- The emotions that come with a serious diagnosis can be hard to manage. It's an experience
-  that will force anyone to reckon with their goals in life—while each moment can
-  shift the balance between uncertainty and grace.
-- But with crisis comes an opportunity to find new meaning. Old wounds may become
-  new openings. One can see the world through the eyes of the heart.
-- These films are meant to honor a community built on strength and fellowship. They're
-  intended to remind each of us that we're never alone.
-- We hope they can inspire conversation, open doors to new emotions, and remind us
-  that joy can always be found in unexpected ways.
+- "The emotions that follow a serious illness can be difficult to express. It is an
+  experience that will force a person to reckon with their ultimate goals in life.
+  Each new moment shifts the balance between grace and uncertainty, between faith
+  and doubt. \n\n "
+- 'But along with crisis comes the opportunity to find new meaning. Old wounds become
+  new openings and we begin to see the world through the eyes of the heart. '
+- 'These Films and Reflections are meant to honor a community built on strength and
+  fellowship. They are intended to remind us that our lives matter and that we are
+  not alone. '
+- 'We hope they can inspire a conversation, evoke an emotion and remind us that joy
+  can be found in unexpected ways. '
 - Sincerely,<br><br> John Stavas<br> Cody Huff<br> Sara Martin, MD<br> Mohana Karlekar,
   MD<br> Mark Stavas, MD
 films:
