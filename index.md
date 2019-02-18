@@ -14,8 +14,7 @@ paragraphs:
   not alone. '
 - 'We hope they can inspire a conversation, evoke an emotion and remind us that joy
   can be found in unexpected ways. '
-- Sincerely,<br><br> John Stavas<br> Cody Huff<br> Sara Martin, MD<br> Mohana Karlekar,
-  MD<br> Mark Stavas, MD
+- Sincerely,<br><br>The Pallidocs Team
 films:
 - title: A Modicum of Joy
   embedUrl: https://player.vimeo.com/video/317516889
