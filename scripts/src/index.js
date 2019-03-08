@@ -1,11 +1,8 @@
 // Declare variables
 let colorChange1;
 let colorChange2;
-let p1;
-let p2;
-let p3;
-let p4;
-let p5;
+let introParagraphs;
+let firstIntroParagraph;
 let sidebar;
 let downArrow;
 let text;
@@ -14,92 +11,137 @@ let filmPreview;
 let didScroll = false;
 
 // Manage pausing and playing film previews
-let playPreview = function() {
+let playPreview = function () {
   let preview = $(this).children(".preview")[0];
-  $(preview).get(0).play();
+  $(preview)
+    .get(0)
+    .play();
 }
-let pausePreview = function() {
+let pausePreview = function () {
   let preview = $(this).children(".preview")[0];
-  $(preview).get(0).pause();
+  $(preview)
+    .get(0)
+    .pause();
 }
 
-// Transition css property on scroll
-let transitionOpacityOnScroll = function(target, startFromTop, slowness, reference) {
-  let scrollReference = (reference? reference : target);
-  let distanceFromTop = scrollReference.offset().top - window.scrollY;
-  let value = (startFromTop - distanceFromTop) / slowness;
+// Transition css opacity on scroll
+let transitionOpacityOnScroll = function ({transitionObject, startFromTop, slowness, referenceObject}) {
+  let scrollReferenceObject = referenceObject
+    ? referenceObject
+    : transitionObject;
 
-  // Prevent function from running when opacity is being overadjusted 
-  // .2 buffer to avoid accidental cutoff before value is 1
-  if (parseFloat(target.css("opacity")) >= 1 && value >= 1 || value < 0) return;
-  // Begin transition at startFromTop
-  if (distanceFromTop <= startFromTop)
-    // Set cssProperty as function of distance from top of screen
-    target.css("opacity", value);
-}
+  // Distance from scrollReferenceObject to top of window
+  let distanceFromTop = scrollReferenceObject
+    .offset()
+    .top - window.scrollY;
+
+  // Calculate new opacity as function of scroll distance and slowness coefficient
+  let newOpacity = (startFromTop - distanceFromTop) / slowness;
+
+  // Prevent function from overadjusting opacity
+  if (newOpacity > 1) 
+    newOpacity = 1;
+  
+  // Begin transition at startFromTop, reset opacity if scrolled backwards past
+  // start point
+  if (distanceFromTop <= startFromTop) {
+    transitionObject.css("opacity", newOpacity);
+  } else 
+    transitionObject.css("opacity", 0);
+  }
 
 // Add class to element based on scroll position
-let addClassOnScroll = function(target, startFromTop, className, config) {
+let addClassOnScroll = function (className, {targetObject, startFromTop, config}) {
+  let scrollReferenceObject = (config && config.reference)
+    ? config.reference
+    : targetObject;
 
-  // Define object used for definition: distance from object to top
-  // If no reference defined, target is used
-  let scrollReference = target;
-  if (config && config.reference) scrollReference = config.reference;
-  let distanceFromTop = scrollReference? (scrollReference.offset().top - window.scrollY) : 0;
+  // Distance from scrollReferenceObject to top of window
+  let distanceFromTop = scrollReferenceObject
+    ? (scrollReferenceObject.offset().top - window.scrollY)
+    : 0;
 
   // Determine if class should be removed on reverse scroll
-  let removeOnReverse = false;
-  if (config && config.removeOnReverse) removeOnReverse = true;
-  
+  let removeOnReverse = (config && config.removeOnReverse)
+    ? true
+    : false;
+
   // At distanceFromTop, add class to target if target doesn't already have class
-  if (distanceFromTop <= startFromTop && target[0] && !target[0].className.includes(className))
-    target.addClass(className);
-  else if (distanceFromTop > startFromTop && target[0] && target[0].className.includes(className) && removeOnReverse)
-    target.removeClass(className);
+  if (distanceFromTop <= startFromTop && !targetObject[0].className.includes(className)) {
+    targetObject.addClass(className);
+  } else if (distanceFromTop > startFromTop && targetObject[0].className.includes(className) && removeOnReverse) {
+    targetObject.removeClass(className);
+  }
 }
 
 // Fade in paragraphs
-let fadeInParagraphs = function() {
+let fadeInParagraphs = function () {
   let startFromTop = window.innerHeight * .8;
-  addClassOnScroll(p1, startFromTop, "show");
-  addClassOnScroll(p2, startFromTop, "show");
-  addClassOnScroll(p3, startFromTop, "show");
-  addClassOnScroll(p4, startFromTop, "show");
-  addClassOnScroll(p5, startFromTop, "show");
-  addClassOnScroll(text, startFromTop, "show");
-  addClassOnScroll(sidebar, startFromTop, "shrink", {reference: p1, removeOnReverse: true});
-  addClassOnScroll(downArrow, startFromTop, "hide", {reference: p1, removeOnReverse: true});
+
+  for (let i = 0; i < introParagraphs.length; i++) {
+    let paragraph = $(introParagraphs[i]);
+    addClassOnScroll("show", {
+      targetObject: paragraph,
+      startFromTop
+    });
+  }
+
+  addClassOnScroll("show", {
+    targetObject: text,
+    startFromTop
+  });
+  addClassOnScroll("shrink", {
+    targetObject: sidebar,
+    startFromTop,
+    config: {
+      reference: firstIntroParagraph,
+      removeOnReverse: true
+    }
+  });
+  addClassOnScroll("hide", {
+    targetObject: downArrow,
+    startFromTop,
+    config: {
+      reference: firstIntroParagraph,
+      removeOnReverse: true
+    }
+  });
 }
 
 // Fade in color overlay
-let fadeInOverlay1 = function() {
+let fadeInOverlay1 = function () {
   let startFromTop = window.innerHeight;
   let slowness = 400;
-  transitionOpacityOnScroll(colorChange1, startFromTop, slowness, p1);
+  transitionOpacityOnScroll({transitionObject: colorChange1, startFromTop, slowness, referenceObject: firstIntroParagraph});
 }
 
 // Fade in second color overlay
-let fadeInOverlay2 = function() {
+let fadeInOverlay2 = function () {
   let startFromTop = window.innerHeight;
   let slowness = 400;
-  transitionOpacityOnScroll(colorChange2, startFromTop, slowness, filmsSection);
+  transitionOpacityOnScroll({transitionObject: colorChange2, startFromTop, slowness, referenceObject: filmsSection});
 }
 
 // Fade in films
-let fadeInFilms = function() {
+let fadeInFilms = function () {
   let startFromTop = window.innerHeight * .8;
   for (let i = 0; i < films.length; i++) {
     let film = $(films[i]);
-    addClassOnScroll(film, startFromTop, "show");  
+    addClassOnScroll("show", {
+      targetObject: film,
+      startFromTop
+    });
   }
 }
 
 // Scroll to target point
-let moveTo = function(target, offset) {
-  let moveOffset = offset? offset : 0;
-  let object = "#" + target;
-  console.log("object", object);
-  let destination = $(object)[0].offsetTop;
+let moveTo = function ({targetObject, offset}) {
+  console.log("moveTo", targetObject);
+  let moveOffset = offset
+    ? offset
+    : 0;
+  let destination = targetObject[0].offsetTop;
+  console.log("destination", destination);
   window.scroll({
     top: destination - moveOffset,
     left: 0,
@@ -108,70 +150,81 @@ let moveTo = function(target, offset) {
 }
 
 // Initial scroll when clicking arrow
-let scrollArrow = function() {
-  moveTo("p1", -500);
+let scrollArrow = function () {
+  moveTo({targetObject: firstIntroParagraph, offset: -500});
   downArrow.addClass("hide");
 }
 
 // Toggle class for expanded sidebar (for mobile)
-let mobileMenu = function() {
-  if (!sidebar[0].className.includes("expanded")) sidebar.addClass("expanded");
-  else sidebar.removeClass("expanded");
-}
+let mobileMenu = function () {
+  if (!sidebar[0].className.includes("expanded")) 
+    sidebar.addClass("expanded");
+  else 
+    sidebar.removeClass("expanded");
+  }
 
 // Show/hide video embed
-let updateTheater = function(id, show) {
+let updateTheater = function (id, show) {
   let film = $("#" + id);
   let theater = film.children(".theater")[0];
   let iframe;
   // Show theater
   if (show) {
-    if (!$(theater).hasClass("show")) $(theater).addClass("show");
-  } 
-  // Hide theater
-  else {
-    if ($(theater).hasClass("show")) $(theater).removeClass("show");
+    if (!$(theater).hasClass("show")) 
+      $(theater).addClass("show") // Hide theater;
+    } else {
+    if ($(theater).hasClass("show")) 
+      $(theater).removeClass("show");
+    
     // Reload iframe
     iframe = $(theater).children("iframe")[0];
     iframe.src = iframe.src;
   }
 }
 
+let videoLoaded = function (id) {
+  let video = $("#" + id);
+  video.addClass("loaded");
+}
+
 // Stagger updates made on scroll to reduce load
 setInterval(() => {
-  if(didScroll) {
+  if (didScroll) {
     didScroll = false;
   }
 }, 100);
 
-// Call functions onscroll
-$( window ).scroll(() => {
+// Perform scroll-dependent actions
+$(window).scroll(() => {
   // Handle didScroll stagger
-  if (!didScroll){
+  if (!didScroll) {
     didScroll = true;
   }
 
   // Handle onScroll DOM updates
-  addClassOnScroll(backgroundVideo, 0, "hide", {reference: filmsSection, removeOnReverse: true});
+  addClassOnScroll("hide", {
+    targetObject: backgroundVideo,
+    startFromTop: 0,
+    config: {
+      reference: filmsSection,
+      removeOnReverse: true
+    }
+  });
   fadeInOverlay1();
   fadeInParagraphs();
 
-  // Delay buffer
   if (window.scrollY > 1000) {
     fadeInOverlay2();
     fadeInFilms();
   }
 });
 
-$( document ).ready(() => {
+$(document).ready(() => {
   backgroundVideo = $("#backgroundVideo");
   colorChange1 = $("#colorChange1");
   colorChange2 = $("#colorChange2");
-  p1 = $("#p1");
-  p2 = $("#p2");
-  p3 = $("#p3");
-  p4 = $("#p4");
-  p5 = $("#p5");
+  introParagraphs = $(".pGroup");
+  firstIntroParagraph = $(introParagraphs[0]);
   sidebar = $("#sidebar");
   downArrow = $("#downArrow");
   text = $("#text");
@@ -183,10 +236,7 @@ $( document ).ready(() => {
 
   // Reset scroll position and handle navigation to films
   window.scroll(0, 0);
-  if (window.location.search == "?films") moveTo("films", 40);
-});
-
-let videoLoaded = function (id) {
-  let video = $("#" + id);
-  video.addClass("loaded");
-}
+  if (window.location.search == "?films") 
+    moveTo({targetObject: filmsSection, offset: 40});
+  }
+);
