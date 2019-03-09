@@ -2,7 +2,6 @@ let questionsLength;
 let page;
 
 let hideIntro = function () {
-  console.log("hideIntro");
   page.removeClass("intro");
 };
 
