@@ -8,53 +8,78 @@ const logoImgPath = "assets/logo1_dark_print.png";
 let logoImgDataUrl;
 
 let createPDF = function () {
-  // Get user data
-  let questions = $(".question");
-  let answers = $(".answer");
-  let yourName = $("#yourName")[0].value;
-  let doctorName = $("#doctorName")[0].value;
-  let healthcareAgentInput = $(".healthcareAgentInfo");
-
-  // Combine question and answer strings into single text body
-  let userData = formatUserInputData(questions, answers);
-
   // Create doc with parameters
   let doc = new jsPDF("p", "pt", "a4");
   doc.setFont("georgia", "regular");
   doc.setFontSize(fontSize);
 
   // Prepare logo file for pdf generating, add logo
+  printLogoImg(doc);
+  skipLine(3);
+
+  // Print intro content
+  let date = "Date: " + getDate();
+  doc.text(date, margin, verticalOffset);
+  skipLine(2);
+
+  let doctorName = $("#doctorName")[0].value;
+  let dearDoctor = "Dear " + doctorName + ",";
+  doc.text(dearDoctor, margin, verticalOffset);
+  skipLine(2);
+
+  printHeadline(doc);
+  skipLine(2);
+
+  // Print healthcare agent info
+  printHealthcareAgentInfo(doc);
+  skipLine(4);
+
+  // Print questions an answers
+  doc.setFontSize(fontSize);
+  printResponses(doc);
+  skipLine(4);
+
+  /* Add signing and dating area. Start new page if too far down current page */
+  if (verticalOffset > 400) {
+    doc.addPage();
+    verticalOffset = margin;
+  }
+  printSigningArea(doc);
+
+  // Prompt user to download
+  doc.save('PallidocsForms.pdf');
+}
+
+function printLogoImg(doc) {
   let logoHeight = 30;
   let logoWidth = 140;
   let logoTopMargin = margin;
   let logoLeftMargin = (595 - logoWidth) / 2;
   doc.addImage(logoImgDataUrl, 'PNG', logoLeftMargin, logoTopMargin, logoWidth, logoHeight);
   verticalOffset += logoHeight;
-  skipLine(3);
+}
 
-  let date = "Date: " + getDate();
-  doc.text(date, margin, verticalOffset);
-  skipLine(2);
-
-  let dearDoctor = "Dear " + doctorName + ",";
-  doc.text(dearDoctor, margin, verticalOffset);
-  skipLine(2);
+function printHeadline(doc) {
+  let yourName = $("#yourName")[0].value;
 
   let headline = "The following are answers to the questions provided by pallidocs.com regarding " + yourName + "'s goals and wishes during their journey with a serious illness.";
   let headlineLines = doc.splitTextToSize(headline, width);
+
   for (let i in headlineLines) {
     doc.text(headlineLines[i], margin, verticalOffset);
     skipLine();
   }
-  skipLine(2);
+}
 
-  // Print healthcare agent info
+function printHealthcareAgentInfo(doc) {
+  let healthcareAgentInput = $(".healthcareAgentInfo");
+
   doc
     .setFontStyle("bold")
     .text("Healthcare Agent:", margin, verticalOffset);
   skipLine();
-  doc.setFontStyle("regular");
 
+  doc.setFontStyle("regular");
   for (let i = 0; i < healthcareAgentInput.length; i++) {
     let input = healthcareAgentInput[i];
     let toPrint = input.id + ": " + input.value;
@@ -64,18 +89,23 @@ let createPDF = function () {
   skipLine();
 
   let healthcareAgentNotice = "This Health Care Agent shall take effect in the event that a determination is ma" +
-      "de by my doctor that I lack the capacity to make or to communicate my own health" +
-      " care decisions."
+    "de by my doctor that I lack the capacity to make or to communicate my own health" +
+    " care decisions."
   let healthcareAgentNoticeLines = doc
     .setFontStyle("italic")
     .setFontSize(9)
     .splitTextToSize(healthcareAgentNotice, width);
+
   doc.text(healthcareAgentNoticeLines, margin, verticalOffset);
-  skipLine(4);
+}
 
-  doc.setFontSize(fontSize);
-
-  for (let i in userData) {
+// Get and format question and answer content
+function printResponses(doc) {
+  let questions = $(".question");
+  let answers = $(".answer");
+  let responses = formatResponses(questions, answers);
+  
+  for (let i in responses) {
     const styleQ = "italic";
     const styleA = "regular";
     let lines;
@@ -83,7 +113,7 @@ let createPDF = function () {
     // Format question
     lines = doc
       .setFontStyle(styleQ)
-      .splitTextToSize(userData[i].question, width);
+      .splitTextToSize(responses[i].question, width);
     for (let i in lines) {
       // If line fits on page, but avoid widowed lines
       if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)) {
@@ -98,14 +128,14 @@ let createPDF = function () {
       // Put two lines between answer and next question
       if (i == lines.length - 1) {
         skipLine(2);
-      } else 
+      } else
         skipLine();
-      }
-    
+    }
+
     // Format answer
     lines = doc
       .setFontStyle(styleA)
-      .splitTextToSize(userData[i].answer, width);
+      .splitTextToSize(responses[i].answer, width);
     for (let i in lines) {
       /* Add line if it fits on page, or if last line (to avoid widowed line on next
       page) */
@@ -122,31 +152,26 @@ let createPDF = function () {
       // If last line, add extra break before next Q
       if (i == lines.length - 1) {
         skipLine(4);
-      } else 
+      } else
         skipLine();
-      }
     }
-  skipLine(4);
-
-  /* Add signing and dating area. Start new page if too far down current page */
-  if (verticalOffset > 400) {
-    doc.addPage();
-    verticalOffset = margin;
   }
+}
+
+function printSigningArea(doc) {
+  let yourName = $("#yourName")[0].value;
+
   doc.text("Please upload this letter into my medical records to have as a guide throughout " +
-      "my journey.",
-  margin, verticalOffset);
+    "my journey.",
+    margin, verticalOffset);
   skipLine(2);
   doc.text("Sincerely,", margin, verticalOffset);
   skipLine();
   doc.text(yourName, margin, verticalOffset);
   skipLine(3);
   doc.text("Signature ______________________________________          Date _________________" +
-      "________",
-  margin, verticalOffset);
-
-  // Prompt user to download
-  doc.save('PallidocsForms.pdf');
+    "________",
+    margin, verticalOffset);
 }
 
 function getDate() {
@@ -185,7 +210,7 @@ function createLogoDataUrl(src) {
 }
 
 // Format question and answer content
-function formatUserInputData(questions, answers) {
+function formatResponses(questions, answers) {
   let formattedContent = [];
   let q = 1;
 
