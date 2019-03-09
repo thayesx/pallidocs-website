@@ -11,6 +11,8 @@ Content managed with **Forestry** [forestry.io](www.forestry.io)
 
 Built using **Jekyll** static site generator and **Node** package manager
 
+Run `gulp serve` to serve site on localhost:4000
+
 ---
 
 # Guide to site updates with Forestry
