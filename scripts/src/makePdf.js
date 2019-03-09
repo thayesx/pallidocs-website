@@ -1,12 +1,14 @@
-let margin = 72;
-let endMargin = 760;
-let width = 595 - margin * 2;
+const margin = 72;
+const endMargin = 760;
+const width = 595 - margin * 2;
 let verticalOffset = margin;
 let fontSize = 11;
-let lineHeight = fontSize * 1.4;
+const lineHeight = fontSize * 1.4;
+const logoImgPath = "assets/logo1_dark_print.png";
+let logoImgDataUrl;
 
 let createPDF = function () {
-
+  // Get user data
   let questions = $(".question");
   let answers = $(".answer");
   let yourName = $("#yourName")[0].value;
@@ -14,32 +16,19 @@ let createPDF = function () {
   let healthcareAgentInput = $(".healthcareAgentInfo");
 
   // Combine question and answer strings into single text body
-  let steps = [];
-  let q = 1;
-  for (let i in questions) {
-    let step = {
-      "question": q + ". " + questions[i].textContent,
-      "answer": answers[i].value
-    }
-    q++;
-    if (!answers[i].value) 
-      step.answer = "No answer";
-    if (!questions[i].textContent) 
-      break;
-    steps.push(step);
-  }
+  let userData = formatUserInputData(questions, answers);
 
   // Create doc with parameters
   let doc = new jsPDF("p", "pt", "a4");
   doc.setFont("georgia", "regular");
   doc.setFontSize(fontSize);
 
-  // Add logo
+  // Prepare logo file for pdf generating, add logo
   let logoHeight = 30;
   let logoWidth = 140;
   let logoTopMargin = margin;
   let logoLeftMargin = (595 - logoWidth) / 2;
-  doc.addImage(logoImgDataURL, 'PNG', logoLeftMargin, logoTopMargin , logoWidth, logoHeight);
+  doc.addImage(logoImgDataUrl, 'PNG', logoLeftMargin, logoTopMargin, logoWidth, logoHeight);
   verticalOffset += logoHeight;
   skipLine(3);
 
@@ -86,15 +75,15 @@ let createPDF = function () {
 
   doc.setFontSize(fontSize);
 
-  for (let i in steps) {
-    let styleQ = "italic";
-    let styleA = "regular";
+  for (let i in userData) {
+    const styleQ = "italic";
+    const styleA = "regular";
     let lines;
 
     // Format question
     lines = doc
       .setFontStyle(styleQ)
-      .splitTextToSize(steps[i].question, width);
+      .splitTextToSize(userData[i].question, width);
     for (let i in lines) {
       // If line fits on page, but avoid widowed lines
       if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)) {
@@ -106,6 +95,7 @@ let createPDF = function () {
         doc.text(lines[i], margin, verticalOffset);
       }
 
+      // Put two lines between answer and next question
       if (i == lines.length - 1) {
         skipLine(2);
       } else 
@@ -115,10 +105,12 @@ let createPDF = function () {
     // Format answer
     lines = doc
       .setFontStyle(styleA)
-      .splitTextToSize(steps[i].answer, width);
+      .splitTextToSize(userData[i].answer, width);
     for (let i in lines) {
-      // If line fits on page, but avoid widowed lines
-      if (verticalOffset < endMargin || (i == lines.length - 1 && lines.length > 1)) {
+      /* Add line if it fits on page, or if last line (to avoid widowed line on next
+      page) */
+      let isLastLine = i == lines.length - 1 && lines.length > 1;
+      if (verticalOffset < endMargin || isLastLine) {
         doc.text(lines[i], margin, verticalOffset // If page overflow
         );
       } else {
@@ -136,6 +128,7 @@ let createPDF = function () {
     }
   skipLine(4);
 
+  /* Add signing and dating area. Start new page if too far down current page */
   if (verticalOffset > 400) {
     doc.addPage();
     verticalOffset = margin;
@@ -148,8 +141,11 @@ let createPDF = function () {
   skipLine();
   doc.text(yourName, margin, verticalOffset);
   skipLine(3);
-  doc.text("Signature ______________________________________          Date _________________________", margin, verticalOffset);
+  doc.text("Signature ______________________________________          Date _________________" +
+      "________",
+  margin, verticalOffset);
 
+  // Prompt user to download
   doc.save('PallidocsForms.pdf');
 }
 
@@ -167,8 +163,50 @@ function getDate() {
   return mm + "/" + dd + "/" + yyyy;
 }
 
-function skipLine(lines) {
-  verticalOffset += (lineHeight * (lines
-    ? lines
+function skipLine(amount) {
+  verticalOffset += (lineHeight * (amount
+    ? amount
     : 1));
 }
+
+// Convert logo image file to dataUrl and assign to logoImgDataUrl
+function createLogoDataUrl(src) {
+  let img = new Image();
+  img.crossOrigin = 'Anonymous';
+  img.onload = function () {
+    let canvas = document.createElement('CANVAS');
+    let ctx = canvas.getContext('2d');
+    canvas.height = this.naturalHeight;
+    canvas.width = this.naturalWidth;
+    ctx.drawImage(this, 0, 0);
+    logoImgDataUrl = canvas.toDataURL();
+  };
+  img.src = src;
+}
+
+// Format question and answer content
+function formatUserInputData(questions, answers) {
+  let formattedContent = [];
+  let q = 1;
+
+  for (let i in questions) {
+    let step = {
+      "question": q + ". " + questions[i].innerText,
+      "answer": answers[i].value
+    }
+    q++;
+    if (!answers[i].value) 
+      step.answer = "No answer";
+    if (!questions[i].innerText) 
+      break;
+    formattedContent.push(step);
+  }
+
+  return formattedContent;
+}
+
+$(document).ready(() => {
+  /* dataUrl returns asynchronously so just do this pre-emptively to avoid lag at
+  download time */
+  createLogoDataUrl(logoImgPath);
+});

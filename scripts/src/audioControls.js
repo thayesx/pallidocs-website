@@ -19,11 +19,9 @@ $(document).ready(() => {
 
 function playPauseAudio() {
   if (player.paused || player.ended) {
-    console.log("play");
     audio.className = "isPlaying";
     player.play();
   } else {
-  console.log("pause");
     audio.className = "isPaused";
     player.pause();
   }
