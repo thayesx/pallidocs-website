@@ -2,6 +2,7 @@ let questionsLength;
 let page;
 
 let hideIntro = function () {
+  console.log("hideIntro");
   page.removeClass("intro");
 };
 
@@ -112,7 +113,7 @@ let finishReview = function () {
 }
 
 $(document).ready(() => {
-  page = $(".reflectionPage");
+  page = $(".reflectionsPage");
 
   // Initiate form
   initiateQuestions();
