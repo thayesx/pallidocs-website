@@ -136,12 +136,10 @@ let fadeInFilms = function () {
 
 // Scroll to target point
 let moveTo = function ({targetObject, offset}) {
-  console.log("moveTo", targetObject);
   let moveOffset = offset
     ? offset
     : 0;
   let destination = targetObject[0].offsetTop;
-  console.log("destination", destination);
   window.scroll({
     top: destination - moveOffset,
     left: 0,

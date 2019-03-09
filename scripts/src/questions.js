@@ -1,58 +1,15 @@
 let questionsLength;
 let page;
-let logoImgDataURL;
 
-$(document).ready(() => {
-  page = $(".reflectionPage");
-
-  // Initiate form
-  initiateQuestions();
-  // Get total number of questions
-  questionsLength = $(".question").length;
-
-  let finishReviewButton = $("#finishReview");
-  prepareFinishReviewButton(finishReviewButton);
-
-  let downloadButton = $("#download");
-  prepareDownloadButton(downloadButton);
-});
-
-window.onbeforeunload = function () {
-  return "Are you sure? The information you've entered won't be saved.";
-};
-
-let startQuestions = function () {
+let hideIntro = function () {
   page.removeClass("intro");
 };
-
-let prepareDownloadButton = function (downloadButton) {
-  downloadButton[0]
-    .addEventListener("click", function () {
-      createPDF();
-    }, false);
-}
 
 let prepareFinishReviewButton = function (finishReviewButton) {
   finishReviewButton[0]
     .addEventListener("click", function () {
       finishReview();
     }, false);
-}
-
-function toDataURL(src) {
-  var img = new Image();
-  img.crossOrigin = 'Anonymous';
-  img.onload = function () {
-    var canvas = document.createElement('CANVAS');
-    var ctx = canvas.getContext('2d');
-    var dataURL;
-    canvas.height = this.naturalHeight;
-    canvas.width = this.naturalWidth;
-    ctx.drawImage(this, 0, 0);
-    dataURL = canvas.toDataURL();
-    logoImgDataURL = dataURL;
-  };
-  img.src = src;
 }
 
 let initiateQuestions = function () {
@@ -91,9 +48,10 @@ let updateQuestionView = function (dir) {
     nextButton.innerHTML = "Next";
   
   let prevButton = $("#prevButton");
-  if (qid == 1)
+  if (qid == 1) 
     prevButton.addClass("hide");
-  else if (prevButton.hasClass("hide")) prevButton.removeClass("hide");
+  else if (prevButton.hasClass("hide")) 
+    prevButton.removeClass("hide");
   
   // Make nextQ visible with delay to account for thisQ fadeOut
   setTimeout(() => {
@@ -138,10 +96,6 @@ let prepareReview = function () {
       $(reviewSteps[i]).addClass("skipped");
     }
   }
-
-  // Prepare logo file for pdf generating
-  let logoImgUrl = "assets/logo1_dark_print.png";
-  toDataURL(logoImgUrl);
 }
 
 // Return to specific answer from review page
@@ -156,3 +110,19 @@ let finishReview = function () {
   page.removeClass("finalReview");
   page.addClass("healthcareAgentReview");
 }
+
+$(document).ready(() => {
+  page = $(".reflectionPage");
+
+  // Initiate form
+  initiateQuestions();
+  // Get total number of questions
+  questionsLength = $(".question").length;
+
+  let finishReviewButton = $("#finishReview");
+  prepareFinishReviewButton(finishReviewButton);
+});
+
+window.onbeforeunload = function () {
+  return "Are you sure? The information you've entered won't be saved.";
+};
